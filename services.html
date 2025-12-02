@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Услуги — Kamilovs Clinic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Общие стили -->
+    <link rel="stylesheet" href="css/base.css" />
+    <!-- Стили только для страницы услуг -->
+    <link rel="stylesheet" href="css/pages/services.css" />
+  </head>
+  <body>
+    <!-- ===== ШАПКА ===== -->
+    <header class="kc-header" data-reveal>
+      <div class="kc-header__inner">
+        <a href="index.html" class="kc-header__brand">
+          <img
+            src="images/Лого Camilovs‘ Полноцветный RGB.png"
+            alt="Kamilovs Clinic"
+            class="kc-header__logo"
+          />
+          <span class="kc-header__brand-text"></span>
+        </a>
+
+        <nav class="kc-header__nav" aria-label="Главное меню">
+          <ul class="kc-header__menu">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="services.html" class="is-active">Услуги</a></li>
+            <li><a href="doctors.html">Врачи</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+
+        <div class="kc-header__actions">
+          <a href="tel:+998950884141" class="kc-header__phone">
+            +998 95 088 41 41
+          </a>
+
+          <button class="kc-header__cta" type="button" onclick="kcOpenModal()">
+            Записаться
+          </button>
+
+          <button
+            class="kc-header__burger"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Мобильное меню -->
+      <nav class="kc-header__mobile" aria-label="Мобильное меню">
+        <ul>
+          <li><a href="index.html" class="is-active">Главная</a></li>
+          <li><a href="#about">О клинике</a></li>
+          <li><a href="services.html" class="is-active">Услуги</a></li>
+          <li><a href="doctors.html">Врачи</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li>
+            <a href="tel:+998950884141">Позвонить: +998 95 088 41 41</a>
+          </li>
+          <li>
+            <button
+              class="kc-header__mobile-cta"
+              type="button"
+              onclick="kcOpenModal()"
+            >
+              Записаться
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ================== ОСНОВНОЙ КОНТЕНТ ================== -->
+    <main class="kc-main kc-main--inner">
+      <!-- Список направлений / услуг -->
+      <section id="services-list" class="kc-services-list" data-reveal>
+        <div class="kc-services-list__head" data-reveal>
+          <span class="kc-services-list__kicker">Направления</span>
+          <h2 class="kc-services-list__title">Основные услуги клиники</h2>
+          <p class="kc-services-list__lead">
+            Ниже — основные направления. Полный перечень и цены можно уточнить у
+            администратора клиники.
+          </p>
+        </div>
+
+        <div class="kc-services-list__grid" data-reveal>
+    
+          <!-- Стоматология -->
+          <article class="kc-service-card" data-reveal>
+            <div class="kc-service-card__top">
+              <span class="kc-service-card__tag kc-service-card__tag--blue">
+                Стоматология
+              </span>
+              <h3 class="kc-service-card__title">Лечение и гигиена</h3>
+              <p class="kc-service-card__text">
+                Лечение кариеса, эстетическая реставрация, профессиональная
+                чистка, рекомендации по уходу.
+              </p>
+            </div>
+            <ul class="kc-service-card__list">
+              <li>Осмотр и консультация</li>
+              <li>Лечение кариеса и пульпита</li>
+              <li>Гигиена, полировка, рекомендации</li>
+            </ul>
+            <div class="kc-service-card__bottom">
+              <span class="kc-service-card__price">от 250 000 сум</span>
+              <button
+                class="kc-service-card__btn"
+                type="button"
+                onclick="kcOpenModal()"
+              >
+                Записаться
+              </button>
+              <a
+                href="service-detail.html?slug=dental"
+                class="for-services-btn"
+              >
+                Подробнее
+              </a>
+            </div>
+          </article> 
+
+        </div>
+      </section>
+
+      <!-- Мини-блок "Как подготовиться" -->
+      <section class="kc-services-prep" data-reveal>
+        <div class="kc-services-prep__inner">
+          <div class="kc-services-prep__text" data-reveal>
+            <h2 class="kc-services-prep__title">Как подготовиться к визиту</h2>
+            <p class="kc-services-prep__lead">
+              Небольшая подготовка помогает сделать приём более информативным и
+              точным.
+            </p>
+            <ul class="kc-services-prep__list">
+              <li>Возьмите с собой паспорт и предыдущие заключения.</li>
+              <li>Запишите заранее принимаемые лекарства и дозировки.</li>
+              <li>На анализы крови приходите натощак (если рекомендовано).</li>
+              <li>Придите чуть раньше, чтобы спокойно оформить документы.</li>
+            </ul>
+          </div>
+
+          <div class="kc-services-prep__card" data-reveal>
+            <p class="kc-services-prep__card-text">
+              Остались вопросы по услугам, анализам или ценам?
+              <br />
+              Напишите администратору или позвоните — мы поможем подобрать
+              удобное время и врача.
+            </p>
+            <a href="tel:+998950884141" class="kc-services-prep__card-btn">
+              📞 Позвонить в клинику
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== ФУТЕР ===== -->
+    <footer class="kc-footer" id="contacts" data-reveal>
+      <div class="kc-footer__waves" aria-hidden="true"></div>
+
+      <div class="kc-footer__inner">
+        <div class="kc-footer__col kc-footer__col--brand">
+          <div class="kc-footer__logo-wrap">
+            <img
+              src="images/Лого Camilovs‘ Полноцветный RGB.png"
+              alt="Kamilovs Clinic"
+              class="kc-footer__logo"
+            />
+          </div>
+
+          <p class="kc-footer__text">
+            Современная многопрофильная клиника в центре Ташкента. Работаем 24/7
+            — рядом, когда это важно.
+          </p>
+
+          <ul class="kc-footer__list">
+            <li>📍 ул. Хувайдо, 7, Ташкент</li>
+            <li>
+              📞
+              <a href="tel:+998950884141">+998 95 088 41 41</a>
+            </li>
+            <li>
+              ✉️
+              <a href="mailto:info@kamilovs.uz">info@kamilovs.uz</a>
+            </li>
+            <li>🕒 Работаем круглосуточно</li>
+          </ul>
+
+          <button class="kc-footer__cta" type="button" data-open-modal>
+            Записаться
+          </button>
+        </div>
+
+        <div class="kc-footer__col kc-footer__col--map">
+          <h3 class="kc-footer__map-title">Как нас найти</h3>
+          <p class="kc-footer__map-text">
+            Kamilovs’ clinic на Яндекс Картах — построить удобный маршрут за
+            пару секунд.
+          </p>
+          <div class="kc-map-wrapper">
+            <iframe
+              src="https://yandex.uz/map-widget/v1/org/66518861972/?ll=69.203739%2C41.342219&z=17"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="kc-footer__bottom">
+        <span>© <span id="kc-year"></span> Kamilovs Clinic.</span>
+        <span>Сайт создан с заботой о пациентах.</span>
+      </div>
+
+      <button class="kc-to-top" type="button" aria-label="Наверх">↑</button>
+    </footer>
+
+    <!-- ===== МОДАЛКА ЗАПИСИ ===== -->
+    <div class="kc-modal" id="kcModal">
+      <div class="kc-modal__overlay" onclick="kcCloseModal()"></div>
+
+      <div class="kc-modal__content">
+        <button class="kc-modal__close" type="button" onclick="kcCloseModal()">
+          ×
+        </button>
+
+        <!-- ВЕРХНЯЯ ЧАСТЬ С ЛОГО -->
+        <div class="kc-modal__head">
+          <div class="kc-modal__logo-wrap">
+            <img
+              src="images/Лого Camilovs‘ Полноцветный RGB.png"
+              alt="Kamilovs Clinic"
+              class="kc-modal__logo"
+            />
+          </div>
+
+          <h3 class="kc-modal__title">Записаться в Kamilovs Clinic</h3>
+          <p class="kc-modal__sub">
+            Оставьте контакты — наш администратор ответит в течение
+            <strong>5 минут</strong>.
+          </p>
+        </div>
+
+        <!-- ФОРМА -->
+        <form
+          action="http://127.0.0.1:8000/lead/"
+          method="post"
+          class="kc-modal__form"
+          id="kcModalForm"
+        >
+          <div class="kc-field">
+            <label class="kc-label">Имя</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Ваше имя"
+              class="kc-input"
+            />
+          </div>
+
+          <div class="kc-field">
+            <label class="kc-label">Телефон*</label>
+            <input
+              type="tel"
+              name="phone"
+              placeholder="+998 XX XXX XX XX"
+              class="kc-input"
+              required
+            />
+            <p class="kc-form-hint">
+              Мы позвоним только по вашей заявке — без спама.
+            </p>
+          </div>
+
+          <div class="kc-field">
+            <label class="kc-label">Интересующая услуга</label>
+            <input
+              type="text"
+              name="service"
+              placeholder="Например: кардиология"
+              class="kc-input"
+            />
+          </div>
+
+          <div class="kc-field">
+            <label class="kc-label">Комментарий</label>
+            <textarea
+              name="message"
+              placeholder="Опишите ваш вопрос, жалобу или симптом"
+              class="kc-input"
+            ></textarea>
+          </div>
+
+          <!-- скрытые поля -->
+          <input type="hidden" name="form_context" value="modal" />
+          <input type="hidden" name="page_url" value="" />
+
+          <button type="submit" class="kc-btn">Отправить заявку</button>
+
+          <p class="kc-modal__privacy">
+            Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки
+            персональных данных.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="js/reveal.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/doctors-rotate.js"></script>
+    <script src="js/faq.js"></script>
+    <script src="js/forms.js"></script>
+    <script></script>
+
+    <script>
+      // простая и глобальная логика модалки
+      (function () {
+        const modal = document.getElementById("kcModal");
+
+        if (!modal) return;
+
+        // подставляем текущий URL в скрытые поля
+        modal
+          .querySelectorAll('input[name="page_url"]')
+          .forEach((el) => (el.value = window.location.href));
+
+        // делаем функции глобальными, чтобы работать через onclick
+        window.kcOpenModal = function () {
+          modal.classList.add("kc-modal--open");
+        };
+
+        window.kcCloseModal = function () {
+          modal.classList.remove("kc-modal--open");
+        };
+      })();
+    </script>
+  </body>
+</html>

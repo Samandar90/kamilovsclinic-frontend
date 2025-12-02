@@ -1,0 +1,598 @@
+/* Страница услуг Kamilovs Clinic — премиальный визуал, но фон остаётся белым */
+
+/* немного меньше отступ сверху, чем на главной */
+.kc-main.kc-main--inner {
+  background: #ffffff;
+}
+
+/* ===== АНИМАЦИИ ПОЯВЛЕНИЯ ===== */
+
+@keyframes kc-fade-up-soft {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============= HERO услуг ============= */
+
+.kc-services-hero {
+  padding: 84px 16px 64px;
+  background: #ffffff;
+}
+
+.kc-services-hero__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+  gap: 40px;
+  align-items: center;
+
+  /* плавающий белый блок на белом фоне */
+  border-radius: 28px;
+  padding: 26px 24px 24px;
+  background: radial-gradient(
+      140% 160% at 0% 0%,
+      rgba(239, 248, 255, 0.9),
+      #ffffff 55%
+    ),
+    #ffffff;
+  box-shadow: 0 22px 60px rgba(12, 35, 76, 0.16);
+  border: 1px solid rgba(15, 115, 201, 0.05);
+}
+
+/* текст слева */
+.kc-services-hero__text {
+  animation: kc-fade-up-soft 0.7s ease forwards;
+}
+
+.kc-services-hero__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2fb48f;
+  background: rgba(47, 180, 143, 0.08);
+  border: 1px solid rgba(47, 180, 143, 0.25);
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kc-services-hero__kicker::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.85),
+    transparent
+  );
+  transform: translateX(-130%);
+  animation: kc-kicker-shine 4.2s ease-in-out infinite;
+}
+
+@keyframes kc-kicker-shine {
+  0% {
+    transform: translateX(-130%);
+  }
+  55% {
+    transform: translateX(130%);
+  }
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+.kc-services-hero__title {
+  margin: 4px 0 10px;
+  font-size: clamp(28px, 3.4vw, 38px);
+  font-weight: 800;
+  color: #0d2b5b;
+  letter-spacing: -0.02em;
+}
+
+.kc-services-hero__lead {
+  margin: 0 0 14px;
+  font-size: 15px;
+  color: #5b6f8a;
+  line-height: 1.6;
+}
+
+.kc-services-hero__points {
+  margin: 0 0 14px;
+  padding-left: 0;
+  list-style: none;
+  font-size: 14px;
+  color: #4c5f7c;
+  line-height: 1.6;
+}
+
+.kc-services-hero__points li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.kc-services-hero__points li::before {
+  content: "•";
+  width: 16px;
+  text-align: center;
+  color: #2fb48f;
+  font-weight: 700;
+}
+
+.kc-services-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.kc-services-hero__link {
+  font-size: 14px;
+  color: #0f73c9;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.kc-services-hero__link::after {
+  content: "↘";
+  font-size: 12px;
+  translation: 0 1px;
+}
+
+.kc-services-hero__link:hover {
+  text-decoration: underline;
+}
+
+/* карточка справа */
+.kc-services-hero__card {
+  animation: kc-fade-up-soft 0.7s ease 0.15s forwards;
+  border-radius: 24px;
+  padding: 20px 18px 18px;
+  background:
+    linear-gradient(180deg, #ffffff, #f6f9ff) padding-box,
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(15, 115, 201, 0.45),
+      rgba(47, 180, 143, 0.45)
+    )
+      border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 18px 46px rgba(12, 35, 76, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.kc-services-hero__card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle at 0% 0%,
+    rgba(255, 255, 255, 0.9),
+    transparent 60%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.kc-services-hero__card:hover::before {
+  opacity: 1;
+}
+
+.kc-services-hero__card-title {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f2a4d;
+}
+
+.kc-services-hero__card-list {
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: #4b607b;
+  line-height: 1.6;
+}
+
+.kc-services-hero__card-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.kc-services-hero__card-list li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #6efa96, #1dbf60);
+}
+
+.kc-services-hero__card-note {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #607289;
+}
+.kc-services-hero__card-note a {
+  color: #0f73c9;
+  text-decoration: none;
+}
+.kc-services-hero__card-note a:hover {
+  text-decoration: underline;
+}
+
+/* ============= Список направлений ============= */
+
+.kc-services-list {
+  padding: 16px 16px 72px;
+  background: #ffffff;
+}
+
+.kc-services-list__head {
+  max-width: 720px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.kc-services-list__kicker {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2fb48f;
+  background: rgba(47, 180, 143, 0.08);
+  border: 1px solid rgba(47, 180, 143, 0.25);
+}
+
+.kc-services-list__title {
+  margin: 10px 0 6px;
+  font-size: clamp(26px, 3.2vw, 34px);
+  font-weight: 800;
+  color: #0d2b5b;
+  letter-spacing: -0.02em;
+}
+
+.kc-services-list__lead {
+  margin: 0;
+  font-size: 14px;
+  color: #5b6f8a;
+}
+
+/* сетка карточек */
+.kc-services-list__grid {
+  max-width: 1180px;
+  margin: 26px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* карточка услуги */
+.kc-service-card {
+  position: relative;
+  border-radius: 22px;
+  padding: 18px 16px 14px;
+  background: linear-gradient(180deg, #ffffff, #f6f9ff);
+  border: 1px solid rgba(15, 115, 201, 0.06);
+  box-shadow: 0 16px 40px rgba(12, 35, 76, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.22s ease, box-shadow 0.24s ease,
+    border-color 0.24s ease, background 0.24s ease;
+  overflow: hidden;
+}
+
+.kc-service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.7),
+    transparent 40%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.kc-service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 52px rgba(12, 35, 76, 0.16);
+  border-color: rgba(15, 115, 201, 0.16);
+  background: linear-gradient(180deg, #ffffff, #f1f5ff);
+}
+
+.kc-service-card:hover::before {
+  opacity: 1;
+}
+
+/* верх */
+.kc-service-card__top {
+  margin-bottom: 6px;
+}
+
+.kc-service-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1d8a63;
+  background: rgba(47, 180, 143, 0.12);
+}
+
+.kc-service-card__tag::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #6efa96, #1dbf60);
+}
+
+.kc-service-card__tag--red {
+  color: #b53b3b;
+  background: rgba(245, 116, 116, 0.14);
+}
+.kc-service-card__tag--red::before {
+  background: radial-gradient(circle at 30% 30%, #ffb0b0, #f56767);
+}
+.kc-service-card__tag--blue {
+  color: #1f6fe0;
+  background: rgba(111, 164, 255, 0.16);
+}
+.kc-service-card__tag--blue::before {
+  background: radial-gradient(circle at 30% 30%, #c8daff, #6fa4ff);
+}
+.kc-service-card__tag--green {
+  color: #1e9c6a;
+  background: rgba(98, 214, 164, 0.16);
+}
+.kc-service-card__tag--green::before {
+  background: radial-gradient(circle at 30% 30%, #bff3dd, #62d6a4);
+}
+.kc-service-card__tag--purple {
+  color: #6b4fe0;
+  background: rgba(152, 132, 255, 0.16);
+}
+.kc-service-card__tag--purple::before {
+  background: radial-gradient(circle at 30% 30%, #d8ccff, #9884ff);
+}
+.kc-service-card__tag--orange {
+  color: #c47a15;
+  background: rgba(255, 196, 125, 0.18);
+}
+.kc-service-card__tag--orange::before {
+  background: radial-gradient(circle at 30% 30%, #ffe0b4, #ffb464);
+}
+
+.kc-service-card__title {
+  margin: 8px 0 4px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f2a4d;
+}
+
+.kc-service-card__text {
+  margin: 0;
+  font-size: 14px;
+  color: #4c5f7c;
+  line-height: 1.6;
+}
+
+/* список подуслуг */
+.kc-service-card__list {
+  margin: 8px 0 4px;
+  padding-left: 18px;
+  font-size: 13px;
+  color: #4c5f7c;
+  line-height: 1.5;
+}
+
+/* низ карточки */
+.kc-service-card__bottom {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.kc-service-card__price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f73c9;
+}
+
+.kc-service-card__btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(120deg, #0f73c9, #2fb48f);
+  box-shadow: 0 10px 24px rgba(15, 115, 201, 0.28);
+  transition: transform 0.18s ease, box-shadow 0.24s ease, filter 0.2s ease;
+}
+
+.kc-service-card__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(15, 115, 201, 0.36);
+  filter: brightness(1.03);
+}
+
+/* ============= Блок "Как подготовиться" ============= */
+
+.kc-services-prep {
+  padding: 0 16px 84px;
+  background: #ffffff;
+}
+
+.kc-services-prep__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  border-radius: 26px;
+  padding: 22px 20px 20px;
+  background: radial-gradient(
+      140% 160% at 0% 0%,
+      rgba(240, 249, 255, 0.98),
+      #ffffff
+    ),
+    #ffffff;
+  border: 1px solid rgba(15, 115, 201, 0.08);
+  box-shadow: 0 18px 50px rgba(12, 35, 76, 0.16);
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+  gap: 30px;
+  align-items: center;
+}
+
+.kc-services-prep__title {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0d2b5b;
+}
+
+.kc-services-prep__lead {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #4c5f7c;
+}
+
+.kc-services-prep__list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: #4b607b;
+  line-height: 1.6;
+}
+
+/* карточка справа */
+.kc-services-prep__card {
+  border-radius: 22px;
+  padding: 16px 16px 14px;
+  background: linear-gradient(135deg, #0f73c9, #2fb48f);
+  color: #ffffff;
+  box-shadow: 0 18px 46px rgba(9, 30, 66, 0.4);
+}
+
+.kc-services-prep__card-text {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.kc-services-prep__card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0f73c9;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.kc-services-prep__card-btn:hover {
+  filter: brightness(1.05);
+}
+
+/* ============= Адаптив ============= */
+
+@media (max-width: 1024px) {
+  .kc-services-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .kc-services-hero__card {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .kc-services-list__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kc-services-prep__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .kc-services-hero {
+    padding: 74px 14px 54px;
+  }
+
+  .kc-services-hero__inner {
+    padding: 20px 16px 18px;
+    border-radius: 22px;
+  }
+
+  .kc-services-list {
+    padding: 4px 14px 60px;
+  }
+
+  .kc-services-prep {
+    padding: 0 14px 70px;
+  }
+
+  .kc-services-list__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kc-services-hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .kc-service-card__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .kc-services-hero__inner {
+    box-shadow: 0 16px 42px rgba(12, 35, 76, 0.14);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

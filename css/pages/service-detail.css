@@ -1,0 +1,658 @@
+/* ===== ОБОЛОЧКА ВНУТРЕННЕЙ СТРАНИЦЫ ===== */
+
+.kc-main.kc-main--inner {
+  background:
+    radial-gradient(140% 140% at 0% 0%, #e5f1ff 0, #f5f7fb 38%, #f2f4fa 66%, #edf1f8 100%);
+}
+
+/* Хлебные крошки — тонкая премиум-полоска над контентом */
+.kc-breadcrumbs {
+  padding: 18px 0 8px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.kc-breadcrumbs .kc-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.kc-breadcrumbs a {
+  color: #0f73c9;
+  text-decoration: none;
+}
+
+.kc-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.kc-breadcrumbs span {
+  color: rgba(15, 23, 42, 0.55);
+}
+
+/* ===== HERO УСЛУГИ — ПЛАВАЮЩАЯ КАРТА ===== */
+
+.sd-hero {
+  padding: 40px 0 32px;
+}
+
+.sd-hero__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: flex-start;
+
+  border-radius: 28px;
+  padding: 26px 26px 24px;
+  background:
+    radial-gradient(200% 200% at 0% 0%, #ffffff 0, #f7f9ff 45%, #edf3ff 100%);
+  box-shadow:
+    0 22px 60px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(148, 163, 184, 0.16);
+  overflow: hidden;
+}
+
+/* световые блики */
+.sd-hero__grid::before,
+.sd-hero__grid::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.sd-hero__grid::before {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(
+    circle at 0% 0%,
+    rgba(79, 209, 197, 0.42),
+    transparent 60%
+  );
+  top: -220px;
+  left: -160px;
+  opacity: 0.9;
+}
+
+.sd-hero__grid::after {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(
+    circle at 100% 0%,
+    rgba(37, 99, 235, 0.4),
+    transparent 60%
+  );
+  top: -200px;
+  right: -180px;
+  opacity: 0.8;
+}
+
+/* содержимое поверх */
+.sd-hero__main,
+.sd-hero__aside {
+  position: relative;
+  z-index: 1;
+}
+
+/* Пилюля категории */
+.sd-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: #0f172a;
+  margin-bottom: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.sd-pill::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #22c55e, #0f766e);
+}
+
+/* Заголовок/подзаголовок */
+.sd-title {
+  font-size: clamp(26px, 3.1vw, 34px);
+  line-height: 1.25;
+  margin: 0 0 8px;
+  font-weight: 800;
+  color: #020617;
+  letter-spacing: -0.02em;
+}
+
+.sd-subtitle {
+  font-size: 14.5px;
+  line-height: 1.7;
+  opacity: 0.85;
+  max-width: 540px;
+  color: #475569;
+  margin: 0;
+}
+
+/* Теги */
+.sd-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 22px;
+}
+
+.sd-tag {
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: rgba(148, 163, 184, 0.16);
+  color: #0f172a;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+/* Мета: длительность и стоимость */
+.sd-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+.sd-meta__item {
+  min-width: 150px;
+}
+
+.sd-meta__label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  opacity: 0.6;
+  margin-bottom: 4px;
+  color: #6b7280;
+}
+
+.sd-meta__value {
+  font-weight: 600;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+/* Кнопки */
+.sd-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.24s ease,
+    filter 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.sd-btn--primary {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.25), transparent 60%),
+    linear-gradient(135deg, #0f73c9, #2fb48f);
+  color: #ffffff;
+  box-shadow:
+    0 14px 30px rgba(15, 118, 201, 0.45),
+    0 0 0 1px rgba(191, 219, 254, 0.4);
+}
+
+.sd-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 18px 40px rgba(15, 118, 201, 0.6),
+    0 0 0 1px rgba(219, 234, 254, 0.9);
+  filter: brightness(1.03);
+}
+
+.sd-btn--ghost {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  color: #0f172a;
+  backdrop-filter: blur(12px);
+}
+
+.sd-btn--ghost:hover {
+  transform: translateY(-1px);
+  border-color: #0f73c9;
+}
+
+/* Вариант в CTA на градиентном фоне */
+.sd-btn--outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  color: #fff;
+}
+
+.sd-btn--outline:hover {
+  background: rgba(15, 23, 42, 0.18);
+}
+
+/* ===== ASIDE: ВРАЧ + ПРИМЕЧАНИЕ ===== */
+
+.sd-hero__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* карта врача — лёгкая «glass»-карта */
+.sd-doctor,
+.sd-note {
+  border-radius: 20px;
+  padding: 16px 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(241, 245, 249, 0.98)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.16);
+  backdrop-filter: blur(14px);
+}
+
+.sd-doctor h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.75;
+  margin: 0 0 6px;
+  color: #64748b;
+}
+
+.sd-doctor__name {
+  font-weight: 700;
+  margin-top: 4px;
+  font-size: 15px;
+  color: #020617;
+}
+
+.sd-doctor__role,
+.sd-doctor__exp,
+.sd-doctor__note {
+  font-size: 14px;
+  margin-top: 4px;
+  color: #334155;
+}
+
+.sd-doctor__link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  text-decoration: none;
+  color: #0f73c9;
+}
+
+.sd-doctor__link:hover {
+  text-decoration: underline;
+}
+
+.sd-note h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.sd-note p {
+  margin: 0;
+  font-size: 13px;
+  color: #475569;
+}
+
+/* ===== ОБЩИЕ СЕКЦИИ: КАРТОЧКИ НА БЕЛОМ ФОНЕ ===== */
+
+.sd-section {
+  padding: 32px 0;
+}
+
+.sd-section .kc-container {
+  border-radius: 24px;
+  padding: 22px 22px 20px;
+  background: #ffffff;
+  box-shadow:
+    0 18px 50px rgba(15, 23, 42, 0.16),
+    0 0 0 1px rgba(226, 232, 240, 0.8);
+}
+
+/* сетка описания и показаний */
+.sd-section__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+  gap: 32px;
+}
+
+/* заголовки/текст */
+.sd-h2 {
+  font-size: 22px;
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: #020617;
+  letter-spacing: -0.01em;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.sd-h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 44px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0f73c9, #2fb48f);
+}
+
+.sd-h3 {
+  font-size: 17px;
+  margin: 0 0 8px;
+  color: #0f172a;
+}
+
+.sd-text {
+  font-size: 14.5px;
+  line-height: 1.7;
+  opacity: 0.94;
+  color: #475569;
+}
+
+.sd-list {
+  list-style: disc;
+  padding-left: 18px;
+  line-height: 1.7;
+  font-size: 14px;
+  color: #475569;
+}
+
+/* ===== ЭТАПЫ — ВЕРТИКАЛЬНЫЙ STEP-TIMELINE ===== */
+
+.sd-steps {
+  counter-reset: sd-step;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  position: relative;
+}
+
+.sd-steps::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(148, 163, 184, 0.2),
+    rgba(148, 163, 184, 0.5)
+  );
+}
+
+.sd-steps li {
+  counter-increment: sd-step;
+  margin-bottom: 12px;
+  padding-left: 34px;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.sd-steps li::before {
+  content: counter(sd-step);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #38bdf8, #0f73c9);
+  color: #ffffff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.55);
+}
+
+/* ===== ПРЕИМУЩЕСТВА ===== */
+
+.sd-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.sd-benefit {
+  padding: 16px 16px 14px;
+  border-radius: 18px;
+  background: radial-gradient(circle at 0% 0%, #eff6ff, #ffffff);
+  border: 1px solid rgba(191, 219, 254, 0.9);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.12);
+}
+
+.sd-benefit h3 {
+  font-size: 15px;
+  margin: 0 0 6px;
+  color: #0f172a;
+}
+
+.sd-benefit p {
+  margin: 0;
+  font-size: 13.5px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* ===== FAQ — АККОРДЕОН-КАРТА ===== */
+
+.sd-faq {
+  border-radius: 22px;
+  background: radial-gradient(circle at 0% 0%, #eef2ff, #ffffff);
+  padding: 8px 6px;
+  box-shadow:
+    0 18px 44px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(209, 213, 219, 0.6);
+}
+
+.sd-faq__item + .sd-faq__item {
+  border-top: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.sd-faq__q {
+  width: 100%;
+  padding: 13px 12px;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.sd-faq__q span:first-child {
+  padding-right: 10px;
+}
+
+.sd-faq__toggle {
+  font-size: 18px;
+  line-height: 1;
+  color: #64748b;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.sd-faq__item:hover .sd-faq__q {
+  color: #0f73c9;
+}
+
+.sd-faq__item:hover .sd-faq__toggle {
+  color: #0f73c9;
+}
+
+.sd-faq__a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, padding-bottom 0.25s ease;
+  padding: 0 12px 0;
+}
+
+.sd-faq__a p {
+  margin: 0;
+  font-size: 13.5px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.sd-faq__item.sd-open .sd-faq__a {
+  padding-bottom: 10px;
+}
+
+.sd-faq__item.sd-open .sd-faq__toggle {
+  transform: rotate(45deg);
+}
+
+/* ===== CTA ВНИЗУ — ПРЕМИУМ ГРАДИЕНТ ===== */
+
+.sd-cta {
+  padding: 40px 0 60px;
+}
+
+.sd-cta__box {
+  border-radius: 26px;
+  padding: 22px 22px 20px;
+  background:
+    radial-gradient(140% 160% at 0% 0%, #38bdf8 0, #2563eb 38%, #0b1220 100%);
+  color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  box-shadow:
+    0 26px 70px rgba(15, 23, 42, 0.7),
+    0 0 0 1px rgba(191, 219, 254, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+/* лёгкие блики */
+.sd-cta__box::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle at 10% 0%,
+    rgba(255, 255, 255, 0.32),
+    transparent 60%
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.sd-cta__box > * {
+  position: relative;
+  z-index: 1;
+}
+
+.sd-cta__title {
+  font-size: 22px;
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.sd-cta__text {
+  font-size: 14px;
+  max-width: 420px;
+  opacity: 0.92;
+}
+
+/* ===== АДАПТИВ ===== */
+
+@media (max-width: 960px) {
+  .sd-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 22px 18px 20px;
+    border-radius: 24px;
+  }
+
+  .sd-hero {
+    padding-top: 28px;
+  }
+
+  .sd-section .kc-container {
+    border-radius: 20px;
+    padding: 18px 16px 16px;
+  }
+}
+
+@media (max-width: 720px) {
+  .sd-meta {
+    gap: 14px;
+  }
+
+  .sd-hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sd-section__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .sd-cta__box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .sd-title {
+    font-size: 22px;
+  }
+
+  .sd-hero__grid {
+    padding: 18px 14px 16px;
+  }
+
+  .sd-cta__box {
+    padding: 18px 16px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}

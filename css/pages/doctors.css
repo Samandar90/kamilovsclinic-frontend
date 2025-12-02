@@ -1,0 +1,346 @@
+/* Страница врачей Kamilovs Clinic */
+
+/* гарантия белого фона */
+.kc-main.kc-main--inner {
+  background: #ffffff;
+}
+
+/* ===== HERO ===== */
+
+.kc-docs-page-hero {
+  padding: 84px 16px 64px;
+  background: #ffffff;
+}
+
+.kc-docs-page-hero__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+  gap: 40px;
+  align-items: center;
+  border-radius: 28px;
+  padding: 26px 24px 22px;
+  background: radial-gradient(
+      140% 160% at 0% 0%,
+      rgba(239, 248, 255, 0.98),
+      #ffffff 55%
+    ),
+    #ffffff;
+  box-shadow: 0 22px 60px rgba(12, 35, 76, 0.16);
+  border: 1px solid rgba(15, 115, 201, 0.06);
+}
+
+.kc-docs-page-hero__kicker {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2fb48f;
+  background: rgba(47, 180, 143, 0.08);
+  border: 1px solid rgba(47, 180, 143, 0.26);
+  margin-bottom: 10px;
+}
+
+.kc-docs-page-hero__title {
+  margin: 4px 0 8px;
+  font-size: clamp(28px, 3.4vw, 38px);
+  font-weight: 800;
+  color: #0d2b5b;
+  letter-spacing: -0.02em;
+}
+
+.kc-docs-page-hero__lead {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: #5b6f8a;
+  line-height: 1.6;
+}
+
+.kc-docs-page-hero__note {
+  margin: 0;
+  font-size: 14px;
+  color: #4c5f7c;
+  line-height: 1.6;
+}
+
+.kc-docs-page-hero__cta {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+}
+
+.kc-docs-page-hero__btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(120deg, #0f73c9, #2fb48f);
+  box-shadow: 0 14px 34px rgba(15, 115, 201, 0.3);
+  transition: transform 0.18s ease, box-shadow 0.24s ease, filter 0.2s ease;
+}
+
+.kc-docs-page-hero__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 44px rgba(15, 115, 201, 0.36);
+  filter: brightness(1.04);
+}
+
+.kc-docs-page-hero__hint {
+  font-size: 13px;
+  color: #607289;
+}
+
+.kc-docs-page-hero__hint strong {
+  color: #0f73c9;
+}
+
+/* карточка справа */
+.kc-docs-page-hero__card {
+  border-radius: 24px;
+  padding: 18px 18px 16px;
+  background:
+    linear-gradient(180deg, #ffffff, #f6f9ff) padding-box,
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(15, 115, 201, 0.45),
+      rgba(47, 180, 143, 0.45)
+    )
+      border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 18px 46px rgba(12, 35, 76, 0.18);
+}
+
+.kc-docs-page-hero__card-title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f2a4d;
+}
+
+.kc-docs-page-hero__card-list {
+  margin: 0 0 8px;
+  padding-left: 18px;
+  font-size: 13px;
+  color: #4c5f7c;
+  line-height: 1.6;
+}
+
+.kc-docs-page-hero__card-text {
+  margin: 0;
+  font-size: 13px;
+  color: #607289;
+}
+
+.kc-docs-page-hero__card-text a {
+  color: #0f73c9;
+  text-decoration: none;
+}
+.kc-docs-page-hero__card-text a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Фильтр ===== */
+
+.kc-docs-page-filter {
+  padding: 10px 16px 0;
+  background: #ffffff;
+}
+
+.kc-docs-page-filter__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 6px 0 4px;
+  border-bottom: 1px solid rgba(15, 40, 80, 0.06);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  align-items: center;
+}
+
+.kc-docs-page-filter__label {
+  margin: 0;
+  font-size: 13px;
+  color: #6a7c95;
+}
+
+.kc-docs-page-filter__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.kc-docs-page-filter__buttons button {
+  border-radius: 999px;
+  border: 1px solid rgba(15, 115, 201, 0.16);
+  background: #ffffff;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #39546f;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.kc-docs-page-filter__buttons button:hover {
+  background: rgba(15, 115, 201, 0.06);
+}
+
+.kc-docs-page-filter__buttons button.is-active {
+  background: linear-gradient(120deg, #0f73c9, #2fb48f);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 8px 22px rgba(15, 115, 201, 0.3);
+}
+
+/* ===== Сетка врачей ===== */
+
+.kc-docs-page-grid {
+  padding: 24px 16px 72px;
+  background: #ffffff;
+}
+
+.kc-docs-page-grid__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.kc-docs-page-grid__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Переопределяем анимацию карточек из index.css,
+   чтобы на этой странице они сразу были видны */
+.kc-docs-page-grid .kc-docs__card {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== CTA блок внизу ===== */
+
+.kc-docs-page-cta {
+  padding: 0 16px 84px;
+  background: #ffffff;
+}
+
+.kc-docs-page-cta__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  border-radius: 24px;
+  padding: 18px 18px 16px;
+  background: linear-gradient(135deg, #0f73c9, #2fb48f);
+  color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 20px 54px rgba(9, 30, 66, 0.45);
+}
+
+.kc-docs-page-cta__text h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.kc-docs-page-cta__text p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.kc-docs-page-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+}
+
+.kc-docs-page-cta__btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #0f73c9;
+  background: #ffffff;
+}
+
+.kc-docs-page-cta__btn:hover {
+  filter: brightness(1.06);
+}
+
+.kc-docs-page-cta__phone {
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+}
+.kc-docs-page-cta__phone:hover {
+  text-decoration: underline;
+}
+
+/* ===== Адаптив ===== */
+
+@media (max-width: 1024px) {
+  .kc-docs-page-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .kc-docs-page-hero__card {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .kc-docs-page-grid__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .kc-docs-page-hero {
+    padding: 74px 14px 54px;
+  }
+
+  .kc-docs-page-hero__inner {
+    padding: 20px 16px 18px;
+    border-radius: 22px;
+  }
+
+  .kc-docs-page-grid {
+    padding: 20px 14px 64px;
+  }
+
+  .kc-docs-page-grid__list {
+    grid-template-columns: 1fr;
+  }
+
+  .kc-docs-page-cta {
+    padding: 0 14px 74px;
+  }
+
+  .kc-docs-page-cta__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .kc-docs-page-hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

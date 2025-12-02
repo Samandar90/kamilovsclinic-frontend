@@ -1,310 +1,374 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Kamilovs Clinic — Услуга</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/pages/service-detail.css" />
-  </head>
-  <body>
-    <!-- ===== ШАПКА (та же логика, что на главной) ===== -->
-    <header class="kc-header">
-      <div class="kc-header__inner">
-        <a href="index.html" class="kc-header__brand">
-          <img
-            src="images/Лого Camilovs‘ Полноцветный RGB.png"
-            alt="Kamilovs Clinic"
-            class="kc-header__logo"
-          />
-        </a>
+<head>
+  <meta charset="UTF-8" />
+  <title>Kamilovs Clinic — Услуга</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <nav class="kc-header__nav">
-          <ul class="kc-header__menu">
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="services.html" class="is-active">Услуги</a></li>
-            <li><a href="doctors.html">Врачи</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
-          </ul>
-        </nav>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/pages/service-detail.css" />
+</head>
 
-        <div class="kc-header__actions">
-          <a href="tel:+998950884141" class="kc-header__phone">
-            +998 95 088 41 41
-          </a>
-          <button class="kc-header__cta" type="button" onclick="kcOpenModal()">
-            Записаться
-          </button>
-          <button class="kc-header__burger" type="button" aria-label="Меню">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
+<body>
+  <!-- ===== ШАПКА (та же логика, что на главной) ===== -->
+  <!-- ===== ШАПКА ===== -->
+  <header class="kc-header">
+    <div class="kc-header__inner">
+      <a href="index.html" class="kc-header__brand">
+        <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-header__logo" />
+      </a>
 
-      <nav class="kc-header__mobile" aria-label="Мобильное меню">
-        <ul>
-          <li><a href="index.html">Главная</a></li>
-          <li><a href="services.html" class="is-active">Услуги</a></li>
-          <li><a href="doctors.html">Врачи</a></li>
-          <li><a href="contacts.html">Контакты</a></li>
+      <nav class="kc-header__nav" aria-label="Главное меню">
+        <ul class="kc-header__menu">
           <li>
-            <button
-              class="kc-header__mobile-cta"
-              type="button"
-              onclick="kcOpenModal()"
-            >
-              Записаться
-            </button>
+            <a href="index.html" data-i18n="nav.home">Главная</a>
+          </li>
+          <li>
+            <a href="services.html" class="is-active" data-i18n="nav.services">
+              Услуги
+            </a>
+          </li>
+          <li>
+            <a href="doctors.html" data-i18n="nav.doctors">Врачи</a>
+          </li>
+          <li>
+            <a href="contacts.html" data-i18n="nav.contacts">
+              Контакты
+            </a>
           </li>
         </ul>
       </nav>
-    </header>
 
-    <main class="kc-main kc-main--inner">
-      <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
-      <nav class="kc-breadcrumbs" aria-label="Хлебные крошки">
-        <div class="kc-container">
-          <a href="index.html">Главная</a>
-          <span>›</span>
-          <a href="services.html">Услуги</a>
-          <span>›</span>
-          <span data-sd-title>Услуга</span>
-        </div>
-      </nav>
-
-      <div class="kc-container">
-        <!-- ===== HERO УСЛУГИ ===== -->
-        <section class="sd-hero" data-reveal>
-          <div class="sd-hero__grid">
-            <!-- Левая колонка -->
-            <div class="sd-hero__main">
-              <div class="sd-pill" data-sd-category>Направление</div>
-
-              <h1 class="sd-title" data-sd-title-main>Название услуги</h1>
-
-              <p class="sd-subtitle" data-sd-lead>
-                Краткое описание услуги.
-              </p>
-
-              <div class="sd-tags" data-sd-tags>
-                <!-- теги подставит JS -->
-              </div>
-
-              <div class="sd-meta">
-                <div class="sd-meta__item">
-                  <span class="sd-meta__label">Длительность приёма</span>
-                  <span class="sd-meta__value" data-sd-duration
-                    >30–40 минут</span
-                  >
-                </div>
-                <div class="sd-meta__item">
-                  <span class="sd-meta__label">Примерная стоимость</span>
-                  <span class="sd-meta__value" data-sd-price
-                    >от 000 000 сум</span
-                  >
-                </div>
-              </div>
-
-              <div class="sd-hero__actions">
-                <button
-                  class="sd-btn sd-btn--primary"
-                  type="button"
-                  onclick="kcOpenModal()"
-                >
-                  Записаться на приём
-                </button>
-                <button
-                  class="sd-btn sd-btn--ghost"
-                  type="button"
-                  onclick="window.location.href='services.html'"
-                >
-                  Все услуги
-                </button>
-              </div>
-            </div>
-
-            <!-- Правая колонка -->
-            <aside class="sd-hero__aside">
-              <div class="sd-doctor" data-sd-doctor>
-                <!-- сюда JS подставит врача -->
-              </div>
-
-              <div class="sd-note" data-sd-note-block>
-                <!-- сюда JS подставит заметку -->
-              </div>
-            </aside>
-          </div>
-        </section>
-
-        <!-- ===== ОСНОВНОЙ КОНТЕНТ: описание + показания ===== -->
-        <section class="sd-section" data-reveal>
-          <div class="kc-container">
-            <div class="sd-section__grid">
-              <div class="sd-section__left" data-sd-about>
-                <!-- JS вставит блоки описания и шагов -->
-              </div>
-              <div class="sd-section__right" data-sd-indications>
-                <!-- JS вставит показания / кому подходит -->
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ===== ПРЕИМУЩЕСТВА УСЛУГИ ===== -->
-        <section class="sd-section" data-reveal>
-          <div class="kc-container">
-            <h2 class="sd-h2">Почему пациенты выбирают эту услугу</h2>
-            <div class="sd-benefits" data-sd-benefits>
-              <!-- карточки преимуществ от JS -->
-            </div>
-          </div>
-        </section>
-
-
-        <!-- ===== CTA ВНИЗУ ===== -->
-        <section class="sd-cta" data-reveal>
-          <div class="kc-container">
-            <div class="sd-cta__box">
-              <div>
-                <h2 class="sd-cta__title">
-                  Оставьте заявку — подберём удобное время приёма
-                </h2>
-                <p class="sd-cta__text" data-sd-cta-text>
-                  Администратор свяжется с вами, уточнит детали и подберёт
-                  врача по вашему запросу.
-                </p>
-              </div>
-
-              <button
-                class="sd-btn sd-btn--outline"
-                type="button"
-                onclick="kcOpenModal()"
-              >
-                Записаться сейчас
-              </button>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <!-- ===== МОДАЛКА (как на главной) ===== -->
-    <div class="kc-modal" id="kcModal">
-      <div class="kc-modal__overlay" onclick="kcCloseModal()"></div>
-
-      <div class="kc-modal__content">
-        <button
-          class="kc-modal__close"
-          type="button"
-          onclick="kcCloseModal()"
-        >
-          ×
+      <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
+      <div class="kc-lang-switcher">
+        <button class="kc-lang-btn kc-lang-btn--active" data-lang="ru">
+          RU
         </button>
+        <button class="kc-lang-btn" data-lang="uz">UZ</button>
+      </div>
 
-        <div class="kc-modal__head">
-          <div class="kc-modal__logo-wrap">
-            <img
-              src="images/Лого Camilovs‘ Полноцветный RGB.png"
-              alt="Kamilovs Clinic"
-              class="kc-modal__logo"
-            />
-          </div>
-
-          <h3 class="kc-modal__title">Записаться в Kamilovs Clinic</h3>
-          <p class="kc-modal__sub">
-            Оставьте контакты — наш администратор ответит в течение
-            <strong>5 минут</strong>.
-          </p>
-        </div>
-
-        <form
-          action="http://127.0.0.1:8000/lead/"
-          method="post"
-          class="kc-modal__form"
-          id="kcModalForm"
-        >
-          <div class="kc-field">
-            <label class="kc-label">Имя</label>
-            <input
-              type="text"
-              name="name"
-              class="kc-input"
-              placeholder="Ваше имя"
-            />
-          </div>
-
-          <div class="kc-field">
-            <label class="kc-label">Телефон*</label>
-            <input
-              type="tel"
-              name="phone"
-              class="kc-input"
-              placeholder="+998 XX XXX XX XX"
-              required
-            />
-          </div>
-
-          <div class="kc-field">
-            <label class="kc-label">Интересующая услуга</label>
-            <input
-              type="text"
-              name="service"
-              class="kc-input"
-              placeholder="Например: стоматология"
-            />
-          </div>
-
-          <div class="kc-field">
-            <label class="kc-label">Комментарий</label>
-            <textarea
-              name="message"
-              class="kc-input"
-              placeholder="Кратко опишите ваш вопрос"
-            ></textarea>
-          </div>
-
-          <input type="hidden" name="form_context" value="service_detail" />
-          <input type="hidden" name="page_url" value="" />
-
-          <button type="submit" class="kc-btn">
-            Отправить заявку
-          </button>
-
-          <p class="kc-modal__privacy">
-            Нажимая «Отправить заявку», вы соглашаетесь с обработкой
-            персональных данных.
-          </p>
-        </form>
+      <div class="kc-header__actions">
+        <a href="tel:+998950884141" class="kc-header__phone">
+          +998 95 088 41 41
+        </a>
+        <button class="kc-header__cta" type="button" onclick="kcOpenModal()" data-i18n="hero.ctaBook">
+          Записаться
+        </button>
+        <button class="kc-header__burger" type="button" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
 
-    <!-- ===== СКРИПТЫ ===== -->
-    <script src="js/reveal.js"></script>
-    <script src="js/header.js"></script>
-    <script src="js/main.js"></script>
+    <nav class="kc-header__mobile" aria-label="Мобильное меню">
+      <ul>
+        <li>
+          <a href="index.html" data-i18n="nav.home">Главная</a>
+        </li>
+        <li>
+          <a href="services.html" class="is-active" data-i18n="nav.services">
+            Услуги
+          </a>
+        </li>
+        <li>
+          <a href="doctors.html" data-i18n="nav.doctors">Врачи</a>
+        </li>
+        <li>
+          <a href="contacts.html" data-i18n="nav.contacts">
+            Контакты
+          </a>
+        </li>
+        <li>
+          <button class="kc-header__mobile-cta" type="button" onclick="kcOpenModal()" data-i18n="hero.ctaBook">
+            Записаться
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-    <script>
-      // простые функции открытия/закрытия модалки
-      (function () {
-        const modal = document.getElementById("kcModal");
-        if (!modal) return;
+  <main class="kc-main kc-main--inner">
+    <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
+    <nav class="kc-breadcrumbs" aria-label="Хлебные крошки">
+      <div class="kc-container">
+        <a href="index.html" data-i18n="nav.home">Главная</a>
+        <span>›</span>
+        <a href="services.html" data-i18n="nav.services">Услуги</a>
+        <span>›</span>
+        <span data-sd-title data-i18n="sd.breadcrumb.current">
+          Услуга
+        </span>
+      </div>
+    </nav>
 
-        modal
-          .querySelectorAll('input[name="page_url"]')
-          .forEach((el) => (el.value = window.location.href));
+    <div class="kc-container">
+      <!-- ===== HERO УСЛУГИ ===== -->
+      <section class="sd-hero" data-reveal>
+        <div class="sd-hero__grid">
+          <!-- Левая колонка -->
+          <div class="sd-hero__main">
+            <div class="sd-pill" data-sd-category>
+              Направление
+            </div>
 
-        window.kcOpenModal = function () {
-          modal.classList.add("kc-modal--open");
-        };
+            <h1 class="sd-title" data-sd-title-main>
+              Название услуги
+            </h1>
 
-        window.kcCloseModal = function () {
-          modal.classList.remove("kc-modal--open");
-        };
-      })();
-    </script>
+            <p class="sd-subtitle" data-sd-lead>
+              Краткое описание услуги.
+            </p>
 
-    <script src="js/forms.js"></script>
-    <script src="js/service-detail.js"></script>
-  </body>
+            <div class="sd-tags" data-sd-tags>
+              <!-- теги подставит JS -->
+            </div>
+
+            <div class="sd-meta">
+              <div class="sd-meta__item">
+                <span class="sd-meta__label" data-i18n="sd.meta.durationLabel">
+                  Длительность приёма
+                </span>
+                <span class="sd-meta__value" data-sd-duration>
+                  30–40 минут
+                </span>
+              </div>
+              <div class="sd-meta__item">
+                <span class="sd-meta__label" data-i18n="sd.meta.priceLabel">
+                  Примерная стоимость
+                </span>
+                <span class="sd-meta__value" data-sd-price>
+                  от 000 000 сум
+                </span>
+              </div>
+            </div>
+
+            <div class="sd-hero__actions">
+              <button class="sd-btn sd-btn--primary" type="button" onclick="kcOpenModal()"
+                data-i18n="sd.hero.ctaPrimary">
+                Записаться на приём
+              </button>
+              <button class="sd-btn sd-btn--ghost" type="button" onclick="window.location.href='services.html'"
+                data-i18n="sd.hero.ctaSecondary">
+                Все услуги
+              </button>
+            </div>
+          </div>
+
+          <!-- Правая колонка -->
+          <aside class="sd-hero__aside">
+            <div class="sd-doctor" data-sd-doctor>
+              <!-- сюда JS подставит врача -->
+            </div>
+
+            <div class="sd-note" data-sd-note-block>
+              <!-- сюда JS подставит заметку -->
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ===== ОСНОВНОЙ КОНТЕНТ: описание + показания ===== -->
+      <section class="sd-section" data-reveal>
+        <div class="kc-container">
+          <div class="sd-section__grid">
+            <div class="sd-section__left" data-sd-about>
+              <!-- JS вставит блоки описания и шагов -->
+            </div>
+            <div class="sd-section__right" data-sd-indications>
+              <!-- JS вставит показания / кому подходит -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ПРЕИМУЩЕСТВА УСЛУГИ ===== -->
+      <section class="sd-section" data-reveal>
+        <div class="kc-container">
+          <h2 class="sd-h2" data-i18n="sd.benefits.title">
+            Почему пациенты выбирают эту услугу
+          </h2>
+          <div class="sd-benefits" data-sd-benefits>
+            <!-- карточки преимуществ от JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CTA ВНИЗУ ===== -->
+      <section class="sd-cta" data-reveal>
+        <div class="kc-container">
+          <div class="sd-cta__box">
+            <div>
+              <h2 class="sd-cta__title" data-i18n="sd.cta.title">
+                Оставьте заявку — подберём удобное время приёма
+              </h2>
+              <p class="sd-cta__text" data-sd-cta-text data-i18n="sd.cta.text">
+                Администратор свяжется с вами, уточнит детали и подберёт
+                врача по вашему запросу.
+              </p>
+            </div>
+
+            <button class="sd-btn sd-btn--outline" type="button" onclick="kcOpenModal()" data-i18n="sd.cta.btn">
+              Записаться сейчас
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===== МОДАЛКА ЗАПИСИ ===== -->
+  <div class="kc-modal" id="kcModal" aria-hidden="true">
+    <div class="kc-modal__overlay" data-kc-close></div>
+
+    <div class="kc-modal__content" role="dialog" aria-modal="true">
+      <button class="kc-modal__close" type="button" data-kc-close aria-label="Закрыть окно">
+        ×
+      </button>
+
+      <!-- ВЕРХНЯЯ ЧАСТЬ С ЛОГО -->
+      <div class="kc-modal__head">
+        <div class="kc-modal__logo-wrap">
+          <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-modal__logo" />
+        </div>
+
+        <h3 class="kc-modal__title" data-i18n="modal.title">
+          Записаться в Kamilovs Clinic
+        </h3>
+        <p class="kc-modal__sub" data-i18n="modal.sub">
+          Оставьте контакты — наш администратор ответит в течение
+          <strong>5 минут</strong>.
+        </p>
+      </div>
+
+      <!-- ФОРМА -->
+      <form action="http://127.0.0.1:8000/lead/" method="post" class="kc-modal__form" id="kcModalForm">
+        <div class="kc-field">
+          <label class="kc-label" data-i18n="modal.field.name.label">
+            Имя
+          </label>
+          <input type="text" name="name" class="kc-input" placeholder="Ваше имя"
+            data-i18n-placeholder="modal.field.name.placeholder" />
+        </div>
+
+        <div class="kc-field">
+          <label class="kc-label" data-i18n="modal.field.phone.label">
+            Телефон*
+          </label>
+          <input type="tel" name="phone" class="kc-input" required placeholder="+998 XX XXX XX XX"
+            data-i18n-placeholder="modal.field.phone.placeholder" />
+          <p class="kc-form-hint" data-i18n="modal.field.phone.hint">
+            Мы позвоним только по вашей заявке — без спама.
+          </p>
+        </div>
+
+        <div class="kc-field">
+          <label class="kc-label" data-i18n="modal.field.service.label">
+            Интересующая услуга
+          </label>
+          <input type="text" name="service" class="kc-input" placeholder="Например: кардиология"
+            data-i18n-placeholder="modal.field.service.placeholder" />
+        </div>
+
+        <div class="kc-field">
+          <label class="kc-label" data-i18n="modal.field.message.label">
+            Комментарий
+          </label>
+          <textarea name="message" class="kc-input" placeholder="Опишите ваш вопрос, жалобу или симптом"
+            data-i18n-placeholder="modal.field.message.placeholder"></textarea>
+        </div>
+
+        <!-- скрытые поля -->
+        <input type="hidden" name="form_context" value="modal" />
+        <input type="hidden" name="page_url" id="kcPageUrl" value="" />
+
+        <button type="submit" class="kc-btn" data-i18n="modal.submit">
+          Отправить заявку
+        </button>
+
+        <p class="kc-modal__privacy" data-i18n="modal.privacy">
+          Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки
+          персональных данных.
+        </p>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ===== СКРИПТЫ ===== -->
+  <script src="js/reveal.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/lang-switcher.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/service-detail.js"></script>
+  <script src="js/service-detail-data.js"></script>
+
+  <script>
+    (function () {
+      const modal = document.getElementById("kcModal");
+      if (!modal) return;
+
+      const body = document.body;
+      const pageUrlInput = modal.querySelector("#kcPageUrl");
+
+      // подставляем текущий URL в скрытое поле
+      if (pageUrlInput) {
+        pageUrlInput.value = window.location.href;
+      }
+
+      function lockBodyScroll() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        body.dataset.kcScrollY = scrollY;
+        body.style.position = "fixed";
+        body.style.top = `-${scrollY}px`;
+        body.style.left = "0";
+        body.style.right = "0";
+        body.style.width = "100%";
+      }
+
+      function unlockBodyScroll() {
+        const scrollY = body.dataset.kcScrollY
+          ? parseInt(body.dataset.kcScrollY, 10)
+          : 0;
+        body.style.position = "";
+        body.style.top = "";
+        body.style.left = "";
+        body.style.right = "";
+        body.style.width = "";
+        delete body.dataset.kcScrollY;
+        window.scrollTo(0, scrollY);
+      }
+
+      window.kcOpenModal = function () {
+        modal.classList.add("kc-modal--open");
+        modal.setAttribute("aria-hidden", "false");
+        lockBodyScroll();
+      };
+
+      window.kcCloseModal = function () {
+        modal.classList.remove("kc-modal--open");
+        modal.setAttribute("aria-hidden", "true");
+        unlockBodyScroll();
+      };
+
+      // Закрытие по клику на overlay / крестик (через data-kc-close)
+      modal.querySelectorAll("[data-kc-close]").forEach((el) => {
+        el.addEventListener("click", () => {
+          window.kcCloseModal();
+        });
+      });
+
+      // Закрытие по Esc
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("kc-modal--open")) {
+          window.kcCloseModal();
+        }
+      });
+    })();
+  </script>
+
+
+</body>
+
 </html>

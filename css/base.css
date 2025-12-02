@@ -724,19 +724,21 @@ body {
 .kc-modal {
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: 9999;
   display: none;
   justify-content: center;
   align-items: center;
+  padding: 24px;
+  overflow-y: auto; /* если модалка выше экрана — скроллим её, а не фон */
 }
 
 .kc-modal.kc-modal--open {
   display: flex;
 }
 
-/* фон — спокойный тёмный с лёгким blur, без цветных градиентов */
+/* фон — спокойный тёмный с blur */
 .kc-modal__overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(8px);
@@ -748,7 +750,7 @@ body {
   z-index: 1;
   width: 100%;
   max-width: 460px;
-  margin: 16px;
+  margin: auto;
   padding: 22px 22px 18px;
   border-radius: 20px;
 
@@ -760,6 +762,9 @@ body {
   transform-origin: center;
   transform: translateY(16px) scale(0.97);
   opacity: 0;
+
+  max-height: min(640px, 100vh - 40px);
+  overflow-y: auto; /* внутри контент скроллится, фон стоит */
 }
 
 /* анимация появления карточки */
@@ -828,9 +833,15 @@ body {
 }
 
 @keyframes kcModalLogoFloat {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-4px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .kc-modal__title {
@@ -933,15 +944,49 @@ body {
   line-height: 1.45;
 }
 
-/* мобилка — почти bottom sheet */
+/* мобилка — bottom sheet */
 @media (max-width: 600px) {
   .kc-modal {
     align-items: flex-end;
+    padding: 0;
   }
 
   .kc-modal__content {
     max-width: 600px;
     margin: 0 0 8px;
     border-radius: 18px 18px 0 0;
+    max-height: 80vh;
   }
+}
+
+
+.kc-lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.kc-lang-btn {
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.kc-lang-btn:hover {
+  transform: translateY(-1px);
+}
+
+.kc-lang-btn--active {
+  background: linear-gradient(135deg, #64f473, #189345);
+  color: #ffffff;
+  
 }

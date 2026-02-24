@@ -1,28 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kamilovs Clinic — контакты</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="UTF-8" />
-  <title>Kamilovs Clinic — контакты</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Общие стили -->
+    <link rel="stylesheet" href="css/base.css" />
+    <!-- Стили именно этой страницы -->
+    <link rel="stylesheet" href="css/pages/contacts.css" />
+  </head>
 
-  <!-- Общие стили -->
-  <link rel="stylesheet" href="css/base.css" />
-  <!-- Стили именно этой страницы -->
-  <link rel="stylesheet" href="css/pages/contacts.css" />
-</head>
+  <body>
+    <!-- ===== ШАПКА (как на главной) ===== -->
+    <header class="kc-header">
+      <div class="kc-header__inner">
+        <a href="index.html" class="kc-header__brand">
+          <img
+            src="images/Лого Camilovs‘ Полноцветный RGB.png"
+            alt="Kamilovs Clinic"
+            class="kc-header__logo"
+          />
+          <span class="kc-header__brand-text"></span>
+        </a>
 
-<body>
-  <!-- ===== ШАПКА (как на главной) ===== -->
-  <header class="kc-header">
-    <div class="kc-header__inner">
-      <a href="index.html" class="kc-header__brand">
-        <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-header__logo" />
-        <span class="kc-header__brand-text"></span>
-      </a>
+        <nav class="kc-header__nav" aria-label="Главное меню">
+          <ul class="kc-header__menu">
+            <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
+            <li><a href="services.html" data-i18n="nav.services">Услуги</a></li>
+            <li><a href="doctors.html" data-i18n="nav.doctors">Врачи</a></li>
+            <li>
+              <a
+                href="contacts.html"
+                class="is-active"
+                data-i18n="nav.contacts"
+              >
+                Контакты
+              </a>
+            </li>
+          </ul>
+        </nav>
 
-      <nav class="kc-header__nav" aria-label="Главное меню">
-        <ul class="kc-header__menu">
+        <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
+        <div class="kc-lang-switcher">
+          <button class="kc-lang-btn kc-lang-btn--active" data-lang="ru">
+            RU
+          </button>
+          <button class="kc-lang-btn" data-lang="uz">UZ</button>
+        </div>
+
+        <div class="kc-header__actions">
+          <a href="tel:+998950884141" class="kc-header__phone">
+            +998 95 088 41 41
+          </a>
+          <button
+            class="kc-header__cta"
+            type="button"
+            onclick="kcOpenModal()"
+            data-i18n="header.btnRecord"
+          >
+            Записаться
+          </button>
+
+          <!-- бургер -->
+          <button
+            class="kc-header__burger"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- мобильное меню -->
+      <nav class="kc-header__mobile" aria-label="Мобильное меню">
+        <ul>
           <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
           <li><a href="services.html" data-i18n="nav.services">Услуги</a></li>
           <li><a href="doctors.html" data-i18n="nav.doctors">Врачи</a></li>
@@ -31,546 +85,667 @@
               Контакты
             </a>
           </li>
+          <li>
+            <a href="tel:+998950884141" data-i18n="header.mobile.call">
+              Позвонить: +998 95 088 41 41
+            </a>
+          </li>
+          <li>
+            <button
+              class="kc-header__mobile-cta"
+              type="button"
+              onclick="kcOpenModal()"
+              data-i18n="header.btnRecord"
+            >
+              Записаться
+            </button>
+          </li>
         </ul>
       </nav>
+    </header>
 
-      <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
-      <div class="kc-lang-switcher">
-        <button class="kc-lang-btn kc-lang-btn--active" data-lang="ru">
-          RU
-        </button>
-        <button class="kc-lang-btn" data-lang="uz">UZ</button>
-      </div>
+    <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
+    <main class="kc-main kc-main--contacts">
+      <!-- HERO / ШАПКА СТРАНИЦЫ -->
+      <section class="kc-contacts-hero">
+        <div class="kc-contacts-hero__inner">
+          <div class="kc-contacts-hero__layout">
+            <!-- Левая половина -->
+            <div class="kc-contacts-hero__left">
+              <div
+                class="kc-contacts-hero__pill"
+                data-i18n="contacts.hero.pill"
+              >
+                Контакты клиники
+              </div>
 
-      <div class="kc-header__actions">
-        <a href="tel:+998950884141" class="kc-header__phone">
-          +998 95 088 41 41
-        </a>
-        <button class="kc-header__cta" type="button" onclick="kcOpenModal()" data-i18n="header.btnRecord">
-          Записаться
-        </button>
+              <h1 class="kc-contacts-hero__title">
+                <span data-i18n="contacts.hero.title.main">
+                  Всегда на связи </span
+                >, <span>24/7</span>
+              </h1>
 
-        <!-- бургер -->
-        <button class="kc-header__burger" type="button" aria-label="Открыть меню" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
+              <p
+                class="kc-contacts-hero__subtitle"
+                data-i18n="contacts.hero.subtitle"
+              >
+                Позвоните, напишите или приезжайте в клинику — мы поможем
+                подобрать врача, объясним подготовку к приёму и подскажем по
+                анализам.
+              </p>
 
-    <!-- мобильное меню -->
-    <nav class="kc-header__mobile" aria-label="Мобильное меню">
-      <ul>
-        <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
-        <li><a href="services.html" data-i18n="nav.services">Услуги</a></li>
-        <li><a href="doctors.html" data-i18n="nav.doctors">Врачи</a></li>
-        <li>
-          <a href="contacts.html" class="is-active" data-i18n="nav.contacts">
-            Контакты
-          </a>
-        </li>
-        <li>
-          <a href="tel:+998950884141" data-i18n="header.mobile.call">
-            Позвонить: +998 95 088 41 41
-          </a>
-        </li>
-        <li>
-          <button class="kc-header__mobile-cta" type="button" onclick="kcOpenModal()" data-i18n="header.btnRecord">
+              <div class="kc-contacts-hero__chips">
+                <span data-i18n="contacts.hero.chip.address">
+                  📍 Ташкент, ул. Хувайдо, 7
+                </span>
+                <span data-i18n="contacts.hero.chip.phone">
+                  📞 +998 95 088 41 41
+                </span>
+                <span data-i18n="contacts.hero.chip.hours">
+                  🕒 Работаем круглосуточно
+                </span>
+              </div>
+
+              <div class="kc-contacts-hero__actions">
+                <a
+                  href="tel:+998950884141"
+                  class="kc-contacts-hero__btn kc-contacts-hero__btn--primary"
+                  data-i18n="contacts.hero.btn.call"
+                >
+                  Позвонить в клинику
+                </a>
+                <button
+                  type="button"
+                  class="kc-contacts-hero__btn kc-contacts-hero__btn--ghost"
+                  onclick="kcOpenModal()"
+                  data-i18n="contacts.hero.btn.online"
+                >
+                  Записаться онлайн
+                </button>
+              </div>
+            </div>
+
+            <!-- Правая половина — премиальная карточка -->
+            <aside class="kc-contacts-hero__card">
+              <div
+                class="kc-contacts-hero__card-badge"
+                data-i18n="contacts.hero.card.badge"
+              >
+                🩺 Быстрая запись
+              </div>
+              <h2 data-i18n="contacts.hero.card.title">Нужна помощь сейчас?</h2>
+              <p data-i18n="contacts.hero.card.text">
+                Оставьте заявку или позвоните — администратор подскажет, к
+                какому врачу лучше обратиться и когда можно прийти.
+              </p>
+
+              <ul class="kc-contacts-hero__card-list">
+                <li data-i18n="contacts.hero.card.li1">
+                  Перезвон в течение 10–20 минут
+                </li>
+                <li data-i18n="contacts.hero.card.li2">
+                  Подбор врача по жалобам
+                </li>
+                <li data-i18n="contacts.hero.card.li3">Напоминание о приёме</li>
+              </ul>
+
+              <div class="kc-contacts-hero__card-phone">
+                <span data-i18n="contacts.hero.card.phoneLabel">
+                  Круглосуточный номер
+                </span>
+                <a href="tel:+998950884141">+998 95 088 41 41</a>
+              </div>
+
+              <button
+                type="button"
+                class="kc-contacts-hero__card-btn"
+                onclick="kcOpenModal()"
+                data-i18n="contacts.hero.card.btn"
+              >
+                Оставить заявку
+              </button>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЛОК: КОНТАКТЫ + КАРТА -->
+      <section class="kc-contacts-main">
+        <div class="kc-contacts-main__inner">
+          <!-- Левая колонка: текстовые контакты -->
+          <div class="kc-contacts-info">
+            <h2 class="kc-contacts-info__title" data-i18n="contacts.main.title">
+              Как с нами связаться
+            </h2>
+            <p class="kc-contacts-info__text" data-i18n="contacts.main.text">
+              Вы можете записаться на приём по телефону, через сайт или
+              мессенджеры. Мы аккуратно уточним жалобы, удобное время и сразу
+              подскажем, нужна ли подготовка к визиту.
+            </p>
+
+            <div class="kc-contacts-grid">
+              <article class="kc-contacts-card">
+                <h3 data-i18n="contacts.main.card1.title">📍 Адрес клиники</h3>
+                <p data-i18n="contacts.main.card1.text">
+                  Ташкент, ул. Хувайдо, 7<br />
+                  Удобный подъезд и понятные ориентиры рядом.
+                </p>
+              </article>
+
+              <article class="kc-contacts-card">
+                <h3 data-i18n="contacts.main.card2.title">
+                  📞 Телефон и мессенджеры
+                </h3>
+                <p data-i18n="contacts.main.card2.text">
+                  Телефон:
+                  <a href="tel:+998950884141">+998 95 088 41 41</a><br />
+                  Telegram / звонок — по этому же номеру.
+                </p>
+              </article>
+
+              <article class="kc-contacts-card">
+                <h3 data-i18n="contacts.main.card3.title">🕒 Режим работы</h3>
+                <p data-i18n="contacts.main.card3.text">
+                  Приём пациентов: <strong>24/7</strong><br />
+                  Анализы и диагностика — по записи.
+                </p>
+              </article>
+
+              <article class="kc-contacts-card">
+                <h3 data-i18n="contacts.main.card4.title">
+                  ✉️ Электронная почта
+                </h3>
+                <p data-i18n="contacts.main.card4.text">
+                  По общим вопросам:
+                  <a href="mailto:info@kamilovs.uz">info@kamilovs.uz</a>
+                </p>
+              </article>
+            </div>
+
+            <div
+              class="kc-contacts-highlight"
+              data-i18n="contacts.main.highlight"
+            >
+              Если состояние острое или вам плохо — лучше сразу позвонить в
+              клинику, чем заполнять форму. Так мы быстрее среагируем.
+            </div>
+          </div>
+
+          <!-- Правая колонка: карта -->
+          <div class="kc-contacts-map">
+            <div class="kc-contacts-map__head">
+              <h2 data-i18n="contacts.map.title">Мы на карте</h2>
+              <p data-i18n="contacts.map.text">
+                Постройте маршрут до Kamilovs Clinic за пару секунд.
+              </p>
+            </div>
+            <div class="kc-contacts-map__frame">
+              <iframe
+                src="https://yandex.uz/map-widget/v1/org/66518861972/?ll=69.203739%2C41.342219&z=17"
+                frameborder="0"
+                allowfullscreen="true"
+                loading="lazy"
+              ></iframe>
+            </div>
+            <p class="kc-contacts-map__hint" data-i18n="contacts.map.hint">
+              🚗 На машине — подъезд прямо к входу клиники.<br />
+              🚶‍♂️ Пешком — ориентируйтесь по вывеске «Kamilovs Clinic».
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- БЛОК: ФОРМА ОБРАТНОЙ СВЯЗИ / ЗАПИСИ -->
+      <section class="kc-contact-form-section" id="contact-form">
+        <div class="kc-contact-form-card">
+          <header class="kc-contact-form-head">
+            <h2 data-i18n="contacts.form.title">Оставить заявку онлайн</h2>
+            <p data-i18n="contacts.form.text">
+              Заполните форму — администратор свяжется с вами, уточнит детали и
+              подтвердит приём.
+            </p>
+
+            <div class="kc-contact-form-tags">
+              <span data-i18n="contacts.form.tag.fast">
+                ⏱ Перезвон за 10–20 минут
+              </span>
+              <span data-i18n="contacts.form.tag.safe">
+                🔒 Персональные данные под защитой
+              </span>
+            </div>
+          </header>
+
+          <!-- ФОРМА ИДЁТ НА DJANGO /lead/ → Telegram -->
+          <form
+            class="kc-contact-form"
+            id="kc-contacts-form"
+            action="https://kamilovsclinic-backend.onrender.com/lead/"
+            method="post"
+            autocomplete="off"
+          >
+            <input type="hidden" name="page_url" id="page_url" />
+            <input type="hidden" name="form_context" value="modal_form" />
+            <div class="kc-contact-form-row">
+              <div class="kc-contact-field">
+                <label
+                  class="kc-contact-label"
+                  for="ct-name"
+                  data-i18n="contacts.form.field.name.label"
+                >
+                  Имя *
+                </label>
+                <input
+                  type="text"
+                  id="ct-name"
+                  name="name"
+                  class="kc-contact-input"
+                  required
+                  placeholder="Ваше имя"
+                  data-i18n-placeholder="contacts.form.field.name.placeholder"
+                />
+              </div>
+
+              <div class="kc-contact-field">
+                <label
+                  class="kc-contact-label"
+                  for="ct-phone"
+                  data-i18n="contacts.form.field.phone.label"
+                >
+                  Телефон *
+                </label>
+                <input
+                  type="tel"
+                  id="ct-phone"
+                  name="phone"
+                  class="kc-contact-input"
+                  required
+                  placeholder="+998 XX XXX XX XX"
+                  data-i18n-placeholder="contacts.form.field.phone.placeholder"
+                />
+              </div>
+            </div>
+
+            <div class="kc-contact-form-row">
+              <div class="kc-contact-field">
+                <label
+                  class="kc-contact-label"
+                  for="ct-topic"
+                  data-i18n="contacts.form.field.topic.label"
+                >
+                  Тема обращения
+                </label>
+                <select id="ct-topic" name="service" class="kc-contact-input">
+                  <option
+                    value=""
+                    data-i18n="contacts.form.field.topic.option.empty"
+                  >
+                    Выберите вариант
+                  </option>
+                  <option
+                    value="Запись на приём"
+                    data-i18n="contacts.form.field.topic.option.appointment"
+                  >
+                    Запись на приём
+                  </option>
+                  <option
+                    value="Анализы и диагностика"
+                    data-i18n="contacts.form.field.topic.option.tests"
+                  >
+                    Анализы и диагностика
+                  </option>
+                  <option
+                    value="Вопрос по стоимости"
+                    data-i18n="contacts.form.field.topic.option.price"
+                  >
+                    Вопрос по стоимости
+                  </option>
+                  <option
+                    value="Другое"
+                    data-i18n="contacts.form.field.topic.option.other"
+                  >
+                    Другое
+                  </option>
+                </select>
+              </div>
+
+              <div class="kc-contact-field">
+                <label
+                  class="kc-contact-label"
+                  for="ct-time"
+                  data-i18n="contacts.form.field.time.label"
+                >
+                  Удобное время для звонка
+                </label>
+                <input
+                  type="text"
+                  id="ct-time"
+                  name="call_time"
+                  class="kc-contact-input"
+                  placeholder="Например: сегодня после 18:00"
+                  data-i18n-placeholder="contacts.form.field.time.placeholder"
+                />
+              </div>
+            </div>
+
+            <div class="kc-contact-field">
+              <label
+                class="kc-contact-label"
+                for="ct-message"
+                data-i18n="contacts.form.field.message.label"
+              >
+                Комментарий
+              </label>
+              <textarea
+                id="ct-message"
+                name="message"
+                rows="4"
+                class="kc-contact-input kc-contact-textarea"
+                placeholder="Кратко опишите жалобы или ваш вопрос"
+                data-i18n-placeholder="contacts.form.field.message.placeholder"
+              ></textarea>
+            </div>
+
+            <!-- скрытые поля для backend -->
+            <input type="hidden" name="form_context" value="contacts_page" />
+            <input type="hidden" name="page_url" value="" />
+
+            <label class="kc-contact-checkbox">
+              <input type="checkbox" required />
+              <span data-i18n="contacts.form.consent">
+                Согласен(а) на обработку персональных данных
+              </span>
+            </label>
+
+            <button
+              type="submit"
+              class="kc-btn kc-contact-submit"
+              data-i18n="contacts.form.submit"
+            >
+              Отправить заявку
+            </button>
+
+            <p
+              class="kc-form-hint kc-contact-hint"
+              data-i18n="contacts.form.hint"
+            >
+              Обычно мы перезваниваем в течение 10–20 минут в рабочее время.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER (как на главной) ===== -->
+    <footer class="kc-footer" id="contacts">
+      <div class="kc-footer__waves" aria-hidden="true"></div>
+
+      <div class="kc-footer__inner">
+        <div class="kc-footer__col kc-footer__col--brand">
+          <div class="kc-footer__logo-wrap">
+            <img
+              src="images/Лого Camilovs‘ Полноцветный RGB.png"
+              alt="Kamilovs Clinic"
+              class="kc-footer__logo"
+            />
+          </div>
+
+          <p class="kc-footer__text" data-i18n="footer.text">
+            Современная многопрофильная клиника в центре Ташкента. Работаем 24/7
+            — рядом, когда это важно.
+          </p>
+
+          <ul class="kc-footer__list">
+            <li data-i18n="footer.address">📍 ул. Хувайдо, 7, Ташкент</li>
+            <li>
+              📞
+              <a href="tel:+998950884141" data-i18n="footer.phone">
+                +998 95 088 41 41
+              </a>
+            </li>
+            <li>
+              ✉️
+              <a href="mailto:info@kamilovs.uz" data-i18n="footer.email">
+                info@kamilovs.uz
+              </a>
+            </li>
+            <li data-i18n="footer.hours">🕒 Работаем круглосуточно</li>
+          </ul>
+
+          <button
+            class="kc-footer__cta"
+            type="button"
+            onclick="kcOpenModal()"
+            data-i18n="footer.btnRecord"
+          >
             Записаться
           </button>
-        </li>
-      </ul>
-    </nav>
-  </header>
+        </div>
 
-  <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
-  <main class="kc-main kc-main--contacts">
-    <!-- HERO / ШАПКА СТРАНИЦЫ -->
-    <section class="kc-contacts-hero">
-      <div class="kc-contacts-hero__inner">
-        <div class="kc-contacts-hero__layout">
-          <!-- Левая половина -->
-          <div class="kc-contacts-hero__left">
-            <div class="kc-contacts-hero__pill" data-i18n="contacts.hero.pill">
-              Контакты клиники
-            </div>
-
-            <h1 class="kc-contacts-hero__title">
-              <span data-i18n="contacts.hero.title.main">
-                Всегда на связи
-              </span>, <span>24/7</span>
-            </h1>
-
-            <p class="kc-contacts-hero__subtitle" data-i18n="contacts.hero.subtitle">
-              Позвоните, напишите или приезжайте в клинику — мы поможем
-              подобрать врача, объясним подготовку к приёму и подскажем по
-              анализам.
-            </p>
-
-            <div class="kc-contacts-hero__chips">
-              <span data-i18n="contacts.hero.chip.address">
-                📍 Ташкент, ул. Хувайдо, 7
-              </span>
-              <span data-i18n="contacts.hero.chip.phone">
-                📞 +998 95 088 41 41
-              </span>
-              <span data-i18n="contacts.hero.chip.hours">
-                🕒 Работаем круглосуточно
-              </span>
-            </div>
-
-            <div class="kc-contacts-hero__actions">
-              <a href="tel:+998950884141" class="kc-contacts-hero__btn kc-contacts-hero__btn--primary"
-                data-i18n="contacts.hero.btn.call">
-                Позвонить в клинику
-              </a>
-              <button type="button" class="kc-contacts-hero__btn kc-contacts-hero__btn--ghost" onclick="kcOpenModal()"
-                data-i18n="contacts.hero.btn.online">
-                Записаться онлайн
-              </button>
-            </div>
+        <div class="kc-footer__col kc-footer__col--map">
+          <h3 class="kc-footer__map-title" data-i18n="footer.mapTitle">
+            Как нас найти
+          </h3>
+          <p class="kc-footer__map-text" data-i18n="footer.mapText">
+            Kamilovs’ clinic на Яндекс Картах — построить удобный маршрут за
+            пару секунд.
+          </p>
+          <div class="kc-map-wrapper">
+            <iframe
+              src="https://yandex.uz/map-widget/v1/org/66518861972/?ll=69.203739%2C41.342219&z=17"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy"
+            ></iframe>
           </div>
-
-          <!-- Правая половина — премиальная карточка -->
-          <aside class="kc-contacts-hero__card">
-            <div class="kc-contacts-hero__card-badge" data-i18n="contacts.hero.card.badge">
-              🩺 Быстрая запись
-            </div>
-            <h2 data-i18n="contacts.hero.card.title">
-              Нужна помощь сейчас?
-            </h2>
-            <p data-i18n="contacts.hero.card.text">
-              Оставьте заявку или позвоните — администратор подскажет, к
-              какому врачу лучше обратиться и когда можно прийти.
-            </p>
-
-            <ul class="kc-contacts-hero__card-list">
-              <li data-i18n="contacts.hero.card.li1">
-                Перезвон в течение 10–20 минут
-              </li>
-              <li data-i18n="contacts.hero.card.li2">
-                Подбор врача по жалобам
-              </li>
-              <li data-i18n="contacts.hero.card.li3">
-                Напоминание о приёме
-              </li>
-            </ul>
-
-            <div class="kc-contacts-hero__card-phone">
-              <span data-i18n="contacts.hero.card.phoneLabel">
-                Круглосуточный номер
-              </span>
-              <a href="tel:+998950884141">+998 95 088 41 41</a>
-            </div>
-
-            <button type="button" class="kc-contacts-hero__card-btn" onclick="kcOpenModal()"
-              data-i18n="contacts.hero.card.btn">
-              Оставить заявку
-            </button>
-          </aside>
         </div>
       </div>
-    </section>
 
-    <!-- БЛОК: КОНТАКТЫ + КАРТА -->
-    <section class="kc-contacts-main">
-      <div class="kc-contacts-main__inner">
-        <!-- Левая колонка: текстовые контакты -->
-        <div class="kc-contacts-info">
-          <h2 class="kc-contacts-info__title" data-i18n="contacts.main.title">
-            Как с нами связаться
-          </h2>
-          <p class="kc-contacts-info__text" data-i18n="contacts.main.text">
-            Вы можете записаться на приём по телефону, через сайт или
-            мессенджеры. Мы аккуратно уточним жалобы, удобное время и сразу
-            подскажем, нужна ли подготовка к визиту.
+      <div class="kc-footer__bottom">
+        <span data-i18n="footer.bottom.left">
+          © <span id="kc-year"></span> Kamilovs Clinic.
+        </span>
+        <span data-i18n="footer.bottom.right">
+          Сайт создан с заботой о пациентах.
+        </span>
+      </div>
+
+      <button class="kc-to-top" type="button" aria-label="Наверх">↑</button>
+    </footer>
+
+    <!-- ===== МОДАЛКА ЗАПИСИ ===== -->
+    <div class="kc-modal" id="kcModal" aria-hidden="true">
+      <div class="kc-modal__overlay" data-kc-close></div>
+
+      <div class="kc-modal__content" role="dialog" aria-modal="true">
+        <button
+          class="kc-modal__close"
+          type="button"
+          data-kc-close
+          aria-label="Закрыть окно"
+        >
+          ×
+        </button>
+
+        <!-- ВЕРХНЯЯ ЧАСТЬ С ЛОГО -->
+        <div class="kc-modal__head">
+          <div class="kc-modal__logo-wrap">
+            <img
+              src="images/Лого Camilovs‘ Полноцветный RGB.png"
+              alt="Kamilovs Clinic"
+              class="kc-modal__logo"
+            />
+          </div>
+
+          <h3 class="kc-modal__title" data-i18n="modal.title">
+            Записаться в Kamilovs Clinic
+          </h3>
+          <p class="kc-modal__sub" data-i18n="modal.sub">
+            Оставьте контакты — наш администратор ответит в течение
+            <strong>5 минут</strong>.
           </p>
-
-          <div class="kc-contacts-grid">
-            <article class="kc-contacts-card">
-              <h3 data-i18n="contacts.main.card1.title">
-                📍 Адрес клиники
-              </h3>
-              <p data-i18n="contacts.main.card1.text">
-                Ташкент, ул. Хувайдо, 7<br />
-                Удобный подъезд и понятные ориентиры рядом.
-              </p>
-            </article>
-
-            <article class="kc-contacts-card">
-              <h3 data-i18n="contacts.main.card2.title">
-                📞 Телефон и мессенджеры
-              </h3>
-              <p data-i18n="contacts.main.card2.text">
-                Телефон:
-                <a href="tel:+998950884141">+998 95 088 41 41</a><br />
-                Telegram / звонок — по этому же номеру.
-              </p>
-            </article>
-
-            <article class="kc-contacts-card">
-              <h3 data-i18n="contacts.main.card3.title">
-                🕒 Режим работы
-              </h3>
-              <p data-i18n="contacts.main.card3.text">
-                Приём пациентов: <strong>24/7</strong><br />
-                Анализы и диагностика — по записи.
-              </p>
-            </article>
-
-            <article class="kc-contacts-card">
-              <h3 data-i18n="contacts.main.card4.title">
-                ✉️ Электронная почта
-              </h3>
-              <p data-i18n="contacts.main.card4.text">
-                По общим вопросам:
-                <a href="mailto:info@kamilovs.uz">info@kamilovs.uz</a>
-              </p>
-            </article>
-          </div>
-
-          <div class="kc-contacts-highlight" data-i18n="contacts.main.highlight">
-            Если состояние острое или вам плохо — лучше сразу позвонить в
-            клинику, чем заполнять форму. Так мы быстрее среагируем.
-          </div>
         </div>
 
-        <!-- Правая колонка: карта -->
-        <div class="kc-contacts-map">
-          <div class="kc-contacts-map__head">
-            <h2 data-i18n="contacts.map.title">Мы на карте</h2>
-            <p data-i18n="contacts.map.text">
-              Постройте маршрут до Kamilovs Clinic за пару секунд.
+        <!-- ФОРМА -->
+        <form
+          action="https://kamilovsclinic-backend.onrender.com/lead/"
+          method="post"
+          class="kc-modal__form"
+          id="kcModalForm"
+        >
+          <input type="hidden" name="page_url" id="page_url" />
+          <input type="hidden" name="form_context" value="modal_form" />
+
+          <!-- остальные поля -->
+          <div class="kc-field">
+            <label class="kc-label" data-i18n="modal.field.name.label">
+              Имя
+            </label>
+            <input
+              type="text"
+              name="name"
+              class="kc-input"
+              placeholder="Ваше имя"
+              data-i18n-placeholder="modal.field.name.placeholder"
+            />
+          </div>
+
+          <div class="kc-field">
+            <label class="kc-label" data-i18n="modal.field.phone.label">
+              Телефон*
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              class="kc-input"
+              required
+              placeholder="+998 XX XXX XX XX"
+              data-i18n-placeholder="modal.field.phone.placeholder"
+            />
+            <p class="kc-form-hint" data-i18n="modal.field.phone.hint">
+              Мы позвоним только по вашей заявке — без спама.
             </p>
           </div>
-          <div class="kc-contacts-map__frame">
-            <iframe src="https://yandex.uz/map-widget/v1/org/66518861972/?ll=69.203739%2C41.342219&z=17" frameborder="0"
-              allowfullscreen="true" loading="lazy"></iframe>
-          </div>
-          <p class="kc-contacts-map__hint" data-i18n="contacts.map.hint">
-            🚗 На машине — подъезд прямо к входу клиники.<br />
-            🚶‍♂️ Пешком — ориентируйтесь по вывеске «Kamilovs Clinic».
-          </p>
-        </div>
-      </div>
-    </section>
 
-    <!-- БЛОК: ФОРМА ОБРАТНОЙ СВЯЗИ / ЗАПИСИ -->
-    <section class="kc-contact-form-section" id="contact-form">
-      <div class="kc-contact-form-card">
-        <header class="kc-contact-form-head">
-          <h2 data-i18n="contacts.form.title">Оставить заявку онлайн</h2>
-          <p data-i18n="contacts.form.text">
-            Заполните форму — администратор свяжется с вами, уточнит детали и
-            подтвердит приём.
-          </p>
-
-          <div class="kc-contact-form-tags">
-            <span data-i18n="contacts.form.tag.fast">
-              ⏱ Перезвон за 10–20 минут
-            </span>
-            <span data-i18n="contacts.form.tag.safe">
-              🔒 Персональные данные под защитой
-            </span>
-          </div>
-        </header>
-
-        <!-- ФОРМА ИДЁТ НА DJANGO /lead/ → Telegram -->
-        <form class="kc-contact-form" id="kc-contacts-form" action="http://127.0.0.1:8000/lead/" method="post"
-          autocomplete="off">
-          <div class="kc-contact-form-row">
-            <div class="kc-contact-field">
-              <label class="kc-contact-label" for="ct-name" data-i18n="contacts.form.field.name.label">
-                Имя *
-              </label>
-              <input type="text" id="ct-name" name="name" class="kc-contact-input" required placeholder="Ваше имя"
-                data-i18n-placeholder="contacts.form.field.name.placeholder" />
-            </div>
-
-            <div class="kc-contact-field">
-              <label class="kc-contact-label" for="ct-phone" data-i18n="contacts.form.field.phone.label">
-                Телефон *
-              </label>
-              <input type="tel" id="ct-phone" name="phone" class="kc-contact-input" required
-                placeholder="+998 XX XXX XX XX" data-i18n-placeholder="contacts.form.field.phone.placeholder" />
-            </div>
+          <div class="kc-field">
+            <label class="kc-label" data-i18n="modal.field.service.label">
+              Интересующая услуга
+            </label>
+            <input
+              type="text"
+              name="service"
+              class="kc-input"
+              placeholder="Например: кардиология"
+              data-i18n-placeholder="modal.field.service.placeholder"
+            />
           </div>
 
-          <div class="kc-contact-form-row">
-            <div class="kc-contact-field">
-              <label class="kc-contact-label" for="ct-topic" data-i18n="contacts.form.field.topic.label">
-                Тема обращения
-              </label>
-              <select id="ct-topic" name="service" class="kc-contact-input">
-                <option value="" data-i18n="contacts.form.field.topic.option.empty">
-                  Выберите вариант
-                </option>
-                <option value="Запись на приём" data-i18n="contacts.form.field.topic.option.appointment">
-                  Запись на приём
-                </option>
-                <option value="Анализы и диагностика" data-i18n="contacts.form.field.topic.option.tests">
-                  Анализы и диагностика
-                </option>
-                <option value="Вопрос по стоимости" data-i18n="contacts.form.field.topic.option.price">
-                  Вопрос по стоимости
-                </option>
-                <option value="Другое" data-i18n="contacts.form.field.topic.option.other">
-                  Другое
-                </option>
-              </select>
-            </div>
-
-            <div class="kc-contact-field">
-              <label class="kc-contact-label" for="ct-time" data-i18n="contacts.form.field.time.label">
-                Удобное время для звонка
-              </label>
-              <input type="text" id="ct-time" name="call_time" class="kc-contact-input"
-                placeholder="Например: сегодня после 18:00"
-                data-i18n-placeholder="contacts.form.field.time.placeholder" />
-            </div>
-          </div>
-
-          <div class="kc-contact-field">
-            <label class="kc-contact-label" for="ct-message" data-i18n="contacts.form.field.message.label">
+          <div class="kc-field">
+            <label class="kc-label" data-i18n="modal.field.message.label">
               Комментарий
             </label>
-            <textarea id="ct-message" name="message" rows="4" class="kc-contact-input kc-contact-textarea"
-              placeholder="Кратко опишите жалобы или ваш вопрос"
-              data-i18n-placeholder="contacts.form.field.message.placeholder"></textarea>
+            <textarea
+              name="message"
+              class="kc-input"
+              placeholder="Опишите ваш вопрос, жалобу или симптом"
+              data-i18n-placeholder="modal.field.message.placeholder"
+            ></textarea>
           </div>
 
-          <!-- скрытые поля для backend -->
-          <input type="hidden" name="form_context" value="contacts_page" />
-          <input type="hidden" name="page_url" value="" />
+          <!-- скрытые поля -->
+          <input type="hidden" name="form_context" value="modal" />
+          <input type="hidden" name="page_url" id="kcPageUrl" value="" />
 
-          <label class="kc-contact-checkbox">
-            <input type="checkbox" required />
-            <span data-i18n="contacts.form.consent">
-              Согласен(а) на обработку персональных данных
-            </span>
-          </label>
-
-          <button type="submit" class="kc-btn kc-contact-submit" data-i18n="contacts.form.submit">
+          <button type="submit" class="kc-btn" data-i18n="modal.submit">
             Отправить заявку
           </button>
 
-          <p class="kc-form-hint kc-contact-hint" data-i18n="contacts.form.hint">
-            Обычно мы перезваниваем в течение 10–20 минут в рабочее время.
+          <p class="kc-modal__privacy" data-i18n="modal.privacy">
+            Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки
+            персональных данных.
           </p>
         </form>
       </div>
-    </section>
-  </main>
-
-  <!-- ===== FOOTER (как на главной) ===== -->
-  <footer class="kc-footer" id="contacts">
-    <div class="kc-footer__waves" aria-hidden="true"></div>
-
-    <div class="kc-footer__inner">
-      <div class="kc-footer__col kc-footer__col--brand">
-        <div class="kc-footer__logo-wrap">
-          <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-footer__logo" />
-        </div>
-
-        <p class="kc-footer__text" data-i18n="footer.text">
-          Современная многопрофильная клиника в центре Ташкента. Работаем 24/7
-          — рядом, когда это важно.
-        </p>
-
-        <ul class="kc-footer__list">
-          <li data-i18n="footer.address">📍 ул. Хувайдо, 7, Ташкент</li>
-          <li>
-            📞 <a href="tel:+998950884141" data-i18n="footer.phone">
-              +998 95 088 41 41
-            </a>
-          </li>
-          <li>
-            ✉️ <a href="mailto:info@kamilovs.uz" data-i18n="footer.email">
-              info@kamilovs.uz
-            </a>
-          </li>
-          <li data-i18n="footer.hours">🕒 Работаем круглосуточно</li>
-        </ul>
-
-        <button class="kc-footer__cta" type="button" onclick="kcOpenModal()" data-i18n="footer.btnRecord">
-          Записаться
-        </button>
-      </div>
-
-      <div class="kc-footer__col kc-footer__col--map">
-        <h3 class="kc-footer__map-title" data-i18n="footer.mapTitle">
-          Как нас найти
-        </h3>
-        <p class="kc-footer__map-text" data-i18n="footer.mapText">
-          Kamilovs’ clinic на Яндекс Картах — построить удобный маршрут за
-          пару секунд.
-        </p>
-        <div class="kc-map-wrapper">
-          <iframe src="https://yandex.uz/map-widget/v1/org/66518861972/?ll=69.203739%2C41.342219&z=17" frameborder="0"
-            allowfullscreen="true" loading="lazy"></iframe>
-        </div>
-      </div>
     </div>
 
-    <div class="kc-footer__bottom">
-      <span data-i18n="footer.bottom.left">
-        © <span id="kc-year"></span> Kamilovs Clinic.
-      </span>
-      <span data-i18n="footer.bottom.right">
-        Сайт создан с заботой о пациентах.
-      </span>
-    </div>
+    <!-- Скрипты -->
+    <script src="js/header.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/lang-switcher.js"></script>
 
-    <button class="kc-to-top" type="button" aria-label="Наверх">
-      ↑
-    </button>
-  </footer>
+    <script>
+      (function () {
+        const modal = document.getElementById("kcModal");
+        if (!modal) return;
 
-  <!-- ===== МОДАЛКА ЗАПИСИ ===== -->
-  <div class="kc-modal" id="kcModal" aria-hidden="true">
-    <div class="kc-modal__overlay" data-kc-close></div>
+        const body = document.body;
+        const pageUrlInput = modal.querySelector("#kcPageUrl");
 
-    <div class="kc-modal__content" role="dialog" aria-modal="true">
-      <button class="kc-modal__close" type="button" data-kc-close aria-label="Закрыть окно">
-        ×
-      </button>
+        // подставляем текущий URL в скрытое поле
+        if (pageUrlInput) {
+          pageUrlInput.value = window.location.href;
+        }
 
-      <!-- ВЕРХНЯЯ ЧАСТЬ С ЛОГО -->
-      <div class="kc-modal__head">
-        <div class="kc-modal__logo-wrap">
-          <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-modal__logo" />
-        </div>
+        function lockBodyScroll() {
+          const scrollY = window.scrollY || window.pageYOffset;
+          body.dataset.kcScrollY = scrollY;
+          body.style.position = "fixed";
+          body.style.top = `-${scrollY}px`;
+          body.style.left = "0";
+          body.style.right = "0";
+          body.style.width = "100%";
+        }
 
-        <h3 class="kc-modal__title" data-i18n="modal.title">
-          Записаться в Kamilovs Clinic
-        </h3>
-        <p class="kc-modal__sub" data-i18n="modal.sub">
-          Оставьте контакты — наш администратор ответит в течение
-          <strong>5 минут</strong>.
-        </p>
-      </div>
+        function unlockBodyScroll() {
+          const scrollY = body.dataset.kcScrollY
+            ? parseInt(body.dataset.kcScrollY, 10)
+            : 0;
+          body.style.position = "";
+          body.style.top = "";
+          body.style.left = "";
+          body.style.right = "";
+          body.style.width = "";
+          delete body.dataset.kcScrollY;
+          window.scrollTo(0, scrollY);
+        }
 
-      <!-- ФОРМА -->
-      <form action="http://127.0.0.1:8000/lead/" method="post" class="kc-modal__form" id="kcModalForm">
-        <div class="kc-field">
-          <label class="kc-label" data-i18n="modal.field.name.label">
-            Имя
-          </label>
-          <input type="text" name="name" class="kc-input" placeholder="Ваше имя"
-            data-i18n-placeholder="modal.field.name.placeholder" />
-        </div>
+        window.kcOpenModal = function () {
+          modal.classList.add("kc-modal--open");
+          modal.setAttribute("aria-hidden", "false");
+          lockBodyScroll();
+        };
 
-        <div class="kc-field">
-          <label class="kc-label" data-i18n="modal.field.phone.label">
-            Телефон*
-          </label>
-          <input type="tel" name="phone" class="kc-input" required placeholder="+998 XX XXX XX XX"
-            data-i18n-placeholder="modal.field.phone.placeholder" />
-          <p class="kc-form-hint" data-i18n="modal.field.phone.hint">
-            Мы позвоним только по вашей заявке — без спама.
-          </p>
-        </div>
+        window.kcCloseModal = function () {
+          modal.classList.remove("kc-modal--open");
+          modal.setAttribute("aria-hidden", "true");
+          unlockBodyScroll();
+        };
 
-        <div class="kc-field">
-          <label class="kc-label" data-i18n="modal.field.service.label">
-            Интересующая услуга
-          </label>
-          <input type="text" name="service" class="kc-input" placeholder="Например: кардиология"
-            data-i18n-placeholder="modal.field.service.placeholder" />
-        </div>
-
-        <div class="kc-field">
-          <label class="kc-label" data-i18n="modal.field.message.label">
-            Комментарий
-          </label>
-          <textarea name="message" class="kc-input" placeholder="Опишите ваш вопрос, жалобу или симптом"
-            data-i18n-placeholder="modal.field.message.placeholder"></textarea>
-        </div>
-
-        <!-- скрытые поля -->
-        <input type="hidden" name="form_context" value="modal" />
-        <input type="hidden" name="page_url" id="kcPageUrl" value="" />
-
-        <button type="submit" class="kc-btn" data-i18n="modal.submit">
-          Отправить заявку
-        </button>
-
-        <p class="kc-modal__privacy" data-i18n="modal.privacy">
-          Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки
-          персональных данных.
-        </p>
-      </form>
-    </div>
-  </div>
-
-
-  <!-- Скрипты -->
-  <script src="js/header.js"></script>
-  <script src="js/forms.js"></script>
-  <script src="js/lang-switcher.js"></script>
-
-  <script>
-    (function () {
-      const modal = document.getElementById("kcModal");
-      if (!modal) return;
-
-      const body = document.body;
-      const pageUrlInput = modal.querySelector("#kcPageUrl");
-
-      // подставляем текущий URL в скрытое поле
-      if (pageUrlInput) {
-        pageUrlInput.value = window.location.href;
-      }
-
-      function lockBodyScroll() {
-        const scrollY = window.scrollY || window.pageYOffset;
-        body.dataset.kcScrollY = scrollY;
-        body.style.position = "fixed";
-        body.style.top = `-${scrollY}px`;
-        body.style.left = "0";
-        body.style.right = "0";
-        body.style.width = "100%";
-      }
-
-      function unlockBodyScroll() {
-        const scrollY = body.dataset.kcScrollY
-          ? parseInt(body.dataset.kcScrollY, 10)
-          : 0;
-        body.style.position = "";
-        body.style.top = "";
-        body.style.left = "";
-        body.style.right = "";
-        body.style.width = "";
-        delete body.dataset.kcScrollY;
-        window.scrollTo(0, scrollY);
-      }
-
-      window.kcOpenModal = function () {
-        modal.classList.add("kc-modal--open");
-        modal.setAttribute("aria-hidden", "false");
-        lockBodyScroll();
-      };
-
-      window.kcCloseModal = function () {
-        modal.classList.remove("kc-modal--open");
-        modal.setAttribute("aria-hidden", "true");
-        unlockBodyScroll();
-      };
-
-      // Закрытие по клику на overlay / крестик (через data-kc-close)
-      modal.querySelectorAll("[data-kc-close]").forEach((el) => {
-        el.addEventListener("click", () => {
-          window.kcCloseModal();
+        // Закрытие по клику на overlay / крестик (через data-kc-close)
+        modal.querySelectorAll("[data-kc-close]").forEach((el) => {
+          el.addEventListener("click", () => {
+            window.kcCloseModal();
+          });
         });
-      });
 
-      // Закрытие по Esc
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("kc-modal--open")) {
-          window.kcCloseModal();
+        // Закрытие по Esc
+        document.addEventListener("keydown", (e) => {
+          if (
+            e.key === "Escape" &&
+            modal.classList.contains("kc-modal--open")
+          ) {
+            window.kcCloseModal();
+          }
+        });
+      })();
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const pageInput = document.getElementById("page_url");
+        if (pageInput) {
+          pageInput.value = window.location.href;
         }
       });
-    })();
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>

@@ -1,1010 +1,1142 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kamilovs Clinic — многопрофильная клиника</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="UTF-8" />
-  <title>Kamilovs Clinic — многопрофильная клиника</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Стили -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/pages/index.css" />
+  </head>
 
-  <!-- Стили -->
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/pages/index.css" />
-</head>
+  <body>
+    <!-- ===== ШАПКА ===== -->
+    <header class="kc-header" data-reveal>
+      <div class="kc-header__inner">
+        <a href="index.html" class="kc-header__brand">
+          <img
+            src="images/Лого Camilovs‘ Полноцветный RGB.png"
+            alt="Kamilovs Clinic"
+            class="kc-header__logo"
+          />
+          <span class="kc-header__brand-text"></span>
+        </a>
 
-<body>
-  <!-- ===== ШАПКА ===== -->
-  <header class="kc-header" data-reveal>
-    <div class="kc-header__inner">
-      <a href="index.html" class="kc-header__brand">
-        <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-header__logo" />
-        <span class="kc-header__brand-text"></span>
-      </a>
+        <nav class="kc-header__nav" aria-label="Главное меню">
+          <ul class="kc-header__menu">
+            <li>
+              <a href="index.html" class="is-active" data-i18n="nav.home">
+                Главная
+              </a>
+            </li>
+            <li>
+              <a href="#about" data-i18n="nav.about"> О клинике </a>
+            </li>
+            <li>
+              <a href="services.html" data-i18n="nav.services"> Услуги </a>
+            </li>
+            <li>
+              <a href="doctors.html" data-i18n="nav.doctors"> Врачи </a>
+            </li>
+            <li>
+              <a href="contacts.html" data-i18n="nav.contacts"> Контакты </a>
+            </li>
+          </ul>
+        </nav>
 
-      <nav class="kc-header__nav" aria-label="Главное меню">
-        <ul class="kc-header__menu">
+        <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
+        <div class="kc-lang-switcher">
+          <button class="kc-lang-btn kc-lang-btn--active" data-lang="ru">
+            RU
+          </button>
+          <button class="kc-lang-btn" data-lang="uz">UZ</button>
+        </div>
+
+        <div class="kc-header__actions">
+          <a href="tel:+998950884141" class="kc-header__phone">
+            +998 95 088 41 41
+          </a>
+
+          <button
+            class="kc-header__cta"
+            type="button"
+            onclick="kcOpenModal()"
+            data-i18n="header.book"
+          >
+            Записаться
+          </button>
+
+          <button
+            class="kc-header__burger"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Мобильное меню -->
+      <nav class="kc-header__mobile" aria-label="Мобильное меню">
+        <ul>
           <li>
             <a href="index.html" class="is-active" data-i18n="nav.home">
               Главная
             </a>
           </li>
           <li>
-            <a href="#about" data-i18n="nav.about">
-              О клинике
+            <a href="#about" data-i18n="nav.about"> О клинике </a>
+          </li>
+          <li>
+            <a href="services.html" data-i18n="nav.services"> Услуги </a>
+          </li>
+          <li>
+            <a href="doctors.html" data-i18n="nav.doctors"> Врачи </a>
+          </li>
+          <li>
+            <a href="contacts.html" data-i18n="nav.contacts"> Контакты </a>
+          </li>
+          <li>
+            <a href="tel:+998950884141" data-i18n="header.callMobile">
+              Позвонить: +998 95 088 41 41
             </a>
           </li>
           <li>
-            <a href="services.html" data-i18n="nav.services">
-              Услуги
-            </a>
-          </li>
-          <li>
-            <a href="doctors.html" data-i18n="nav.doctors">
-              Врачи
-            </a>
-          </li>
-          <li>
-            <a href="contacts.html" data-i18n="nav.contacts">
-              Контакты
-            </a>
+            <button
+              class="kc-header__mobile-cta"
+              type="button"
+              onclick="kcOpenModal()"
+              data-i18n="header.book"
+            >
+              Записаться
+            </button>
           </li>
         </ul>
       </nav>
+    </header>
 
-      <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
-      <div class="kc-lang-switcher">
-        <button class="kc-lang-btn kc-lang-btn--active" data-lang="ru">
-          RU
-        </button>
-        <button class="kc-lang-btn" data-lang="uz">
-          UZ
-        </button>
-      </div>
+    <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
+    <main class="kc-main">
+      <!-- HERO -->
+      <section id="kc-hero" class="kc-hero" data-reveal>
+        <div class="kc-hero-bg"></div>
+        <div class="kc-hero-overlay"></div>
 
-      <div class="kc-header__actions">
-        <a href="tel:+998950884141" class="kc-header__phone">
-          +998 95 088 41 41
-        </a>
-
-        <button class="kc-header__cta" type="button" onclick="kcOpenModal()" data-i18n="header.book">
-          Записаться
-        </button>
-
-        <button class="kc-header__burger" type="button" aria-label="Открыть меню" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Мобильное меню -->
-    <nav class="kc-header__mobile" aria-label="Мобильное меню">
-      <ul>
-        <li>
-          <a href="index.html" class="is-active" data-i18n="nav.home">
-            Главная
-          </a>
-        </li>
-        <li>
-          <a href="#about" data-i18n="nav.about">
-            О клинике
-          </a>
-        </li>
-        <li>
-          <a href="services.html" data-i18n="nav.services">
-            Услуги
-          </a>
-        </li>
-        <li>
-          <a href="doctors.html" data-i18n="nav.doctors">
-            Врачи
-          </a>
-        </li>
-        <li>
-          <a href="contacts.html" data-i18n="nav.contacts">
-            Контакты
-          </a>
-        </li>
-        <li>
-          <a href="tel:+998950884141" data-i18n="header.callMobile">
-            Позвонить: +998 95 088 41 41
-          </a>
-        </li>
-        <li>
-          <button class="kc-header__mobile-cta" type="button" onclick="kcOpenModal()" data-i18n="header.book">
-            Записаться
-          </button>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
-  <main class="kc-main">
-    <!-- HERO -->
-    <section id="kc-hero" class="kc-hero" data-reveal>
-      <div class="kc-hero-bg"></div>
-      <div class="kc-hero-overlay"></div>
-
-      <div class="kc-hero-container">
-        <div class="kc-hero-logo" data-reveal>
-          <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-hero-logo-img" />
-          <span class="kc-hero-ring" aria-hidden="true"></span>
-        </div>
-
-        <div class="kc-hero-badge" data-reveal>
-          <span class="kc-hero-badge__dot"></span>
-          <span class="kc-hero-badge__text" data-i18n="hero.badge">
-            Работаем 24/7 без выходных
-          </span>
-        </div>
-
-        <h1 class="kc-hero-title" data-reveal>
-          <span class="kc-hero-title-line" data-i18n="hero.titleLine1">
-            Добро пожаловать в
-          </span>
-          <span class="kc-hero-title-line kc-gradient">
-            Kamilovs Clinic
-          </span>
-        </h1>
-
-        <p class="kc-hero-sub" data-reveal data-i18n="hero.subtitle">
-          Современная диагностика и внимательный уход для каждого пациента.
-        </p>
-
-        <div class="kc-hero-cta" data-reveal>
-          <a href="services.html" class="kc-hero-btn kc-hero-btn-primary" data-i18n="hero.ctaServices">
-            Наши услуги
-          </a>
-          <button class="kc-hero-btn kc-hero-btn-ghost" type="button" onclick="kcOpenModal()" data-i18n="hero.ctaBook">
-            Записаться
-          </button>
-        </div>
-
-        <div class="kc-hero-features" data-reveal>
-          <article class="kc-card" data-reveal>
-            <div class="kc-card-ico">🚑</div>
-            <h3 class="kc-card-title" data-i18n="hero.card1.title">
-              Экстренная помощь
-            </h3>
-            <p class="kc-card-text" data-i18n="hero.card1.text">
-              Круглосуточные консультации и поддержка при неотложных
-              состояниях.
-            </p>
-          </article>
-
-          <article class="kc-card kc-card--center kc-card-247b" data-reveal>
-            <div class="kc-card-247b-icon">
-              <span>24/7</span>
-            </div>
-            <h3 class="kc-card-title" data-i18n="hero.card2.title">
-              Работаем без выходных
-            </h3>
-            <p class="kc-card-247b-text" data-i18n="hero.card2.text">
-              Доступны 24 часа в сутки, без выходных и праздников. Всегда
-              рядом, когда это важно.
-            </p>
-          </article>
-
-          <article class="kc-card" data-reveal>
-            <div class="kc-card-ico">🏥</div>
-            <h3 class="kc-card-title" data-i18n="hero.card3.title">
-              Расписание клиники
-            </h3>
-            <p class="kc-card-text" data-i18n="hero.card3.text">
-              Удобный приём специалистов и диагностика для взрослых и детей.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- УСЛУГИ -->
-    <section id="services" class="kc-hs" data-reveal>
-      <div class="kc-hs__inner">
-        <div class="kc-hs__text" data-reveal>
-          <span class="kc-hs__kicker" data-i18n="services.kicker">
-            ЧТО МЫ ДЕЛАЕМ
-          </span>
-          <h2 class="kc-hs__title" data-i18n="services.title">
-            Услуги клиники
-          </h2>
-          <p class="kc-hs__lead" data-i18n="services.lead">
-            Комплексная диагностика, лечение и профилактика на базе
-            современного оборудования и команды экспертов.
-          </p>
-          <p class="kc-hs__p" data-i18n="services.text">
-            Индивидуальный подход, комфортные условия, точная диагностика и
-            прозрачные рекомендации — основа нашей работы.
-          </p>
-
-          <a href="services.html" class="kc-hs__btn" data-i18n="services.cta">
-            Подробнее об услугах
-          </a>
-        </div>
-
-        <div class="kc-hs__media" data-reveal>
-          <div class="kc-hs__slide is-active">
-            <figure class="kc-hs__figure">
-              <img src="images/clinic_01.jpg" alt="Врачи за работой в диагностическом отделении" class="kc-hs__img"
-                loading="lazy" />
-              <figcaption class="kc-hs__caption">
-                <strong data-i18n="services.slide1.title">Обзор клиники</strong>
-                <span data-i18n="services.slide1.text">
-                  Короткий обзор отделений и сервиса
-                </span>
-              </figcaption>
-            </figure>
+        <div class="kc-hero-container">
+          <div class="kc-hero-logo" data-reveal>
+            <img
+              src="images/Лого Camilovs‘ Полноцветный RGB.png"
+              alt="Kamilovs Clinic"
+              class="kc-hero-logo-img"
+            />
+            <span class="kc-hero-ring" aria-hidden="true"></span>
           </div>
 
-          <div class="kc-hs__slide">
-            <figure class="kc-hs__figure">
-              <img src="images/clinic_02.jpg" alt="Современная цифровая диагностика" class="kc-hs__img"
-                loading="lazy" />
-              <figcaption class="kc-hs__caption">
-                <strong data-i18n="services.slide2.title">Цифровая диагностика</strong>
-                <span data-i18n="services.slide2.text">
-                  Точные исследования для взрослых и детей
-                </span>
-              </figcaption>
-            </figure>
+          <div class="kc-hero-badge" data-reveal>
+            <span class="kc-hero-badge__dot"></span>
+            <span class="kc-hero-badge__text" data-i18n="hero.badge">
+              Работаем 24/7 без выходных
+            </span>
           </div>
 
-          <div class="kc-hs__slide">
-            <figure class="kc-hs__figure">
-              <img src="images/clinic_03.jpg" alt="Команда врачей клиники" class="kc-hs__img" loading="lazy" />
-              <figcaption class="kc-hs__caption">
-                <strong data-i18n="services.slide3.title">Лучшие специалисты</strong>
-                <span data-i18n="services.slide3.text">
-                  Команда экспертов по ключевым направлениям
-                </span>
-              </figcaption>
-            </figure>
+          <h1 class="kc-hero-title" data-reveal>
+            <span class="kc-hero-title-line" data-i18n="hero.titleLine1">
+              Добро пожаловать в
+            </span>
+            <span class="kc-hero-title-line kc-gradient">
+              Kamilovs Clinic
+            </span>
+          </h1>
+
+          <p class="kc-hero-sub" data-reveal data-i18n="hero.subtitle">
+            Современная диагностика и внимательный уход для каждого пациента.
+          </p>
+
+          <div class="kc-hero-cta" data-reveal>
+            <a
+              href="services.html"
+              class="kc-hero-btn kc-hero-btn-primary"
+              data-i18n="hero.ctaServices"
+            >
+              Наши услуги
+            </a>
+            <button
+              class="kc-hero-btn kc-hero-btn-ghost"
+              type="button"
+              onclick="kcOpenModal()"
+              data-i18n="hero.ctaBook"
+            >
+              Записаться
+            </button>
           </div>
 
-          <button class="kc-hs__nav kc-hs__nav--prev" type="button" aria-label="Предыдущий слайд">
-            ‹
-          </button>
-          <button class="kc-hs__nav kc-hs__nav--next" type="button" aria-label="Следующий слайд">
-            ›
-          </button>
+          <div class="kc-hero-features" data-reveal>
+            <article class="kc-card" data-reveal>
+              <div class="kc-card-ico">🚑</div>
+              <h3 class="kc-card-title" data-i18n="hero.card1.title">
+                Экстренная помощь
+              </h3>
+              <p class="kc-card-text" data-i18n="hero.card1.text">
+                Круглосуточные консультации и поддержка при неотложных
+                состояниях.
+              </p>
+            </article>
 
-          <div class="kc-hs__dots" aria-label="Слайды" role="tablist"></div>
+            <article class="kc-card kc-card--center kc-card-247b" data-reveal>
+              <div class="kc-card-247b-icon">
+                <span>24/7</span>
+              </div>
+              <h3 class="kc-card-title" data-i18n="hero.card2.title">
+                Работаем без выходных
+              </h3>
+              <p class="kc-card-247b-text" data-i18n="hero.card2.text">
+                Доступны 24 часа в сутки, без выходных и праздников. Всегда
+                рядом, когда это важно.
+              </p>
+            </article>
+
+            <article class="kc-card" data-reveal>
+              <div class="kc-card-ico">🏥</div>
+              <h3 class="kc-card-title" data-i18n="hero.card3.title">
+                Расписание клиники
+              </h3>
+              <p class="kc-card-text" data-i18n="hero.card3.text">
+                Удобный приём специалистов и диагностика для взрослых и детей.
+              </p>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-
-    <!-- ПРЕИМУЩЕСТВА -->
-    <section id="benefits" class="kc-benefits" data-reveal>
-      <div class="kc-benefits__inner">
-        <header class="kc-benefits__head" data-reveal>
-          <span class="kc-benefits__kicker" data-i18n="benefits.kicker">
-            Почему выбирают нас
-          </span>
-          <h2 class="kc-benefits__title" data-i18n="benefits.title">
-            Преимущества Kamilovs Clinic
-          </h2>
-          <p class="kc-benefits__lead" data-i18n="benefits.lead">
-            Мы соединяем современную медицину, комфорт и человеческое
-            отношение — чтобы каждое обращение было максимально спокойным и
-            понятным.
-          </p>
-        </header>
-
-        <div class="kc-benefits__grid">
-          <article class="kc-benefits__item" data-reveal>
-            <div class="kc-benefits__icon">
-              <span>🩺</span>
-            </div>
-            <h3 class="kc-benefits__name" data-i18n="benefits.card1.title">
-              Опытные специалисты
-            </h3>
-            <p class="kc-benefits__text" data-i18n="benefits.card1.text">
-              Врачи с многолетней практикой и узкой специализацией — каждый
-              пациент получает выверенные решения.
-            </p>
-            <span class="kc-benefits__tag" data-i18n="benefits.card1.tag">
-              Персональный подход
+      <!-- УСЛУГИ -->
+      <section id="services" class="kc-hs" data-reveal>
+        <div class="kc-hs__inner">
+          <div class="kc-hs__text" data-reveal>
+            <span class="kc-hs__kicker" data-i18n="services.kicker">
+              ЧТО МЫ ДЕЛАЕМ
             </span>
-          </article>
-
-          <article class="kc-benefits__item" data-reveal>
-            <div class="kc-benefits__icon kc-benefits__icon--blue">
-              <span>💻</span>
-            </div>
-            <h3 class="kc-benefits__name" data-i18n="benefits.card2.title">
-              Современная диагностика
-            </h3>
-            <p class="kc-benefits__text" data-i18n="benefits.card2.text">
-              Цифровые исследования, точные результаты и понятные расшифровки
-              — без лишних ожиданий.
+            <h2 class="kc-hs__title" data-i18n="services.title">
+              Услуги клиники
+            </h2>
+            <p class="kc-hs__lead" data-i18n="services.lead">
+              Комплексная диагностика, лечение и профилактика на базе
+              современного оборудования и команды экспертов.
             </p>
-            <span class="kc-benefits__tag" data-i18n="benefits.card2.tag">
-              Точность результатов
-            </span>
-          </article>
-
-          <article class="kc-benefits__item" data-reveal>
-            <div class="kc-benefits__icon kc-benefits__icon--green">
-              <span>⏱</span>
-            </div>
-            <h3 class="kc-benefits__name" data-i18n="benefits.card3.title">
-              Минимум ожидания
-            </h3>
-            <p class="kc-benefits__text" data-i18n="benefits.card3.text">
-              Онлайн-запись, чёткие слоты и продуманное расписание — вы
-              проводите время в клинике с пользой, а не в очереди.
+            <p class="kc-hs__p" data-i18n="services.text">
+              Индивидуальный подход, комфортные условия, точная диагностика и
+              прозрачные рекомендации — основа нашей работы.
             </p>
-            <span class="kc-benefits__tag" data-i18n="benefits.card3.tag">
-              Удобное расписание
-            </span>
-          </article>
 
-          <article class="kc-benefits__item" data-reveal>
-            <div class="kc-benefits__icon kc-benefits__icon--purple">
-              <span>🏥</span>
-            </div>
-            <h3 class="kc-benefits__name" data-i18n="benefits.card4.title">
-              Комфорт и сервис
-            </h3>
-            <p class="kc-benefits__text" data-i18n="benefits.card4.text">
-              Чистые кабинеты, заботливый персонал и внимательное отношение с
-              момента записи до завершения лечения.
-            </p>
-            <span class="kc-benefits__tag" data-i18n="benefits.card4.tag">
-              Комфорт пациента
-            </span>
-          </article>
+            <a href="services.html" class="kc-hs__btn" data-i18n="services.cta">
+              Подробнее об услугах
+            </a>
+          </div>
 
-          <article class="kc-benefits__item" data-reveal>
-            <div class="kc-benefits__icon kc-benefits__icon--cyan">
-              <span>📲</span>
+          <div class="kc-hs__media" data-reveal>
+            <div class="kc-hs__slide is-active">
+              <figure class="kc-hs__figure">
+                <img
+                  src="images/clinic_01.jpg"
+                  alt="Врачи за работой в диагностическом отделении"
+                  class="kc-hs__img"
+                  loading="lazy"
+                />
+                <figcaption class="kc-hs__caption">
+                  <strong data-i18n="services.slide1.title"
+                    >Обзор клиники</strong
+                  >
+                  <span data-i18n="services.slide1.text">
+                    Короткий обзор отделений и сервиса
+                  </span>
+                </figcaption>
+              </figure>
             </div>
-            <h3 class="kc-benefits__name" data-i18n="benefits.card5.title">
-              Связь 24/7
-            </h3>
-            <p class="kc-benefits__text" data-i18n="benefits.card5.text">
-              Мы на связи по телефону и мессенджерам — вы всегда знаете, к
-              кому обратиться с вопросом.
-            </p>
-            <span class="kc-benefits__tag" data-i18n="benefits.card5.tag">
-              Поддержка 24/7
-            </span>
-          </article>
 
-          <article class="kc-benefits__item" data-reveal>
-            <div class="kc-benefits__icon kc-benefits__icon--gold">
-              <span>💳</span>
+            <div class="kc-hs__slide">
+              <figure class="kc-hs__figure">
+                <img
+                  src="images/clinic_02.jpg"
+                  alt="Современная цифровая диагностика"
+                  class="kc-hs__img"
+                  loading="lazy"
+                />
+                <figcaption class="kc-hs__caption">
+                  <strong data-i18n="services.slide2.title"
+                    >Цифровая диагностика</strong
+                  >
+                  <span data-i18n="services.slide2.text">
+                    Точные исследования для взрослых и детей
+                  </span>
+                </figcaption>
+              </figure>
             </div>
-            <h3 class="kc-benefits__name" data-i18n="benefits.card6.title">
-              Прозрачные цены
-            </h3>
-            <p class="kc-benefits__text" data-i18n="benefits.card6.text">
-              Понятные планы лечения, без скрытых услуг — вы сразу видите, за
-              что платите.
-            </p>
-            <span class="kc-benefits__tag" data-i18n="benefits.card6.tag">
-              Честная стоимость
-            </span>
-          </article>
+
+            <div class="kc-hs__slide">
+              <figure class="kc-hs__figure">
+                <img
+                  src="images/clinic_03.jpg"
+                  alt="Команда врачей клиники"
+                  class="kc-hs__img"
+                  loading="lazy"
+                />
+                <figcaption class="kc-hs__caption">
+                  <strong data-i18n="services.slide3.title"
+                    >Лучшие специалисты</strong
+                  >
+                  <span data-i18n="services.slide3.text">
+                    Команда экспертов по ключевым направлениям
+                  </span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <button
+              class="kc-hs__nav kc-hs__nav--prev"
+              type="button"
+              aria-label="Предыдущий слайд"
+            >
+              ‹
+            </button>
+            <button
+              class="kc-hs__nav kc-hs__nav--next"
+              type="button"
+              aria-label="Следующий слайд"
+            >
+              ›
+            </button>
+
+            <div class="kc-hs__dots" aria-label="Слайды" role="tablist"></div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-
-    <!-- FAQ -->
-    <section id="faq" class="kc-faq" data-reveal>
-      <div class="kc-faq__inner">
-        <header class="kc-faq__head" data-reveal>
-          <span class="kc-faq__kicker" data-i18n="faq.kicker">FAQ</span>
-          <h2 class="kc-faq__title" data-i18n="faq.title">
-            Частые вопросы пациентов
-          </h2>
-          <p class="kc-faq__lead" data-i18n="faq.lead">
-            Мы заранее отвечаем на популярные вопросы — чтобы визит в клинику
-            был спокойным и предсказуемым.
-          </p>
-        </header>
-
-        <div class="kc-faq__layout">
-          <aside class="kc-faq__aside" data-faq-reveal data-reveal>
-            <h3 class="kc-faq__aside-title" data-i18n="faq.aside.title">
-              Перед визитом
-            </h3>
-            <p class="kc-faq__aside-text" data-i18n="faq.aside.text">
-              Если вы не нашли ответ на свой вопрос — просто позвоните нам,
-              администратор поможет подобрать врача и время.
+      <!-- ПРЕИМУЩЕСТВА -->
+      <section id="benefits" class="kc-benefits" data-reveal>
+        <div class="kc-benefits__inner">
+          <header class="kc-benefits__head" data-reveal>
+            <span class="kc-benefits__kicker" data-i18n="benefits.kicker">
+              Почему выбирают нас
+            </span>
+            <h2 class="kc-benefits__title" data-i18n="benefits.title">
+              Преимущества Kamilovs Clinic
+            </h2>
+            <p class="kc-benefits__lead" data-i18n="benefits.lead">
+              Мы соединяем современную медицину, комфорт и человеческое
+              отношение — чтобы каждое обращение было максимально спокойным и
+              понятным.
             </p>
+          </header>
 
-            <ul class="kc-faq__stats">
-              <li>
-                <span class="kc-faq__stats-num">24/7</span>
-                <span class="kc-faq__stats-label" data-i18n="faq.stats1.label">
-                  работаем без выходных
-                </span>
+          <div class="kc-benefits__grid">
+            <article class="kc-benefits__item" data-reveal>
+              <div class="kc-benefits__icon">
+                <span>🩺</span>
+              </div>
+              <h3 class="kc-benefits__name" data-i18n="benefits.card1.title">
+                Опытные специалисты
+              </h3>
+              <p class="kc-benefits__text" data-i18n="benefits.card1.text">
+                Врачи с многолетней практикой и узкой специализацией — каждый
+                пациент получает выверенные решения.
+              </p>
+              <span class="kc-benefits__tag" data-i18n="benefits.card1.tag">
+                Персональный подход
+              </span>
+            </article>
+
+            <article class="kc-benefits__item" data-reveal>
+              <div class="kc-benefits__icon kc-benefits__icon--blue">
+                <span>💻</span>
+              </div>
+              <h3 class="kc-benefits__name" data-i18n="benefits.card2.title">
+                Современная диагностика
+              </h3>
+              <p class="kc-benefits__text" data-i18n="benefits.card2.text">
+                Цифровые исследования, точные результаты и понятные расшифровки
+                — без лишних ожиданий.
+              </p>
+              <span class="kc-benefits__tag" data-i18n="benefits.card2.tag">
+                Точность результатов
+              </span>
+            </article>
+
+            <article class="kc-benefits__item" data-reveal>
+              <div class="kc-benefits__icon kc-benefits__icon--green">
+                <span>⏱</span>
+              </div>
+              <h3 class="kc-benefits__name" data-i18n="benefits.card3.title">
+                Минимум ожидания
+              </h3>
+              <p class="kc-benefits__text" data-i18n="benefits.card3.text">
+                Онлайн-запись, чёткие слоты и продуманное расписание — вы
+                проводите время в клинике с пользой, а не в очереди.
+              </p>
+              <span class="kc-benefits__tag" data-i18n="benefits.card3.tag">
+                Удобное расписание
+              </span>
+            </article>
+
+            <article class="kc-benefits__item" data-reveal>
+              <div class="kc-benefits__icon kc-benefits__icon--purple">
+                <span>🏥</span>
+              </div>
+              <h3 class="kc-benefits__name" data-i18n="benefits.card4.title">
+                Комфорт и сервис
+              </h3>
+              <p class="kc-benefits__text" data-i18n="benefits.card4.text">
+                Чистые кабинеты, заботливый персонал и внимательное отношение с
+                момента записи до завершения лечения.
+              </p>
+              <span class="kc-benefits__tag" data-i18n="benefits.card4.tag">
+                Комфорт пациента
+              </span>
+            </article>
+
+            <article class="kc-benefits__item" data-reveal>
+              <div class="kc-benefits__icon kc-benefits__icon--cyan">
+                <span>📲</span>
+              </div>
+              <h3 class="kc-benefits__name" data-i18n="benefits.card5.title">
+                Связь 24/7
+              </h3>
+              <p class="kc-benefits__text" data-i18n="benefits.card5.text">
+                Мы на связи по телефону и мессенджерам — вы всегда знаете, к
+                кому обратиться с вопросом.
+              </p>
+              <span class="kc-benefits__tag" data-i18n="benefits.card5.tag">
+                Поддержка 24/7
+              </span>
+            </article>
+
+            <article class="kc-benefits__item" data-reveal>
+              <div class="kc-benefits__icon kc-benefits__icon--gold">
+                <span>💳</span>
+              </div>
+              <h3 class="kc-benefits__name" data-i18n="benefits.card6.title">
+                Прозрачные цены
+              </h3>
+              <p class="kc-benefits__text" data-i18n="benefits.card6.text">
+                Понятные планы лечения, без скрытых услуг — вы сразу видите, за
+                что платите.
+              </p>
+              <span class="kc-benefits__tag" data-i18n="benefits.card6.tag">
+                Честная стоимость
+              </span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="kc-faq" data-reveal>
+        <div class="kc-faq__inner">
+          <header class="kc-faq__head" data-reveal>
+            <span class="kc-faq__kicker" data-i18n="faq.kicker">FAQ</span>
+            <h2 class="kc-faq__title" data-i18n="faq.title">
+              Частые вопросы пациентов
+            </h2>
+            <p class="kc-faq__lead" data-i18n="faq.lead">
+              Мы заранее отвечаем на популярные вопросы — чтобы визит в клинику
+              был спокойным и предсказуемым.
+            </p>
+          </header>
+
+          <div class="kc-faq__layout">
+            <aside class="kc-faq__aside" data-faq-reveal data-reveal>
+              <h3 class="kc-faq__aside-title" data-i18n="faq.aside.title">
+                Перед визитом
+              </h3>
+              <p class="kc-faq__aside-text" data-i18n="faq.aside.text">
+                Если вы не нашли ответ на свой вопрос — просто позвоните нам,
+                администратор поможет подобрать врача и время.
+              </p>
+
+              <ul class="kc-faq__stats">
+                <li>
+                  <span class="kc-faq__stats-num">24/7</span>
+                  <span
+                    class="kc-faq__stats-label"
+                    data-i18n="faq.stats1.label"
+                  >
+                    работаем без выходных
+                  </span>
+                </li>
+                <li>
+                  <span class="kc-faq__stats-num" data-i18n="faq.aside.num"
+                    >5–10 мин</span
+                  >
+                  <span
+                    class="kc-faq__stats-label"
+                    data-i18n="faq.stats2.label"
+                  >
+                    обычное ожидание приёма
+                  </span>
+                </li>
+              </ul>
+
+              <a
+                href="tel:+998950884141"
+                class="kc-faq__call"
+                data-i18n="faq.call"
+              >
+                📞 Позвонить в клинику
+              </a>
+            </aside>
+
+            <div class="kc-faq__accordion" data-faq-reveal data-reveal>
+              <!-- Q1 -->
+              <article class="kc-faq__item is-open">
+                <button
+                  class="kc-faq__question"
+                  type="button"
+                  aria-expanded="true"
+                >
+                  <span class="kc-faq__q-text" data-i18n="faq.q1.question">
+                    Нужно ли заранее записываться на приём?
+                  </span>
+                  <span class="kc-faq__q-icon">
+                    <span class="kc-faq__q-line kc-faq__q-line--h"></span>
+                    <span class="kc-faq__q-line kc-faq__q-line--v"></span>
+                  </span>
+                </button>
+                <div class="kc-faq__answer" style="max-height: 500px">
+                  <p data-i18n="faq.q1.answer">
+                    Запись заранее помогает выбрать удобное время и сократить
+                    ожидание. Но при необходимости мы стараемся принять и в день
+                    обращения — особенно при острых состояниях.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Q2 -->
+              <article class="kc-faq__item">
+                <button class="kc-faq__question" type="button">
+                  <span class="kc-faq__q-text" data-i18n="faq.q2.question">
+                    Какие анализы можно сдать в клинике?
+                  </span>
+                  <span class="kc-faq__q-icon">
+                    <span class="kc-faq__q-line kc-faq__q-line--h"></span>
+                    <span class="kc-faq__q-line kc-faq__q-line--v"></span>
+                  </span>
+                </button>
+                <div class="kc-faq__answer">
+                  <p data-i18n="faq.q2.answer">
+                    Мы выполняем основные лабораторные анализы: общий и
+                    биохимический анализ крови, гормоны, инфекции, анализы для
+                    госпитализации и программ check-up. Полный список можно
+                    уточнить у администратора.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Q3 -->
+              <article class="kc-faq__item">
+                <button class="kc-faq__question" type="button">
+                  <span class="kc-faq__q-text" data-i18n="faq.q3.question">
+                    Можно ли записаться на приём онлайн или через мессенджер?
+                  </span>
+                  <span class="kc-faq__q-icon">
+                    <span class="kc-faq__q-line kc-faq__q-line--h"></span>
+                    <span class="kc-faq__q-line kc-faq__q-line--v"></span>
+                  </span>
+                </button>
+                <div class="kc-faq__answer">
+                  <p data-i18n="faq.q3.answer">
+                    Да, вы можете оставить заявку через сайт, написать в
+                    мессенджер или позвонить. Администратор уточнит детали и
+                    подтвердит время приёма.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Q4 -->
+              <article class="kc-faq__item">
+                <button class="kc-faq__question" type="button">
+                  <span class="kc-faq__q-text" data-i18n="faq.q4.question">
+                    Что взять с собой на первый приём?
+                  </span>
+                  <span class="kc-faq__q-icon">
+                    <span class="kc-faq__q-line kc-faq__q-line--h"></span>
+                    <span class="kc-faq__q-line kc-faq__q-line--v"></span>
+                  </span>
+                </button>
+                <div class="kc-faq__answer">
+                  <p data-i18n="faq.q4.answer">
+                    Возьмите паспорт, список принимаемых препаратов и, по
+                    возможности, предыдущие выписки и результаты анализов. Это
+                    поможет врачу быстрее разобраться в ситуации.
+                  </p>
+                </div>
+              </article>
+
+              <!-- Q5 -->
+              <article class="kc-faq__item">
+                <button class="kc-faq__question" type="button">
+                  <span class="kc-faq__q-text" data-i18n="faq.q5.question">
+                    Работаете ли вы с детьми?
+                  </span>
+                  <span class="kc-faq__q-icon">
+                    <span class="kc-faq__q-line kc-faq__q-line--h"></span>
+                    <span class="kc-faq__q-line kc-faq__q-line--v"></span>
+                  </span>
+                </button>
+                <div class="kc-faq__answer">
+                  <p data-i18n="faq.q5.answer">
+                    Да, в клинике есть педиатры и узкие детские специалисты. Мы
+                    создаём максимально спокойную атмосферу для ребёнка и
+                    родителей.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ВРАЧИ -->
+      <section id="doctors" class="kc-docs" data-reveal>
+        <div class="kc-docs__inner">
+          <div class="kc-docs__head" data-reveal>
+            <img
+              src="images/Лого Camilovs‘ Полноцветный RGB.png"
+              alt="Kamilovs Clinic"
+              class="kc-docs__logo"
+              loading="lazy"
+            />
+            <p class="kc-docs__kicker" data-i18n="doctors.kicker">
+              КОМАНДА ЭКСПЕРТОВ
+            </p>
+            <h2 class="kc-docs__title" data-i18n="doctors.title">
+              Наши специалисты
+            </h2>
+            <p class="kc-docs__sub" data-i18n="doctors.sub">
+              Диагностика, лечение и внимание к деталям — команда врачей, на
+              которых можно положиться.
+            </p>
+          </div>
+
+          <div class="kc-docs__viewport" data-reveal>
+            <ul class="kc-docs__list">
+              <!-- 1 -->
+              <li class="kc-docs__card" data-reveal>
+                <div class="kc-docs__media">
+                  <img
+                    src="images/doctor_01.jpg"
+                    alt="Невролог — Ольга Соколова"
+                    class="kc-docs__img"
+                    loading="lazy"
+                  />
+                  <span
+                    class="kc-docs__badge kc-docs__badge--cyan"
+                    data-i18n="doctors.card1.badge"
+                  >
+                    Неврология
+                  </span>
+                </div>
+                <div class="kc-docs__body">
+                  <h3 class="kc-docs__name" data-i18n="doctors.card1.name">
+                    Ф.И.О
+                  </h3>
+                  <p class="kc-docs__role" data-i18n="doctors.card1.role">
+                    Невролог
+                  </p>
+                  <p class="kc-docs__text" data-i18n="doctors.card1.text">
+                    Индивидуальный подход к каждому пациенту, современная
+                    диагностика и мягкое сопровождение лечения.
+                  </p>
+                </div>
               </li>
-              <li>
-                <span class="kc-faq__stats-num" data-i18n="faq.aside.num">5–10 мин</span>
-                <span class="kc-faq__stats-label" data-i18n="faq.stats2.label">
-                  обычное ожидание приёма
-                </span>
+
+              <!-- 2 -->
+              <li class="kc-docs__card" data-reveal>
+                <div class="kc-docs__media">
+                  <img
+                    src="images/doctor_02.jpg"
+                    alt="Стоматолог — Эмиль Янг"
+                    class="kc-docs__img"
+                    loading="lazy"
+                  />
+                  <span
+                    class="kc-docs__badge kc-docs__badge--blue"
+                    data-i18n="doctors.card2.badge"
+                  >
+                    Стоматология
+                  </span>
+                </div>
+                <div class="kc-docs__body">
+                  <h3 class="kc-docs__name" data-i18n="doctors.card2.name">
+                    Ф.И.О
+                  </h3>
+                  <p class="kc-docs__role" data-i18n="doctors.card2.role">
+                    Стоматолог
+                  </p>
+                  <p class="kc-docs__text" data-i18n="doctors.card2.text">
+                    Эстетическая и терапевтическая стоматология, бережное
+                    отношение к пациентам любого возраста.
+                  </p>
+                </div>
+              </li>
+
+              <!-- 3 -->
+              <li class="kc-docs__card" data-reveal>
+                <div class="kc-docs__media">
+                  <img
+                    src="images/doctor_03.jpg"
+                    alt="УЗ-диагностика — Алексей Леонов"
+                    class="kc-docs__img"
+                    loading="lazy"
+                  />
+                  <span
+                    class="kc-docs__badge kc-docs__badge--green"
+                    data-i18n="doctors.card3.badge"
+                  >
+                    Диагностика
+                  </span>
+                </div>
+                <div class="kc-docs__body">
+                  <h3 class="kc-docs__name" data-i18n="doctors.card3.name">
+                    Ф.И.О
+                  </h3>
+                  <p class="kc-docs__role" data-i18n="doctors.card3.role">
+                    Врач УЗ-диагностики
+                  </p>
+                  <p class="kc-docs__text" data-i18n="doctors.card3.text">
+                    Точные заключения и подробные объяснения каждого шага
+                    исследования для пациента.
+                  </p>
+                </div>
               </li>
             </ul>
+          </div>
 
-            <a href="tel:+998950884141" class="kc-faq__call" data-i18n="faq.call">
-              📞 Позвонить в клинику
+          <div
+            class="kc-docs__more"
+            style="justify-content: center; display: flex; margin-top: 30px"
+            data-reveal
+          >
+            <a href="doctors.html" class="kc-hs__btn" data-i18n="doctors.more">
+              Смотреть всех врачей
             </a>
-          </aside>
+          </div>
+        </div>
+      </section>
 
-          <div class="kc-faq__accordion" data-faq-reveal data-reveal>
-            <!-- Q1 -->
-            <article class="kc-faq__item is-open">
-              <button class="kc-faq__question" type="button" aria-expanded="true">
-                <span class="kc-faq__q-text" data-i18n="faq.q1.question">
-                  Нужно ли заранее записываться на приём?
-                </span>
-                <span class="kc-faq__q-icon">
-                  <span class="kc-faq__q-line kc-faq__q-line--h"></span>
-                  <span class="kc-faq__q-line kc-faq__q-line--v"></span>
-                </span>
-              </button>
-              <div class="kc-faq__answer" style="max-height: 500px">
-                <p data-i18n="faq.q1.answer">
-                  Запись заранее помогает выбрать удобное время и сократить
-                  ожидание. Но при необходимости мы стараемся принять и в день
-                  обращения — особенно при острых состояниях.
-                </p>
-              </div>
+      <!-- О КЛИНИКЕ / ПОЧЕМУ МЫ -->
+      <section id="about" class="kc-why" data-reveal>
+        <div class="kc-why__inner">
+          <div class="kc-why__text" data-reveal>
+            <span class="kc-why__kicker" data-i18n="about.kicker">
+              Почему нас выбирают
+            </span>
+            <h2 class="kc-why__title" data-i18n="about.title">
+              Забота, технологии и доверие
+            </h2>
+            <p class="kc-why__lead" data-i18n="about.lead">
+              Мы совмещаем современную диагностику, внимательное отношение и
+              прозрачные рекомендации, чтобы пациент чувствовал себя спокойно на
+              каждом этапе лечения.
+            </p>
+            <p class="kc-why__note" data-i18n="about.note">
+              Наша команда работает 24/7, чтобы вы могли получить помощь именно
+              тогда, когда она нужна — без лишнего ожидания.
+            </p>
+          </div>
+
+          <div class="kc-why__grid" data-reveal>
+            <article class="kc-why__item">
+              <div class="kc-why__value">24/7</div>
+              <h3 class="kc-why__item-title" data-i18n="about.card1.title">
+                Круглосуточная работа
+              </h3>
+              <p class="kc-why__item-text" data-i18n="about.card1.text">
+                Приём пациентов, консультации и поддержка без выходных и
+                праздников.
+              </p>
             </article>
 
-            <!-- Q2 -->
-            <article class="kc-faq__item">
-              <button class="kc-faq__question" type="button">
-                <span class="kc-faq__q-text" data-i18n="faq.q2.question">
-                  Какие анализы можно сдать в клинике?
-                </span>
-                <span class="kc-faq__q-icon">
-                  <span class="kc-faq__q-line kc-faq__q-line--h"></span>
-                  <span class="kc-faq__q-line kc-faq__q-line--v"></span>
-                </span>
-              </button>
-              <div class="kc-faq__answer">
-                <p data-i18n="faq.q2.answer">
-                  Мы выполняем основные лабораторные анализы: общий и
-                  биохимический анализ крови, гормоны, инфекции, анализы для
-                  госпитализации и программ check-up. Полный список можно
-                  уточнить у администратора.
-                </p>
-              </div>
+            <article class="kc-why__item">
+              <div class="kc-why__value">15+</div>
+              <h3 class="kc-why__item-title" data-i18n="about.card2.title">
+                Направлений
+              </h3>
+              <p class="kc-why__item-text" data-i18n="about.card2.text">
+                Диагностика и лечение по ключевым направлениям взрослой и
+                детской медицины.
+              </p>
             </article>
 
-            <!-- Q3 -->
-            <article class="kc-faq__item">
-              <button class="kc-faq__question" type="button">
-                <span class="kc-faq__q-text" data-i18n="faq.q3.question">
-                  Можно ли записаться на приём онлайн или через мессенджер?
-                </span>
-                <span class="kc-faq__q-icon">
-                  <span class="kc-faq__q-line kc-faq__q-line--h"></span>
-                  <span class="kc-faq__q-line kc-faq__q-line--v"></span>
-                </span>
-              </button>
-              <div class="kc-faq__answer">
-                <p data-i18n="faq.q3.answer">
-                  Да, вы можете оставить заявку через сайт, написать в
-                  мессенджер или позвонить. Администратор уточнит детали и
-                  подтвердит время приёма.
-                </p>
-              </div>
+            <article class="kc-why__item">
+              <div class="kc-why__value">10 000+</div>
+              <h3 class="kc-why__item-title" data-i18n="about.card3.title">
+                пациентов в год
+              </h3>
+              <p class="kc-why__item-text" data-i18n="about.card3.text">
+                Нам доверяют семьи, которые возвращаются к нам снова и
+                рекомендуют клинику близким.
+              </p>
             </article>
 
-            <!-- Q4 -->
-            <article class="kc-faq__item">
-              <button class="kc-faq__question" type="button">
-                <span class="kc-faq__q-text" data-i18n="faq.q4.question">
-                  Что взять с собой на первый приём?
-                </span>
-                <span class="kc-faq__q-icon">
-                  <span class="kc-faq__q-line kc-faq__q-line--h"></span>
-                  <span class="kc-faq__q-line kc-faq__q-line--v"></span>
-                </span>
-              </button>
-              <div class="kc-faq__answer">
-                <p data-i18n="faq.q4.answer">
-                  Возьмите паспорт, список принимаемых препаратов и, по
-                  возможности, предыдущие выписки и результаты анализов. Это
-                  поможет врачу быстрее разобраться в ситуации.
-                </p>
+            <article class="kc-why__item">
+              <div class="kc-why__value" data-i18n="about.card4.value">
+                Опыт
               </div>
-            </article>
-
-            <!-- Q5 -->
-            <article class="kc-faq__item">
-              <button class="kc-faq__question" type="button">
-                <span class="kc-faq__q-text" data-i18n="faq.q5.question">
-                  Работаете ли вы с детьми?
-                </span>
-                <span class="kc-faq__q-icon">
-                  <span class="kc-faq__q-line kc-faq__q-line--h"></span>
-                  <span class="kc-faq__q-line kc-faq__q-line--v"></span>
-                </span>
-              </button>
-              <div class="kc-faq__answer">
-                <p data-i18n="faq.q5.answer">
-                  Да, в клинике есть педиатры и узкие детские специалисты. Мы
-                  создаём максимально спокойную атмосферу для ребёнка и
-                  родителей.
-                </p>
-              </div>
+              <h3 class="kc-why__item-title" data-i18n="about.card4.title">
+                Врачи-эксперты
+              </h3>
+              <p class="kc-why__item-text" data-i18n="about.card4.text">
+                Врачи с большим практическим опытом, внимательным подходом и
+                постоянным повышением квалификации.
+              </p>
             </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
+      <!-- КАК ПРОХОДИТ ПРИЁМ -->
+      <section id="flow" class="kc-flow" data-reveal>
+        <div class="kc-flow__inner">
+          <div class="kc-flow__text" data-reveal>
+            <span class="kc-flow__kicker" data-i18n="flow.kicker">
+              ЭТАПЫ ОБСЛУЖИВАНИЯ
+            </span>
+            <h2 class="kc-flow__title" data-i18n="flow.title">
+              Как проходит приём в Kamilovs Clinic
+            </h2>
+            <p class="kc-flow__lead" data-i18n="flow.lead">
+              Мы заботимся о том, чтобы каждый этап визита был понятным и
+              комфортным — от записи до получения результатов и рекомендаций.
+            </p>
+            <p class="kc-flow__note" data-i18n="flow.note">
+              Можно записаться через сайт, по телефону или в мессенджере — вы
+              получите напоминание о приёме и подробную консультацию врача.
+            </p>
+          </div>
 
-    <!-- ВРАЧИ -->
-    <section id="doctors" class="kc-docs" data-reveal>
-      <div class="kc-docs__inner">
-        <div class="kc-docs__head" data-reveal>
-          <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-docs__logo"
-            loading="lazy" />
-          <p class="kc-docs__kicker" data-i18n="doctors.kicker">
-            КОМАНДА ЭКСПЕРТОВ
-          </p>
-          <h2 class="kc-docs__title" data-i18n="doctors.title">
-            Наши специалисты
-          </h2>
-          <p class="kc-docs__sub" data-i18n="doctors.sub">
-            Диагностика, лечение и внимание к деталям — команда врачей, на
-            которых можно положиться.
-          </p>
+          <div class="kc-flow__steps" aria-label="Как проходит приём">
+            <article class="kc-flow__step" data-reveal>
+              <div class="kc-flow__badge">
+                <span class="kc-flow__step-num">1</span>
+              </div>
+              <h3 class="kc-flow__step-title" data-i18n="flow.step1.title">
+                Заявка или звонок
+              </h3>
+              <p class="kc-flow__step-text" data-i18n="flow.step1.text">
+                Вы оставляете заявку на сайте или звоните в клинику. Наш
+                администратор подбирает удобное время и врача.
+              </p>
+            </article>
+
+            <article class="kc-flow__step" data-reveal>
+              <div class="kc-flow__badge">
+                <span class="kc-flow__step-num">2</span>
+              </div>
+              <h3 class="kc-flow__step-title" data-i18n="flow.step2.title">
+                Подтверждение и напоминание
+              </h3>
+              <p class="kc-flow__step-text" data-i18n="flow.step2.text">
+                Мы подтверждаем запись, отправляем SMS или сообщение в
+                мессенджер с датой, временем и адресом клиники.
+              </p>
+            </article>
+
+            <article class="kc-flow__step" data-reveal>
+              <div class="kc-flow__badge">
+                <span class="kc-flow__step-num">3</span>
+              </div>
+              <h3 class="kc-flow__step-title" data-i18n="flow.step3.title">
+                Приём у врача
+              </h3>
+              <p class="kc-flow__step-text" data-i18n="flow.step3.text">
+                Врач проводит осмотр, задаёт уточняющие вопросы, при
+                необходимости назначает диагностику и анализы.
+              </p>
+            </article>
+
+            <article class="kc-flow__step" data-reveal>
+              <div class="kc-flow__badge">
+                <span class="kc-flow__step-num">4</span>
+              </div>
+              <h3 class="kc-flow__step-title" data-i18n="flow.step4.title">
+                План лечения и сопровождение
+              </h3>
+              <p class="kc-flow__step-text" data-i18n="flow.step4.text">
+                Вы получаете понятный план лечения, рекомендации и при
+                необходимости — повторный приём или онлайн-консультацию.
+              </p>
+            </article>
+          </div>
         </div>
+      </section>
+    </main>
 
-        <div class="kc-docs__viewport" data-reveal>
-          <ul class="kc-docs__list">
-            <!-- 1 -->
-            <li class="kc-docs__card" data-reveal>
-              <div class="kc-docs__media">
-                <img src="images/doctor_01.jpg" alt="Невролог — Ольга Соколова" class="kc-docs__img" loading="lazy" />
-                <span class="kc-docs__badge kc-docs__badge--cyan" data-i18n="doctors.card1.badge">
-                  Неврология
-                </span>
-              </div>
-              <div class="kc-docs__body">
-                <h3 class="kc-docs__name" data-i18n="doctors.card1.name">
-                  Ф.И.О
-                </h3>
-                <p class="kc-docs__role" data-i18n="doctors.card1.role">
-                  Невролог
-                </p>
-                <p class="kc-docs__text" data-i18n="doctors.card1.text">
-                  Индивидуальный подход к каждому пациенту, современная
-                  диагностика и мягкое сопровождение лечения.
-                </p>
-              </div>
-            </li>
+    <!-- ===== ФУТЕР ===== -->
+    <footer class="kc-footer" id="contacts" data-reveal>
+      <div class="kc-footer__waves" aria-hidden="true"></div>
 
-            <!-- 2 -->
-            <li class="kc-docs__card" data-reveal>
-              <div class="kc-docs__media">
-                <img src="images/doctor_02.jpg" alt="Стоматолог — Эмиль Янг" class="kc-docs__img" loading="lazy" />
-                <span class="kc-docs__badge kc-docs__badge--blue" data-i18n="doctors.card2.badge">
-                  Стоматология
-                </span>
-              </div>
-              <div class="kc-docs__body">
-                <h3 class="kc-docs__name" data-i18n="doctors.card2.name">
-                  Ф.И.О
-                </h3>
-                <p class="kc-docs__role" data-i18n="doctors.card2.role">
-                  Стоматолог
-                </p>
-                <p class="kc-docs__text" data-i18n="doctors.card2.text">
-                  Эстетическая и терапевтическая стоматология, бережное
-                  отношение к пациентам любого возраста.
-                </p>
-              </div>
-            </li>
+      <div class="kc-footer__inner">
+        <div class="kc-footer__col kc-footer__col--brand">
+          <div class="kc-footer__logo-wrap">
+            <img
+              src="images/Лого Camilovs‘ Полноцветный RGB.png"
+              alt="Kamilovs Clinic"
+              class="kc-footer__logo"
+            />
+          </div>
 
-            <!-- 3 -->
-            <li class="kc-docs__card" data-reveal>
-              <div class="kc-docs__media">
-                <img src="images/doctor_03.jpg" alt="УЗ-диагностика — Алексей Леонов" class="kc-docs__img"
-                  loading="lazy" />
-                <span class="kc-docs__badge kc-docs__badge--green" data-i18n="doctors.card3.badge">
-                  Диагностика
-                </span>
-              </div>
-              <div class="kc-docs__body">
-                <h3 class="kc-docs__name" data-i18n="doctors.card3.name">
-                  Ф.И.О
-                </h3>
-                <p class="kc-docs__role" data-i18n="doctors.card3.role">
-                  Врач УЗ-диагностики
-                </p>
-                <p class="kc-docs__text" data-i18n="doctors.card3.text">
-                  Точные заключения и подробные объяснения каждого шага
-                  исследования для пациента.
-                </p>
-              </div>
+          <p class="kc-footer__text" data-i18n="footer.text">
+            Современная многопрофильная клиника в центре Ташкента. Работаем 24/7
+            — рядом, когда это важно.
+          </p>
+
+          <ul class="kc-footer__list">
+            <li data-i18n="footer.addr">📍 ул. Хувайдо, 7, Ташкент</li>
+            <li>
+              📞
+              <a href="tel:+998950884141">+998 95 088 41 41</a>
             </li>
+            <li>
+              ✉️
+              <a href="mailto:info@kamilovs.uz">info@kamilovs.uz</a>
+            </li>
+            <li data-i18n="footer.hours">🕒 Работаем круглосуточно</li>
           </ul>
+
+          <button
+            class="kc-footer__cta"
+            type="button"
+            onclick="kcOpenModal()"
+            data-i18n="footer.cta"
+          >
+            Записаться
+          </button>
         </div>
 
-        <div class="kc-docs__more" style="justify-content: center; display: flex; margin-top: 30px" data-reveal>
-          <a href="doctors.html" class="kc-hs__btn" data-i18n="doctors.more">
-            Смотреть всех врачей
-          </a>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- О КЛИНИКЕ / ПОЧЕМУ МЫ -->
-    <section id="about" class="kc-why" data-reveal>
-      <div class="kc-why__inner">
-        <div class="kc-why__text" data-reveal>
-          <span class="kc-why__kicker" data-i18n="about.kicker">
-            Почему нас выбирают
-          </span>
-          <h2 class="kc-why__title" data-i18n="about.title">
-            Забота, технологии и доверие
-          </h2>
-          <p class="kc-why__lead" data-i18n="about.lead">
-            Мы совмещаем современную диагностику, внимательное отношение и
-            прозрачные рекомендации, чтобы пациент чувствовал себя спокойно на
-            каждом этапе лечения.
+        <div class="kc-footer__col kc-footer__col--map">
+          <h3 class="kc-footer__map-title" data-i18n="footer.mapTitle">
+            Как нас найти
+          </h3>
+          <p class="kc-footer__map-text" data-i18n="footer.mapText">
+            Kamilovs’ clinic на Яндекс Картах — построить удобный маршрут за
+            пару секунд.
           </p>
-          <p class="kc-why__note" data-i18n="about.note">
-            Наша команда работает 24/7, чтобы вы могли получить помощь именно
-            тогда, когда она нужна — без лишнего ожидания.
-          </p>
-        </div>
-
-        <div class="kc-why__grid" data-reveal>
-          <article class="kc-why__item">
-            <div class="kc-why__value">24/7</div>
-            <h3 class="kc-why__item-title" data-i18n="about.card1.title">
-              Круглосуточная работа
-            </h3>
-            <p class="kc-why__item-text" data-i18n="about.card1.text">
-              Приём пациентов, консультации и поддержка без выходных и
-              праздников.
-            </p>
-          </article>
-
-          <article class="kc-why__item">
-            <div class="kc-why__value">15+</div>
-            <h3 class="kc-why__item-title" data-i18n="about.card2.title">
-              Направлений
-            </h3>
-            <p class="kc-why__item-text" data-i18n="about.card2.text">
-              Диагностика и лечение по ключевым направлениям взрослой и
-              детской медицины.
-            </p>
-          </article>
-
-          <article class="kc-why__item">
-            <div class="kc-why__value">10 000+</div>
-            <h3 class="kc-why__item-title" data-i18n="about.card3.title">
-              пациентов в год
-            </h3>
-            <p class="kc-why__item-text" data-i18n="about.card3.text">
-              Нам доверяют семьи, которые возвращаются к нам снова и
-              рекомендуют клинику близким.
-            </p>
-          </article>
-
-          <article class="kc-why__item">
-            <div class="kc-why__value" data-i18n="about.card4.value">
-              Опыт
-            </div>
-            <h3 class="kc-why__item-title" data-i18n="about.card4.title">
-              Врачи-эксперты
-            </h3>
-            <p class="kc-why__item-text" data-i18n="about.card4.text">
-              Врачи с большим практическим опытом, внимательным подходом и
-              постоянным повышением квалификации.
-            </p>
-          </article>
+          <div class="kc-map-wrapper">
+            <iframe
+              src="https://yandex.uz/map-widget/v1/org/66518861972/?ll=69.203739%2C41.342219&z=17"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy"
+            ></iframe>
+          </div>
         </div>
       </div>
-    </section>
 
-
-    <!-- КАК ПРОХОДИТ ПРИЁМ -->
-    <section id="flow" class="kc-flow" data-reveal>
-      <div class="kc-flow__inner">
-        <div class="kc-flow__text" data-reveal>
-          <span class="kc-flow__kicker" data-i18n="flow.kicker">
-            ЭТАПЫ ОБСЛУЖИВАНИЯ
-          </span>
-          <h2 class="kc-flow__title" data-i18n="flow.title">
-            Как проходит приём в Kamilovs Clinic
-          </h2>
-          <p class="kc-flow__lead" data-i18n="flow.lead">
-            Мы заботимся о том, чтобы каждый этап визита был понятным и
-            комфортным — от записи до получения результатов и рекомендаций.
-          </p>
-          <p class="kc-flow__note" data-i18n="flow.note">
-            Можно записаться через сайт, по телефону или в мессенджере — вы
-            получите напоминание о приёме и подробную консультацию врача.
-          </p>
-        </div>
-
-        <div class="kc-flow__steps" aria-label="Как проходит приём">
-          <article class="kc-flow__step" data-reveal>
-            <div class="kc-flow__badge">
-              <span class="kc-flow__step-num">1</span>
-            </div>
-            <h3 class="kc-flow__step-title" data-i18n="flow.step1.title">
-              Заявка или звонок
-            </h3>
-            <p class="kc-flow__step-text" data-i18n="flow.step1.text">
-              Вы оставляете заявку на сайте или звоните в клинику. Наш
-              администратор подбирает удобное время и врача.
-            </p>
-          </article>
-
-          <article class="kc-flow__step" data-reveal>
-            <div class="kc-flow__badge">
-              <span class="kc-flow__step-num">2</span>
-            </div>
-            <h3 class="kc-flow__step-title" data-i18n="flow.step2.title">
-              Подтверждение и напоминание
-            </h3>
-            <p class="kc-flow__step-text" data-i18n="flow.step2.text">
-              Мы подтверждаем запись, отправляем SMS или сообщение в
-              мессенджер с датой, временем и адресом клиники.
-            </p>
-          </article>
-
-          <article class="kc-flow__step" data-reveal>
-            <div class="kc-flow__badge">
-              <span class="kc-flow__step-num">3</span>
-            </div>
-            <h3 class="kc-flow__step-title" data-i18n="flow.step3.title">
-              Приём у врача
-            </h3>
-            <p class="kc-flow__step-text" data-i18n="flow.step3.text">
-              Врач проводит осмотр, задаёт уточняющие вопросы, при
-              необходимости назначает диагностику и анализы.
-            </p>
-          </article>
-
-          <article class="kc-flow__step" data-reveal>
-            <div class="kc-flow__badge">
-              <span class="kc-flow__step-num">4</span>
-            </div>
-            <h3 class="kc-flow__step-title" data-i18n="flow.step4.title">
-              План лечения и сопровождение
-            </h3>
-            <p class="kc-flow__step-text" data-i18n="flow.step4.text">
-              Вы получаете понятный план лечения, рекомендации и при
-              необходимости — повторный приём или онлайн-консультацию.
-            </p>
-          </article>
-        </div>
+      <div class="kc-footer__bottom">
+        <span>© <span id="kc-year"></span> Kamilovs Clinic.</span>
+        <span data-i18n="footer.bottomNote">
+          Сайт создан с заботой о пациентах.
+        </span>
       </div>
-    </section>
+    </footer>
 
-  </main>
+    <!-- ===== МОДАЛКА ЗАПИСИ ===== -->
+    <div class="kc-modal" id="kcModal" aria-hidden="true">
+      <div class="kc-modal__overlay" data-kc-close></div>
 
-  <!-- ===== ФУТЕР ===== -->
-  <footer class="kc-footer" id="contacts" data-reveal>
-    <div class="kc-footer__waves" aria-hidden="true"></div>
-
-    <div class="kc-footer__inner">
-      <div class="kc-footer__col kc-footer__col--brand">
-        <div class="kc-footer__logo-wrap">
-          <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-footer__logo" />
-        </div>
-
-        <p class="kc-footer__text" data-i18n="footer.text">
-          Современная многопрофильная клиника в центре Ташкента. Работаем 24/7
-          — рядом, когда это важно.
-        </p>
-
-        <ul class="kc-footer__list">
-          <li data-i18n="footer.addr">
-            📍 ул. Хувайдо, 7, Ташкент
-          </li>
-          <li>
-            📞
-            <a href="tel:+998950884141">+998 95 088 41 41</a>
-          </li>
-          <li>
-            ✉️
-            <a href="mailto:info@kamilovs.uz">info@kamilovs.uz</a>
-          </li>
-          <li data-i18n="footer.hours">
-            🕒 Работаем круглосуточно
-          </li>
-        </ul>
-
-        <button class="kc-footer__cta" type="button" onclick="kcOpenModal()" data-i18n="footer.cta">
-          Записаться
-        </button>
-      </div>
-
-      <div class="kc-footer__col kc-footer__col--map">
-        <h3 class="kc-footer__map-title" data-i18n="footer.mapTitle">
-          Как нас найти
-        </h3>
-        <p class="kc-footer__map-text" data-i18n="footer.mapText">
-          Kamilovs’ clinic на Яндекс Картах — построить удобный маршрут за
-          пару секунд.
-        </p>
-        <div class="kc-map-wrapper">
-          <iframe src="https://yandex.uz/map-widget/v1/org/66518861972/?ll=69.203739%2C41.342219&z=17" frameborder="0"
-            allowfullscreen="true" loading="lazy"></iframe>
-        </div>
-      </div>
-    </div>
-
-    <div class="kc-footer__bottom">
-      <span>© <span id="kc-year"></span> Kamilovs Clinic.</span>
-      <span data-i18n="footer.bottomNote">
-        Сайт создан с заботой о пациентах.
-      </span>
-    </div>
-  </footer>
-
-
-  <!-- ===== МОДАЛКА ЗАПИСИ ===== -->
-  <div class="kc-modal" id="kcModal" aria-hidden="true">
-    <div class="kc-modal__overlay" data-kc-close></div>
-
-    <div class="kc-modal__content" role="dialog" aria-modal="true">
-      <button class="kc-modal__close" type="button" data-kc-close aria-label="Закрыть окно">
-        ×
-      </button>
-
-      <!-- ВЕРХНЯЯ ЧАСТЬ С ЛОГО -->
-      <div class="kc-modal__head">
-        <div class="kc-modal__logo-wrap">
-          <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-modal__logo" />
-        </div>
-
-        <h3 class="kc-modal__title" data-i18n="modal.title">
-          Записаться в Kamilovs Clinic
-        </h3>
-        <p class="kc-modal__sub" data-i18n="modal.sub">
-          Оставьте контакты — наш администратор ответит в течение 5 минут.
-        </p>
-      </div>
-
-      <!-- ФОРМА -->
-      <form action="http://127.0.0.1:8000/lead/" method="post" class="kc-modal__form" id="kcModalForm">
-        <div class="kc-field">
-          <label class="kc-label" data-i18n="modal.field.name.label">
-            Имя
-          </label>
-          <input type="text" name="name" class="kc-input" placeholder="Ваше имя"
-            data-i18n-placeholder="modal.field.name.placeholder" />
-        </div>
-
-        <div class="kc-field">
-          <label class="kc-label" data-i18n="modal.field.phone.label">
-            Телефон*
-          </label>
-          <input type="tel" name="phone" class="kc-input" required placeholder="+998 XX XXX XX XX"
-            data-i18n-placeholder="modal.field.phone.placeholder" />
-          <p class="kc-form-hint" data-i18n="modal.field.phone.hint">
-            Мы позвоним только по вашей заявке — без спама.
-          </p>
-        </div>
-
-        <div class="kc-field">
-          <label class="kc-label" data-i18n="modal.field.service.label">
-            Интересующая услуга
-          </label>
-          <input type="text" name="service" class="kc-input" placeholder="Например: кардиология"
-            data-i18n-placeholder="modal.field.service.placeholder" />
-        </div>
-
-        <div class="kc-field">
-          <label class="kc-label" data-i18n="modal.field.message.label">
-            Комментарий
-          </label>
-          <textarea name="message" class="kc-input" placeholder="Опишите ваш вопрос, жалобу или симптом"
-            data-i18n-placeholder="modal.field.message.placeholder"></textarea>
-        </div>
-
-        <!-- скрытые поля -->
-        <input type="hidden" name="form_context" value="modal" />
-        <input type="hidden" name="page_url" id="kcPageUrl" value="" />
-
-        <button type="submit" class="kc-btn" data-i18n="modal.submit">
-          Отправить заявку
+      <div class="kc-modal__content" role="dialog" aria-modal="true">
+        <button
+          class="kc-modal__close"
+          type="button"
+          data-kc-close
+          aria-label="Закрыть окно"
+        >
+          ×
         </button>
 
-        <p class="kc-modal__privacy" data-i18n="modal.privacy">
-          Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки
-          персональных данных.
-        </p>
-      </form>
+        <!-- ВЕРХНЯЯ ЧАСТЬ С ЛОГО -->
+        <div class="kc-modal__head">
+          <div class="kc-modal__logo-wrap">
+            <img
+              src="images/Лого Camilovs‘ Полноцветный RGB.png"
+              alt="Kamilovs Clinic"
+              class="kc-modal__logo"
+            />
+          </div>
+
+          <h3 class="kc-modal__title" data-i18n="modal.title">
+            Записаться в Kamilovs Clinic
+          </h3>
+          <p class="kc-modal__sub" data-i18n="modal.sub">
+            Оставьте контакты — наш администратор ответит в течение 5 минут.
+          </p>
+        </div>
+
+        <!-- ФОРМА -->
+        <form
+          action="https://kamilovsclinic-backend.onrender.com/lead/"
+          method="post"
+          class="kc-modal__form"
+          id="kcModalForm"
+        >
+          <input type="hidden" name="page_url" id="page_url" />
+          <input type="hidden" name="form_context" value="modal_form" />
+
+          <!-- остальные поля -->
+          <div class="kc-field">
+            <label class="kc-label" data-i18n="modal.field.name.label">
+              Имя
+            </label>
+            <input
+              type="text"
+              name="name"
+              class="kc-input"
+              placeholder="Ваше имя"
+              data-i18n-placeholder="modal.field.name.placeholder"
+            />
+          </div>
+
+          <div class="kc-field">
+            <label class="kc-label" data-i18n="modal.field.phone.label">
+              Телефон*
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              class="kc-input"
+              required
+              placeholder="+998 XX XXX XX XX"
+              data-i18n-placeholder="modal.field.phone.placeholder"
+            />
+            <p class="kc-form-hint" data-i18n="modal.field.phone.hint">
+              Мы позвоним только по вашей заявке — без спама.
+            </p>
+          </div>
+
+          <div class="kc-field">
+            <label class="kc-label" data-i18n="modal.field.service.label">
+              Интересующая услуга
+            </label>
+            <input
+              type="text"
+              name="service"
+              class="kc-input"
+              placeholder="Например: кардиология"
+              data-i18n-placeholder="modal.field.service.placeholder"
+            />
+          </div>
+
+          <div class="kc-field">
+            <label class="kc-label" data-i18n="modal.field.message.label">
+              Комментарий
+            </label>
+            <textarea
+              name="message"
+              class="kc-input"
+              placeholder="Опишите ваш вопрос, жалобу или симптом"
+              data-i18n-placeholder="modal.field.message.placeholder"
+            ></textarea>
+          </div>
+
+          <!-- скрытые поля -->
+          <input type="hidden" name="form_context" value="modal" />
+          <input type="hidden" name="page_url" id="kcPageUrl" value="" />
+
+          <button type="submit" class="kc-btn" data-i18n="modal.submit">
+            Отправить заявку
+          </button>
+
+          <p class="kc-modal__privacy" data-i18n="modal.privacy">
+            Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки
+            персональных данных.
+          </p>
+        </form>
+      </div>
     </div>
-  </div>
 
+    <!-- Скрипты -->
+    <script src="js/reveal.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/doctors-rotate.js"></script>
+    <script src="js/faq.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/lang-switcher.js"></script>
 
+    <script>
+      (function () {
+        const modal = document.getElementById("kcModal");
+        if (!modal) return;
 
+        const body = document.body;
+        const pageUrlInput = modal.querySelector("#kcPageUrl");
 
-  <!-- Скрипты -->
-  <script src="js/reveal.js"></script>
-  <script src="js/header.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/doctors-rotate.js"></script>
-  <script src="js/faq.js"></script>
-  <script src="js/forms.js"></script>
-  <script src="js/lang-switcher.js"></script>
+        // подставляем текущий URL в скрытое поле
+        if (pageUrlInput) {
+          pageUrlInput.value = window.location.href;
+        }
 
-  <script>
-    (function () {
-      const modal = document.getElementById("kcModal");
-      if (!modal) return;
+        function lockBodyScroll() {
+          const scrollY = window.scrollY || window.pageYOffset;
+          body.dataset.kcScrollY = scrollY;
+          body.style.position = "fixed";
+          body.style.top = `-${scrollY}px`;
+          body.style.left = "0";
+          body.style.right = "0";
+          body.style.width = "100%";
+        }
 
-      const body = document.body;
-      const pageUrlInput = modal.querySelector("#kcPageUrl");
+        function unlockBodyScroll() {
+          const scrollY = body.dataset.kcScrollY
+            ? parseInt(body.dataset.kcScrollY, 10)
+            : 0;
+          body.style.position = "";
+          body.style.top = "";
+          body.style.left = "";
+          body.style.right = "";
+          body.style.width = "";
+          delete body.dataset.kcScrollY;
+          window.scrollTo(0, scrollY);
+        }
 
-      // подставляем текущий URL в скрытое поле
-      if (pageUrlInput) {
-        pageUrlInput.value = window.location.href;
-      }
+        window.kcOpenModal = function () {
+          modal.classList.add("kc-modal--open");
+          modal.setAttribute("aria-hidden", "false");
+          lockBodyScroll();
+        };
 
-      function lockBodyScroll() {
-        const scrollY = window.scrollY || window.pageYOffset;
-        body.dataset.kcScrollY = scrollY;
-        body.style.position = "fixed";
-        body.style.top = `-${scrollY}px`;
-        body.style.left = "0";
-        body.style.right = "0";
-        body.style.width = "100%";
-      }
+        window.kcCloseModal = function () {
+          modal.classList.remove("kc-modal--open");
+          modal.setAttribute("aria-hidden", "true");
+          unlockBodyScroll();
+        };
 
-      function unlockBodyScroll() {
-        const scrollY = body.dataset.kcScrollY
-          ? parseInt(body.dataset.kcScrollY, 10)
-          : 0;
-        body.style.position = "";
-        body.style.top = "";
-        body.style.left = "";
-        body.style.right = "";
-        body.style.width = "";
-        delete body.dataset.kcScrollY;
-        window.scrollTo(0, scrollY);
-      }
-
-      window.kcOpenModal = function () {
-        modal.classList.add("kc-modal--open");
-        modal.setAttribute("aria-hidden", "false");
-        lockBodyScroll();
-      };
-
-      window.kcCloseModal = function () {
-        modal.classList.remove("kc-modal--open");
-        modal.setAttribute("aria-hidden", "true");
-        unlockBodyScroll();
-      };
-
-      // Закрытие по клику на overlay / крестик (через data-kc-close)
-      modal.querySelectorAll("[data-kc-close]").forEach((el) => {
-        el.addEventListener("click", () => {
-          window.kcCloseModal();
+        // Закрытие по клику на overlay / крестик (через data-kc-close)
+        modal.querySelectorAll("[data-kc-close]").forEach((el) => {
+          el.addEventListener("click", () => {
+            window.kcCloseModal();
+          });
         });
-      });
 
-      // Закрытие по Esc
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("kc-modal--open")) {
-          window.kcCloseModal();
+        // Закрытие по Esc
+        document.addEventListener("keydown", (e) => {
+          if (
+            e.key === "Escape" &&
+            modal.classList.contains("kc-modal--open")
+          ) {
+            window.kcCloseModal();
+          }
+        });
+      })();
+    </script>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const pageInput = document.getElementById("page_url");
+        if (pageInput) {
+          pageInput.value = window.location.href;
         }
       });
-    })();
-  </script>
-
-</body>
-
+    </script>
+  </body>
 </html>

@@ -8,6 +8,7 @@
     <!-- Стили -->
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/pages/index.css" />
+    <link rel="stylesheet" href="css/pages/services-section.css">
   </head>
 
   <body>
@@ -211,103 +212,151 @@
       </section>
 
       <!-- УСЛУГИ -->
-      <section id="services" class="kc-hs" data-reveal>
-        <div class="kc-hs__inner">
-          <div class="kc-hs__text" data-reveal>
-            <span class="kc-hs__kicker" data-i18n="services.kicker">
-              ЧТО МЫ ДЕЛАЕМ
-            </span>
-            <h2 class="kc-hs__title" data-i18n="services.title">
+      <section id="services" class="svc" data-reveal>
+        <div class="svc__wrap">
+          <!-- LEFT: text -->
+          <div class="svc__copy" data-reveal>
+            <span class="svc__kicker" data-i18n="services.kicker"
+              >ЧТО МЫ ДЕЛАЕМ</span
+            >
+
+            <h2 class="svc__title fx-title" data-i18n="services.title">
               Услуги клиники
             </h2>
-            <p class="kc-hs__lead" data-i18n="services.lead">
+
+            <p class="svc__lead" data-i18n="services.lead">
               Комплексная диагностика, лечение и профилактика на базе
               современного оборудования и команды экспертов.
             </p>
-            <p class="kc-hs__p" data-i18n="services.text">
+
+            <p class="svc__text" data-i18n="services.text">
               Индивидуальный подход, комфортные условия, точная диагностика и
               прозрачные рекомендации — основа нашей работы.
             </p>
 
-            <a href="services.html" class="kc-hs__btn" data-i18n="services.cta">
-              Подробнее об услугах
-            </a>
+            <div class="svc__actions">
+              <a
+                href="services.html"
+                class="btn-primary"
+                data-i18n="services.cta"
+              >
+                Подробнее об услугах
+              </a>
+            </div>
+
+            <ul class="svc__facts" aria-label="Преимущества">
+              <li class="svc__fact">
+                <span class="svc__dot" aria-hidden="true"></span>
+                <span>Современное оборудование</span>
+              </li>
+              <li class="svc__fact">
+                <span class="svc__dot" aria-hidden="true"></span>
+                <span>Прозрачные рекомендации</span>
+              </li>
+              <li class="svc__fact">
+                <span class="svc__dot" aria-hidden="true"></span>
+                <span>Комфортные условия</span>
+              </li>
+            </ul>
           </div>
 
-          <div class="kc-hs__media" data-reveal>
-            <div class="kc-hs__slide is-active">
-              <figure class="kc-hs__figure">
-                <img
-                  src="images/clinic_01.jpg"
-                  alt="Врачи за работой в диагностическом отделении"
-                  class="kc-hs__img"
-                  loading="lazy"
-                />
-                <figcaption class="kc-hs__caption">
-                  <strong data-i18n="services.slide1.title"
-                    >Обзор клиники</strong
+          <!-- RIGHT: slider -->
+          <div class="svc__stage" data-reveal>
+            <div class="carousel" data-carousel aria-label="Слайдер услуг">
+              <div class="carousel__viewport">
+                <div class="carousel__track">
+                  <!-- <article
+                    class="carousel__slide is-active"
+                    role="group"
+                    aria-roledescription="slide"
                   >
-                  <span data-i18n="services.slide1.text">
-                    Короткий обзор отделений и сервиса
-                  </span>
-                </figcaption>
-              </figure>
-            </div>
+                    <figure class="cardMedia">
+                      <img
+                        src="images/clinic_01.jpg"
+                        alt="Врачи за работой в диагностическом отделении"
+                        class="cardMedia__img"
+                        loading="lazy"
+                      />
+                      <figcaption class="cardMedia__cap">
+                        <strong data-i18n="services.slide1.title"
+                          >Обзор клиники</strong
+                        >
+                        <span data-i18n="services.slide1.text">
+                          Короткий обзор отделений и сервиса
+                        </span>
+                      </figcaption>
+                    </figure>
+                  </article> -->
 
-            <div class="kc-hs__slide">
-              <figure class="kc-hs__figure">
-                <img
-                  src="images/комната стоматолога.jpg"
-                  alt="Современная цифровая диагностика"
-                  class="kc-hs__img"
-                  loading="lazy"
-                />
-                <figcaption class="kc-hs__caption">
-                  <strong data-i18n="services.slide2.title"
-                    >Современный стоматологический кабинет</strong
+                  <article
+                    class="carousel__slide"
+                    role="group"
+                    aria-roledescription="slide"
                   >
-                  <span data-i18n="services.slide2.text">
-                    Оборудование нового поколения, цифровая диагностика и комфортное лечение без стресса.
-                  </span>
-                </figcaption>
-              </figure>
-            </div>
+                    <figure class="cardMedia">
+                      <img
+                        src="images/комната стоматолога.jpg"
+                        alt="Современная цифровая диагностика"
+                        class="cardMedia__img"
+                        loading="lazy"
+                      />
+                      <!-- <figcaption class="cardMedia__cap">
+                        <strong data-i18n="services.slide2.title"
+                          >Современный стоматологический кабинет</strong
+                        >
+                        <span data-i18n="services.slide2.text">
+                          Точные исследования для взрослых и детей
+                        </span>
+                      </figcaption> -->
+                    </figure>
+                  </article>
 
-            <div class="kc-hs__slide">
-              <figure class="kc-hs__figure">
-                <img
-                  src="images/процедурная.jpg"
-                  alt="Команда врачей клиники"
-                  class="kc-hs__img"
-                  loading="lazy"
-                />
-                <figcaption class="kc-hs__caption">
-                  <strong data-i18n="services.slide3.title"
-                    >Медицинские процедуры под наблюдением врача</strong
+                  <!-- <article
+                    class="carousel__slide"
+                    role="group"
+                    aria-roledescription="slide"
                   >
-                  <span data-i18n="services.slide3.text">
-                    Безопасность, контроль и индивидуальный подход.
-                  </span>
-                </figcaption>
-              </figure>
+                    <figure class="cardMedia">
+                      <img
+                        src="images/процедурная.jpg"
+                        alt="Команда врачей клиники"
+                        class="cardMedia__img"
+                        loading="lazy"
+                      />
+                      <figcaption class="cardMedia__cap">
+                        <strong data-i18n="services.slide3.title"
+                          >Медицинские процедуры под наблюдением врача</strong
+                        >
+                        <span data-i18n="services.slide3.text">
+                          Безопасность, контроль и индивидуальный подход.
+                        </span>
+                      </figcaption>
+                    </figure>
+                  </article> -->
+                </div>
+              </div>
+
+              <button
+                class="carousel__btn carousel__btn--prev"
+                type="button"
+                aria-label="Предыдущий слайд"
+              >
+                <span aria-hidden="true">‹</span>
+              </button>
+              <button
+                class="carousel__btn carousel__btn--next"
+                type="button"
+                aria-label="Следующий слайд"
+              >
+                <span aria-hidden="true">›</span>
+              </button>
+
+              <div
+                class="carousel__dots"
+                role="tablist"
+                aria-label="Слайды"
+              ></div>
             </div>
-
-            <button
-              class="kc-hs__nav kc-hs__nav--prev"
-              type="button"
-              aria-label="Предыдущий слайд"
-            >
-              ‹
-            </button>
-            <button
-              class="kc-hs__nav kc-hs__nav--next"
-              type="button"
-              aria-label="Следующий слайд"
-            >
-              ›
-            </button>
-
-            <div class="kc-hs__dots" aria-label="Слайды" role="tablist"></div>
           </div>
         </div>
       </section>
@@ -1062,6 +1111,7 @@
     <script src="js/faq.js"></script>
     <script src="js/forms.js"></script>
     <script src="js/lang-switcher.js"></script>
+    <script src="js/services-section.js"></script>
 
     <script>
       (function () {
@@ -1129,7 +1179,7 @@
         });
       })();
     </script>
-    
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const pageInput = document.getElementById("page_url");

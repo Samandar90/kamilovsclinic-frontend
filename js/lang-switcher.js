@@ -244,7 +244,7 @@ const translations = {
     "servicesList.card1.item1": "Осмотр и консультация",
     "servicesList.card1.item2": "Лечение кариеса и пульпита",
     "servicesList.card1.item3": "Гигиена, полировка, рекомендации",
-    "servicesList.card1.price": "от 250 000 сум",
+    "servicesList.card1.price": "от 100 000 сум",
     "servicesList.card1.cta": "Записаться",
     "servicesList.card1.more": "Подробнее",
 
@@ -683,7 +683,7 @@ const translations = {
     "servicesList.card1.item1": "Ko‘rik va konsultatsiya",
     "servicesList.card1.item2": "Karies va pulpiti davolash",
     "servicesList.card1.item3": "Gigiyena, jilolash va tavsiyalar",
-    "servicesList.card1.price": "250 000 so‘mdan",
+    "servicesList.card1.price": "100 000 so‘mdan",
     "servicesList.card1.cta": "Qabulga yozilish",
     "servicesList.card1.more": "Batafsil",
 

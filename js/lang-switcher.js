@@ -248,6 +248,18 @@ const translations = {
     "servicesList.card1.cta": "Записаться",
     "servicesList.card1.more": "Подробнее",
 
+    // Неврология — карточка 2
+    "servicesList.card2.tag": "Неврология",
+    "servicesList.card2.title": "Диагностика и лечение нервной системы",
+    "servicesList.card2.text":
+      "Головные боли, боли в спине, нарушения сна и другие неврологические симптомы.",
+    "servicesList.card2.item1": "Осмотр и консультация невролога",
+    "servicesList.card2.item2": "Лечение головных болей и мигрени",
+    "servicesList.card2.item3": "Диагностика заболеваний нервной системы",
+    "servicesList.card2.price": "от 100 000 сум",
+    "servicesList.card2.cta": "Записаться",
+    "servicesList.card2.more": "Подробнее",
+
     // Блок "Как подготовиться"
     "servicesPrep.title": "Как подготовиться к визиту",
     "servicesPrep.lead":
@@ -686,6 +698,19 @@ const translations = {
     "servicesList.card1.price": "100 000 so‘mdan",
     "servicesList.card1.cta": "Qabulga yozilish",
     "servicesList.card1.more": "Batafsil",
+
+    // Nevrologiya — karta 2
+    "servicesList.card2.tag": "Nevrologiya",
+    "servicesList.card2.title":
+      "Asab tizimi kasalliklarini diagnostika va davolash",
+    "servicesList.card2.text":
+      "Bosh og‘riqlari, bel og‘rig‘i, uyqu buzilishi va boshqa nevrologik simptomlar.",
+    "servicesList.card2.item1": "Nevrolog ko‘rigi va konsultatsiyasi",
+    "servicesList.card2.item2": "Migren va bosh og‘riqlarini davolash",
+    "servicesList.card2.item3": "Asab tizimi kasalliklarini diagnostika qilish",
+    "servicesList.card2.price": "100 000 so‘mdan",
+    "servicesList.card2.cta": "Yozilish",
+    "servicesList.card2.more": "Batafsil",
 
     // "Qabulga tayyorgarlik" bloki
     "servicesPrep.title": "Qabulga qanday tayyorlanish kerak",

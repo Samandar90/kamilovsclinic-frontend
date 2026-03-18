@@ -8,7 +8,7 @@ const translations = {
     "nav.doctors": "Врачи",
     "nav.contacts": "Контакты",
     "header.book": "Записаться",
-    "header.callMobile": "Позвонить: +998 95 088 41 41",
+    "header.callMobile": "Позвонить: +998 88 099 80 80",
 
     //hero
     "hero.badge": "Работаем 24/7 без выходных",
@@ -228,7 +228,7 @@ const translations = {
 
     // NAV — "О клинике" и мобильный звонок
     "nav.about": "О клинике",
-    "header.mobileCall": "Позвонить: +998 95 088 41 41",
+    "header.mobileCall": "Позвонить: +998 88 099 80 80",
 
     // SERVICES LIST (services.html)
     "servicesList.kicker": "Направления",
@@ -340,7 +340,7 @@ const translations = {
     "nav.doctors": "Врачи",
     "nav.contacts": "Контакты",
     "header.btnRecord": "Записаться",
-    "header.mobile.call": "Позвонить: +998 95 088 41 41",
+    "header.mobile.call": "Позвонить: +998 88 099 80 80",
 
     // hero
     "contacts.hero.pill": "Контакты клиники",
@@ -348,7 +348,7 @@ const translations = {
     "contacts.hero.subtitle":
       "Позвоните, напишите или приезжайте в клинику — мы поможем подобрать врача, объясним подготовку к приёму и подскажем по анализам.",
     "contacts.hero.chip.address": "📍 Ташкент, ул. Хувайдо, 7",
-    "contacts.hero.chip.phone": "📞 +998 95 088 41 41",
+    "contacts.hero.chip.phone": "📞 +998 88 099 80 80",
     "contacts.hero.chip.hours": "🕒 Работаем круглосуточно",
     "contacts.hero.btn.call": "Позвонить в клинику",
     "contacts.hero.btn.online": "Записаться онлайн",
@@ -372,7 +372,7 @@ const translations = {
       "Ташкент, ул. Хувайдо, 7\nУдобный подъезд и понятные ориентиры рядом.",
     "contacts.main.card2.title": "📞 Телефон и мессенджеры",
     "contacts.main.card2.text":
-      "Телефон: +998 95 088 41 41\nTelegram / звонок — по этому же номеру.",
+      "Телефон: +998 88 099 80 80\nTelegram / звонок — по этому же номеру.",
     "contacts.main.card3.title": "🕒 Режим работы",
     "contacts.main.card3.text":
       "Приём пациентов: 24/7\nАнализы и диагностика — по записи.",
@@ -423,7 +423,7 @@ const translations = {
     "footer.text":
       "Современная многопрофильная клиника в центре Ташкента. Работаем 24/7 — рядом, когда это важно.",
     "footer.address": "📍 ул. Хувайдо, 7, Ташкент",
-    "footer.phone": "+998 95 088 41 41",
+    "footer.phone": "+998 88 099 80 80",
     "footer.email": "info@kamilovs.uz",
     "footer.hours": "🕒 Работаем круглосуточно",
     "footer.mapTitle": "Как нас найти",
@@ -458,7 +458,7 @@ const translations = {
     "nav.doctors": "Shifokorlar",
     "nav.contacts": "Aloqa",
     "header.book": "Qabulga yozilish",
-    "header.callMobile": "Qo‘ng‘iroq: +998 95 088 41 41",
+    "header.callMobile": "Qo‘ng‘iroq: +998 88 099 80 80",
 
     // hero
     "hero.badge": "24/7, dam olish kunlarisiz ishlaymiz",
@@ -679,7 +679,7 @@ const translations = {
     //SERVICES PAGE TRANSLATIONS (UZ)
     // NAV — "О клинике" и мобильный звонок
     "nav.about": "Klinika haqida",
-    "header.mobileCall": "Qo‘ng‘iroq qilish: +998 95 088 41 41",
+    "header.mobileCall": "Qo‘ng‘iroq qilish: +998 88 099 80 80",
 
     // SERVICES LIST (services.html)
     "servicesList.kicker": "Yo‘nalishlar",
@@ -794,7 +794,7 @@ const translations = {
     "nav.doctors": "Shifokorlar",
     "nav.contacts": "Kontaktlar",
     "header.btnRecord": "Qabulga yozilish",
-    "header.mobile.call": "Qo‘ng‘iroq qilish: +998 95 088 41 41",
+    "header.mobile.call": "Qo‘ng‘iroq qilish: +998 88 099 80 80",
 
     // hero
     "contacts.hero.pill": "Klinika kontaktlari",
@@ -802,7 +802,7 @@ const translations = {
     "contacts.hero.subtitle":
       "Qo‘ng‘iroq qiling, yozing yoki klinikaga tashrif buyuring — shifokor tanlashda, qabulga tayyorgarlik va tahlillar bo‘yicha yordam beramiz.",
     "contacts.hero.chip.address": "📍 Toshkent, Xuvaydo ko‘chasi, 7",
-    "contacts.hero.chip.phone": "📞 +998 95 088 41 41",
+    "contacts.hero.chip.phone": "📞 +998 88 099 80 80",
     "contacts.hero.chip.hours": "🕒 24/7 ishlaymiz",
     "contacts.hero.btn.call": "Klinikaga qo‘ng‘iroq qilish",
     "contacts.hero.btn.online": "Onlayn yozilish",
@@ -826,7 +826,7 @@ const translations = {
       "Toshkent, Xuvaydo ko‘chasi, 7\nKirish qulay, yo‘l-yo‘riqlar aniq.",
     "contacts.main.card2.title": "📞 Telefon va messenjerlar",
     "contacts.main.card2.text":
-      "Telefon: +998 95 088 41 41\nTelegram / qo‘ng‘iroq — shu raqam orqali.",
+      "Telefon: +998 88 099 80 80\nTelegram / qo‘ng‘iroq — shu raqam orqali.",
     "contacts.main.card3.title": "🕒 Ish vaqti",
     "contacts.main.card3.text":
       "Bemorlarni qabul qilish: 24/7\nTahlillar va diagnostika — oldindan yozilish asosida.",
@@ -879,7 +879,7 @@ const translations = {
     "footer.text":
       "Zamonaviy ko‘p tarmoqli klinika Toshkent markazida. 24/7 ishlaymiz — sizga kerak bo‘lgan vaqtda yoningizdamiz.",
     "footer.address": "📍 Xuvaydo ko‘chasi, 7, Toshkent",
-    "footer.phone": "+998 95 088 41 41",
+    "footer.phone": "+998 88 099 80 80",
     "footer.email": "info@kamilovs.uz",
     "footer.hours": "🕒 24/7 ishlaymiz",
     "footer.mapTitle": "Qanday topish mumkin",

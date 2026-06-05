@@ -217,8 +217,20 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.kc-docs-page-grid__empty {
+  grid-column: 1 / -1;
+  list-style: none;
+  text-align: center;
+  padding: 56px 24px;
+  font-size: 15px;
+  color: #6a7c95;
+  border-radius: 28px;
+  background: #f8fafc;
+  border: 1px dashed rgba(15, 115, 201, 0.16);
 }
 
 /* Переопределяем анимацию карточек из index.css,
@@ -294,6 +306,12 @@
 
 /* ===== Адаптив ===== */
 
+@media (max-width: 1200px) {
+  .kc-docs-page-grid__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 1024px) {
   .kc-docs-page-hero__inner {
     grid-template-columns: 1fr;
@@ -326,6 +344,10 @@
 
   .kc-docs-page-grid__list {
     grid-template-columns: 1fr;
+  }
+
+  .kc-docs__media {
+    height: 340px;
   }
 
   .kc-docs-page-cta {

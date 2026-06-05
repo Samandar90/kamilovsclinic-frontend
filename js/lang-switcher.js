@@ -121,24 +121,6 @@ const translations = {
     "doctors.sub":
       "Диагностика, лечение и внимание к деталям — команда врачей, на которых можно положиться.",
 
-    "doctors.card1.badge": "Неврология",
-    "doctors.card1.name": "Ф.И.О",
-    "doctors.card1.role": "Невролог",
-    "doctors.card1.text":
-      "Индивидуальный подход к каждому пациенту, современная диагностика и мягкое сопровождение лечения.",
-
-    "doctors.card2.badge": "Стоматология",
-    "doctors.card2.name": "Ф.И.О",
-    "doctors.card2.role": "Стоматолог",
-    "doctors.card2.text":
-      "Эстетическая и терапевтическая стоматология, бережное отношение к пациентам любого возраста.",
-
-    "doctors.card3.badge": "Диагностика",
-    "doctors.card3.name": "Ф.И.О",
-    "doctors.card3.role": "Врач УЗ-диагностики",
-    "doctors.card3.text":
-      "Точные заключения и подробные объяснения каждого шага исследования для пациента.",
-
     "doctors.more": "Смотреть всех врачей",
 
     // ABOUT SECTION (RU)
@@ -312,21 +294,6 @@ const translations = {
     // ===== DOCTORS PAGE / FILTER =====
     "docs.filter.label": "Фильтр по направлениям:",
     "docs.filter.all": "Все",
-    "docs.filter.neuro": "Невролог",
-    "docs.filter.therapy": "Терапевт",
-    "docs.filter.pediatrics": "Педиатр",
-    "docs.filter.stom": "Стоматолог",
-    "docs.filter.uzd": "УЗИ",
-    "docs.filter.cardio": "Кардиолог",
-    "docs.filter.gyno": "Гинеколог",
-    "docs.filter.ent": "ЛОР",
-
-    // ===== DOCTORS PAGE / CARD 1 =====
-    "docs.card1.badge": "Стоматолог",
-    "docs.card1.name": "Ф.И.О",
-    "docs.card1.role": "Стоматология",
-    "docs.card1.text":
-      "Диагностика и лечение головных болей, нарушений сна, неврозов. Подробно объясняет каждое назначение.",
 
     // ===== DOCTORS PAGE / CTA =====
     "docs.cta.title": "Не знаете, к кому записаться?",
@@ -571,24 +538,6 @@ const translations = {
     "doctors.sub":
       "Diagnostika, davolash va mayda tafsilotlarga e’tibor — ishonishingiz mumkin bo‘lgan shifokorlar jamoasi.",
 
-    "doctors.card1.badge": "Nevrologiya",
-    "doctors.card1.name": "F.I.Sh.",
-    "doctors.card1.role": "Nevrolog",
-    "doctors.card1.text":
-      "Har bir bemorga individual yondashuv, zamonaviy diagnostika va davolash jarayonining yumshoq kuzatuvi.",
-
-    "doctors.card2.badge": "Stomatologiya",
-    "doctors.card2.name": "F.I.Sh.",
-    "doctors.card2.role": "Stomatolog",
-    "doctors.card2.text":
-      "Estetik va terapevtik stomatologiya, har qanday yoshdagi bemorlarga ehtiyotkor munosabat.",
-
-    "doctors.card3.badge": "Diagnostika",
-    "doctors.card3.name": "F.I.Sh.",
-    "doctors.card3.role": "UZ-diagnostika shifokori",
-    "doctors.card3.text":
-      "Aniq xulosalar va har bir tekshiruv bosqichini bemorga batafsil tushuntirish.",
-
     "doctors.more": "Barcha shifokorlarni ko‘rish",
 
     // ABOUT SECTION (UZ)
@@ -766,21 +715,6 @@ const translations = {
     // ===== DOCTORS PAGE / FILTER =====
     "docs.filter.label": "Yo‘nalish bo‘yicha filtrlash:",
     "docs.filter.all": "Barchasi",
-    "docs.filter.neuro": "Neyrolog",
-    "docs.filter.therapy": "Terapevt",
-    "docs.filter.pediatrics": "Pediatr",
-    "docs.filter.stom": "Stomatolog",
-    "docs.filter.uzd": "UZI",
-    "docs.filter.cardio": "Kardiolog",
-    "docs.filter.gyno": "Ginekolog",
-    "docs.filter.ent": "LOR",
-
-    // ===== DOCTORS PAGE / CARD 1 =====
-    "docs.card1.badge": "Stomatologiya",
-    "docs.card1.name": "F.I.Sh.",
-    "docs.card1.role": "Stomatologiya",
-    "docs.card1.text":
-      "Bosh og‘rig‘i, uyqusizlik va nevrozlarni tashxislash va davolash. Har bir tavsiyani batafsil tushuntirib beradi.",
 
     // ===== DOCTORS PAGE / CTA =====
     "docs.cta.title": "Qaysi shifokorga yozilishni bilmaysizmi?",

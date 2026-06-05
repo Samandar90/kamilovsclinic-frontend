@@ -713,13 +713,14 @@
 
 /* карточка врача */
 .kc-docs__card {
-  background: linear-gradient(180deg, #ffffff, #f5f8ff);
-  border-radius: 22px;
+  background: #ffffff;
+  border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 12px 34px rgba(9, 30, 66, 0.08);
+  box-shadow: 0 14px 40px rgba(9, 30, 66, 0.1);
+  border: 1px solid rgba(15, 115, 201, 0.06);
   display: flex;
   flex-direction: column;
-  transition: transform 0.24s ease, box-shadow 0.24s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
 }
@@ -729,25 +730,25 @@
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .kc-docs__card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 42px rgba(9, 30, 66, 0.16);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 24px 56px rgba(9, 30, 66, 0.18);
 }
 
 /* фото */
 .kc-docs__media {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  height: 380px;
 }
 .kc-docs__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.03);
-  transition: transform 0.9s ease;
+  object-position: center;
+  transition: transform 0.5s ease;
 }
 .kc-docs__card:hover .kc-docs__img {
-  transform: scale(1.08);
+  transform: scale(1.04);
 }
 
 /* бейдж направления */
@@ -775,25 +776,50 @@
 
 /* текст карточки */
 .kc-docs__body {
-  padding: 14px 16px 18px;
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .kc-docs__name {
   margin: 0 0 4px;
   font-size: 18px;
   font-weight: 700;
-  color: #0f73c9;
+  color: #0d2b5b;
+  letter-spacing: -0.01em;
 }
 .kc-docs__role,
 .kc-docs__spec {
   margin: 0 0 8px;
   font-size: 14px;
-  color: #607289;
+  color: #0f73c9;
+  font-weight: 600;
 }
 .kc-docs__text {
-  margin: 0;
+  margin: 0 0 4px;
   font-size: 14px;
   line-height: 1.6;
   color: #4c5f7c;
+  flex: 1;
+}
+.kc-docs__btn {
+  margin-top: 14px;
+  align-self: flex-start;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(120deg, #0f73c9, #2fb48f);
+  box-shadow: 0 10px 26px rgba(15, 115, 201, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.kc-docs__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(15, 115, 201, 0.34);
+  filter: brightness(1.04);
 }
 
 /* адаптив docs */
@@ -810,6 +836,10 @@
   }
 }
 @media (max-width: 720px) {
+  .kc-docs__media {
+    height: 340px;
+  }
+
   .kc-docs__viewport {
     padding: 20px 0 24px;
     display: flex;

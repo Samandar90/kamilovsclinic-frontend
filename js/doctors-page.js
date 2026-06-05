@@ -1,32 +1,38 @@
 // js/doctors-page.js
-document.addEventListener("DOMContentLoaded", () => {
-  const filterButtons = document.querySelectorAll(
-    ".kc-docs-page-filter__buttons button"
+
+function initDoctorsFilters() {
+  const filterContainer = document.querySelector(
+    ".kc-docs-page-filter__buttons"
   );
+  if (!filterContainer) return;
+
+  const filterButtons = filterContainer.querySelectorAll("button");
   const cards = document.querySelectorAll(
     ".kc-docs-page-grid__list .kc-docs__card"
   );
 
-  if (!filterButtons.length || !cards.length) return;
+  if (!filterButtons.length) return;
 
   filterButtons.forEach((btn) => {
+    btn.replaceWith(btn.cloneNode(true));
+  });
+
+  const freshButtons = filterContainer.querySelectorAll("button");
+
+  freshButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const filter = btn.getAttribute("data-doc-filter");
 
-      // активная кнопка
-      filterButtons.forEach((b) => b.classList.remove("is-active"));
+      freshButtons.forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
 
-      // показываем/скрываем карточки
       cards.forEach((card) => {
         const spec = card.getAttribute("data-doc-spec");
-
-        if (filter === "all" || spec === filter) {
-          card.style.display = "";
-        } else {
-          card.style.display = "none";
-        }
+        card.style.display =
+          filter === "all" || spec === filter ? "" : "none";
       });
     });
   });
-});
+}
+
+window.initDoctorsFilters = initDoctorsFilters;

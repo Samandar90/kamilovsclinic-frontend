@@ -415,6 +415,38 @@ const translations = {
     "modal.submit": "Отправить заявку",
     "modal.privacy":
       "Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки персональных данных.",
+
+    // hero stats
+    "hero.stat1.label": "круглосуточно",
+    "hero.stat2.label": "направлений",
+    "hero.stat3.label": "пациентов в год",
+
+    // services grid (homepage)
+    "svc.more": "Подробнее →",
+    "svc.item1.title": "Стоматология",
+    "svc.item1.desc": "Лечение, протезирование и эстетика — бережно и без боли.",
+    "svc.item2.title": "Неврология",
+    "svc.item2.desc": "Диагностика и лечение заболеваний нервной системы.",
+    "svc.item3.title": "Анализы и лаборатория",
+    "svc.item3.desc": "Точные клинические исследования с быстрым результатом.",
+    "svc.item4.title": "Педиатрия",
+    "svc.item4.desc": "Внимательные детские специалисты для здоровья ребёнка.",
+    "svc.item5.title": "Диагностика",
+    "svc.item5.desc": "Современное оборудование и понятные расшифровки.",
+    "svc.item6.title": "Процедуры и хиджама",
+    "svc.item6.desc": "Лечебные процедуры под наблюдением специалиста.",
+
+    // CTA band
+    "cta.title": "Запишитесь в Kamilovs Clinic сегодня",
+    "cta.text":
+      "Оставьте контакты — администратор ответит в течение 5 минут и подберёт удобное время.",
+    "cta.btn": "Записаться на приём",
+
+    // gallery
+    "gallery.kicker": "КЛИНИКА ИЗНУТРИ",
+    "gallery.title": "Атмосфера и комфорт",
+    "gallery.lead":
+      "Чистые кабинеты, современное оборудование и спокойная обстановка для каждого пациента.",
   },
 
   uz: {
@@ -840,6 +872,38 @@ const translations = {
     "modal.submit": "Ariza yuborish",
     "modal.privacy":
       "«Ariza yuborish» tugmasini bosish orqali shaxsiy ma’lumotlaringizni qayta ishlashga rozilik bildirasiz.",
+
+    // hero stats
+    "hero.stat1.label": "kechayu kunduz",
+    "hero.stat2.label": "yo‘nalish",
+    "hero.stat3.label": "yiliga bemor",
+
+    // services grid (homepage)
+    "svc.more": "Batafsil →",
+    "svc.item1.title": "Stomatologiya",
+    "svc.item1.desc": "Davolash, protezlash va estetika — ehtiyotkorlik bilan, og‘riqsiz.",
+    "svc.item2.title": "Nevrologiya",
+    "svc.item2.desc": "Asab tizimi kasalliklarini tashxislash va davolash.",
+    "svc.item3.title": "Tahlillar va laboratoriya",
+    "svc.item3.desc": "Aniq klinik tekshiruvlar, tez natija.",
+    "svc.item4.title": "Pediatriya",
+    "svc.item4.desc": "Bolangiz salomatligi uchun e’tiborli mutaxassislar.",
+    "svc.item5.title": "Diagnostika",
+    "svc.item5.desc": "Zamonaviy uskunalar va tushunarli natijalar.",
+    "svc.item6.title": "Muolajalar va hijoma",
+    "svc.item6.desc": "Mutaxassis nazorati ostidagi davolovchi muolajalar.",
+
+    // CTA band
+    "cta.title": "Bugun Kamilovs Clinic ga yoziling",
+    "cta.text":
+      "Kontaktlaringizni qoldiring — administrator 5 daqiqada javob beradi va qulay vaqtni tanlaydi.",
+    "cta.btn": "Qabulga yozilish",
+
+    // gallery
+    "gallery.kicker": "KLINIKA ICHKARIDAN",
+    "gallery.title": "Muhit va qulaylik",
+    "gallery.lead":
+      "Toza xonalar, zamonaviy uskunalar va har bir bemor uchun xotirjam muhit.",
   },
 };
 

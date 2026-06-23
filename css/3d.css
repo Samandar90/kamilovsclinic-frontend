@@ -1,0 +1,324 @@
+/* =========================================================
+   Kamilovs Clinic — 3D / modern enhancement layer
+   Additive: layers depth, glass, parallax over the base design.
+   Performance-first: transform/opacity only (GPU compositor),
+   heavy interactivity gated to desktop + reduced-motion aware.
+   Palette: blue #0f73c9 → teal #2fb48f
+   ========================================================= */
+
+:root {
+  --kc-blue: #0f73c9;
+  --kc-blue-bright: #1f9cff;
+  --kc-teal: #2fb48f;
+  --kc-teal-bright: #3fd1ab;
+  --kc-ink: #10233f;
+  --kc-grad: linear-gradient(120deg, #0f73c9, #2fb48f);
+  --kc-grad-bright: linear-gradient(120deg, #1f9cff, #3fd1ab);
+  --kc-glass: rgba(255, 255, 255, 0.72);
+  --kc-glass-brd: rgba(255, 255, 255, 0.85);
+  --kc-shadow-1: 0 10px 30px rgba(15, 115, 201, 0.12);
+  --kc-shadow-2: 0 24px 60px rgba(15, 64, 120, 0.18);
+}
+
+/* ---------------------------------------------------------
+   1. HERO — depth scene with floating gradient orbs
+   --------------------------------------------------------- */
+#kc-hero {
+  position: relative;
+  overflow: hidden;
+  perspective: 1200px;
+  isolation: isolate;
+}
+
+/* Animated floating orbs (added by js/3d.js into .kc-orbs) */
+.kc-orbs {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.kc-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.55;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation: kc-float 18s ease-in-out infinite;
+}
+
+.kc-orb--1 {
+  width: 420px;
+  height: 420px;
+  top: -90px;
+  left: -80px;
+  background: radial-gradient(circle at 30% 30%, #57b6ff, #0f73c9 70%);
+  animation-duration: 22s;
+}
+.kc-orb--2 {
+  width: 360px;
+  height: 360px;
+  top: 30%;
+  right: -120px;
+  background: radial-gradient(circle at 30% 30%, #6ff0c6, #2fb48f 70%);
+  animation-duration: 26s;
+  animation-delay: -6s;
+}
+.kc-orb--3 {
+  width: 300px;
+  height: 300px;
+  bottom: -120px;
+  left: 35%;
+  background: radial-gradient(circle at 30% 30%, #a9d8ff, #1f9cff 70%);
+  animation-duration: 30s;
+  animation-delay: -12s;
+  opacity: 0.4;
+}
+
+@keyframes kc-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(40px, -30px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-30px, 25px, 0) scale(0.95);
+  }
+}
+
+/* Soft animated grid for depth (very cheap, single element) */
+.kc-hero-grid {
+  position: absolute;
+  inset: -2px;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+      rgba(15, 115, 201, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(15, 115, 201, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 50% 35%, #000 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at 50% 35%, #000 0%, transparent 70%);
+}
+
+/* Lift hero content above the orbs and give it 3D context */
+.kc-hero-container {
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+/* Unified pointer parallax on the hero content block (desktop only,
+   driven by --px / --py from js/3d.js). Applied to .kc-hero-container
+   as a whole — never to its children — so it never fights the existing
+   per-element animations (logo float, reveal slide, etc.). */
+.kc-hero-container {
+  transform: translate3d(
+    calc(var(--px, 0) * 14px),
+    calc(var(--py, 0) * 10px),
+    0
+  );
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Glowing animated ring around the hero logo */
+.kc-hero-logo {
+  position: relative;
+}
+.kc-hero-logo::after {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #0f73c9,
+    #2fb48f,
+    #1f9cff,
+    #0f73c9
+  );
+  filter: blur(14px);
+  opacity: 0.45;
+  z-index: -1;
+  animation: kc-spin 8s linear infinite;
+}
+@keyframes kc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animated gradient shimmer on the brand title */
+.kc-gradient {
+  background: linear-gradient(
+    90deg,
+    #0f73c9,
+    #2fb48f,
+    #1f9cff,
+    #0f73c9
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: kc-shimmer 6s linear infinite;
+}
+@keyframes kc-shimmer {
+  to {
+    background-position: 300% 0;
+  }
+}
+
+/* ---------------------------------------------------------
+   2. GLASS + 3D CARDS (hero features, benefits, why, flow)
+   --------------------------------------------------------- */
+.kc-card,
+.kc-benefits__item,
+.kc-why__item,
+.kc-flow__step {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+/* Glass treatment for hero feature cards */
+.kc-hero-features .kc-card {
+  background: var(--kc-glass);
+  border: 1px solid var(--kc-glass-brd);
+  box-shadow: var(--kc-shadow-1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Gradient sheen that appears on hover, follows pointer (desktop) */
+.kc-card::before,
+.kc-benefits__item::before,
+.kc-why__item::before,
+.kc-flow__step::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(31, 156, 255, 0.16),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .kc-card:hover,
+  .kc-benefits__item:hover,
+  .kc-why__item:hover,
+  .kc-flow__step:hover {
+    box-shadow: var(--kc-shadow-2);
+  }
+  .kc-card:hover::before,
+  .kc-benefits__item:hover::before,
+  .kc-why__item:hover::before,
+  .kc-flow__step:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Float card content above the sheen */
+.kc-card > *,
+.kc-benefits__item > *,
+.kc-why__item > *,
+.kc-flow__step > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------------------------------------------------------
+   3. BUTTONS — depth + glow
+   --------------------------------------------------------- */
+.kc-hero-btn-primary,
+.btn-primary,
+.kc-btn,
+.kc-header__cta {
+  position: relative;
+  overflow: hidden;
+}
+.kc-hero-btn-primary::after,
+.btn-primary::after,
+.kc-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  transform: skewX(-18deg);
+  transition: left 0.6s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .kc-hero-btn-primary:hover::after,
+  .btn-primary:hover::after,
+  .kc-btn:hover::after {
+    left: 130%;
+  }
+  .kc-hero-btn-primary:hover,
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(15, 115, 201, 0.35);
+  }
+}
+
+/* ---------------------------------------------------------
+   4. MOBILE PERFORMANCE GUARDS
+   (reveal animation itself is handled by base.css + main.js)
+   --------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Drop expensive blur + extra orbs on phones */
+  .kc-orb--3 {
+    display: none;
+  }
+  .kc-orb {
+    filter: blur(28px);
+    opacity: 0.4;
+  }
+  .kc-hero-features .kc-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.92);
+  }
+  /* No pointer parallax on touch */
+  .kc-hero-container {
+    transform: none;
+  }
+}
+
+/* Respect users who prefer reduced motion — kill all motion */
+@media (prefers-reduced-motion: reduce) {
+  .kc-orb,
+  .kc-hero-logo::after,
+  .kc-gradient {
+    animation: none;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .kc-hero-container {
+    transform: none;
+  }
+}

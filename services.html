@@ -21,50 +21,72 @@
     <meta property="og:description" content="Стоматология, неврология, педиатрия, анализы, диагностика и процедуры. Работаем 24/7." />
     <meta property="og:url" content="https://www.kamilovsclinic.uz/services.html" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <meta property="og:image" content="https://www.kamilovsclinic.uz/images/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Kamilovs Clinic — круглосуточная клиника 24/7 в Ташкенте" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://www.kamilovsclinic.uz/images/og-cover.jpg" />
+
+    <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="fonts/inter-cyrillic.woff2" crossorigin />
     <link rel="stylesheet" href="css/kc-redesign.css" />
-    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="css/kc-tokens.css" />
+    <link rel="stylesheet" href="css/kc-ui.css" />
+    <link rel="stylesheet" href="css/kc-sections.css" />
+    <link rel="stylesheet" href="css/kc-contact.css" />
+    <link rel="icon" href="images/fevicon.ico.png" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+    <!-- Настройки сайта и аналитика — до разметки, чтобы счётчик стартовал раньше -->
+    <script>
+      document.documentElement.classList.add("kc-js");
+    </script>
+    <script src="js/kc-config.js"></script>
+    <script src="js/kc-analytics.js"></script>
   </head>
   <body>
     <!-- HEADER -->
     <header class="kc-header">
       <div class="kc-header__inner">
-        <a href="index.html" class="kc-header__brand" aria-label="Kamilovs Clinic">
-          <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Логотип Kamilovs Clinic" class="kc-header__logo" width="120" height="46" />
+        <a href="index.html" class="kc-header__brand" aria-label="Kamilovs Clinic — на главную">
+          <img src="images/logo.webp" alt="Kamilovs Clinic" class="kc-header__logo" width="41" height="38" />
         </a>
-        <nav class="kc-header__nav" aria-label="Главное меню">
-          <ul class="kc-header__menu">
-            <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
-            <li><a href="index.html#about" data-i18n="nav.about">О клинике</a></li>
-            <li><a href="services.html" class="is-active" data-i18n="nav.services">Услуги</a></li>
-            <li><a href="doctors.html" data-i18n="nav.doctors">Врачи</a></li>
-            <li><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></li>
-          </ul>
+
+        <nav class="kc-nav" aria-label="Основная навигация">
+          <span class="kc-nav__pill" aria-hidden="true"></span>
+          <a class="kc-nav__link" href="index.html" data-i18n="nav.home">Главная</a>
+          <a class="kc-nav__link is-active" href="services.html" aria-current="page" data-i18n="nav.services">Услуги</a>
+          <a class="kc-nav__link" href="doctors.html" data-i18n="nav.doctors">Врачи</a>
+          <a class="kc-nav__link" href="contacts.html" data-i18n="nav.contacts">Контакты</a>
         </nav>
+
         <div class="kc-header__actions">
-          <div class="kc-lang-switcher">
-            <button class="kc-lang-btn kc-lang-btn--active" data-lang="ru" type="button">RU</button>
-            <button class="kc-lang-btn" data-lang="uz" type="button">UZ</button>
+          <div class="kc-lang kc-lang-switcher" role="group" aria-label="Язык сайта">
+            <button class="kc-lang__btn kc-lang-btn kc-lang-btn--active is-active" data-lang="ru" type="button">RU</button>
+            <button class="kc-lang__btn kc-lang-btn" data-lang="uz" type="button">UZ</button>
           </div>
           <a href="tel:+998880998080" class="kc-header__phone">+998 88 099 80 80</a>
-          <button class="kc-btn kc-btn--primary" type="button" onclick="kcOpenModal()" data-i18n="header.book">Записаться</button>
-          <button class="kc-header__burger" type="button" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+          <button class="kc-btn kc-btn--primary" type="button" data-kc-book data-kc-goal="booking_open" data-i18n="header.book">Записаться</button>
+          <button class="kc-burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="kcSheet">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
-      <nav class="kc-header__mobile" aria-label="Мобильное меню">
-        <ul>
-          <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
-          <li><a href="index.html#about" data-i18n="nav.about">О клинике</a></li>
-          <li><a href="services.html" data-i18n="nav.services">Услуги</a></li>
-          <li><a href="doctors.html" data-i18n="nav.doctors">Врачи</a></li>
-          <li><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></li>
-          <li><a href="tel:+998880998080" data-i18n="header.callMobile">Позвонить: +998 88 099 80 80</a></li>
-          <li><button class="kc-header__mobile-cta" type="button" onclick="kcOpenModal()" data-i18n="header.book">Записаться</button></li>
-        </ul>
-      </nav>
     </header>
+
+    <div class="kc-sheet" id="kcSheet" aria-hidden="true">
+      <nav class="kc-sheet__nav" aria-label="Мобильная навигация">
+        <a class="kc-sheet__link" href="index.html" style="--i: 0"><small>01</small><span data-i18n="nav.home">Главная</span></a>
+        <a class="kc-sheet__link" href="services.html" style="--i: 1"><small>02</small><span data-i18n="nav.services">Услуги</span></a>
+        <a class="kc-sheet__link" href="doctors.html" style="--i: 2"><small>03</small><span data-i18n="nav.doctors">Врачи</span></a>
+        <a class="kc-sheet__link" href="contacts.html" style="--i: 3"><small>04</small><span data-i18n="nav.contacts">Контакты</span></a>
+      </nav>
+      <div class="kc-sheet__foot">
+        <a class="kc-sheet__phone" href="tel:+998880998080">+998 88 099 80 80</a>
+        <button class="kc-btn kc-btn--primary kc-btn--lg kc-btn--block" type="button" data-kc-book data-kc-goal="booking_open" data-i18n="header.book">Записаться</button>
+      </div>
+    </div>
 
     <main>
       <!-- PAGE HERO -->
@@ -92,83 +114,121 @@
           <div class="kc-cta-band" data-reveal>
             <h2 data-i18n="cta.title">Запишитесь в Kamilovs Clinic сегодня</h2>
             <p data-i18n="cta.text">Оставьте контакты — администратор ответит в течение 5 минут и подберёт удобное время.</p>
-            <button class="kc-btn kc-btn--light" type="button" onclick="kcOpenModal()" data-i18n="cta.btn">Записаться на приём</button>
+            <button class="kc-btn kc-btn--light" type="button" onclick="kcOpenModal()" data-kc-goal="booking_open" data-i18n="cta.btn">Записаться на приём</button>
           </div>
         </div>
       </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="kc-footer" id="contacts">
-      <div class="kc-wrap kc-footer__inner">
-        <div class="kc-footer__col kc-footer__col--brand">
-          <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-footer__logo" width="120" height="56" />
-          <p class="kc-footer__text" data-i18n="footer.text">Современная многопрофильная клиника в центре Ташкента. Работаем 24/7 — рядом, когда это важно.</p>
-          <ul class="kc-footer__list">
-            <li data-i18n="footer.address">📍 ул. Хувайдо, 7, Ташкент</li>
-            <li>📞 <a href="tel:+998880998080">+998 88 099 80 80</a></li>
-            <li>✉️ <a href="mailto:info@kamilovs.uz">info@kamilovs.uz</a></li>
-            <li data-i18n="footer.hours">🕒 Работаем круглосуточно</li>
-          </ul>
-          <button class="kc-btn kc-btn--primary kc-footer__cta" type="button" onclick="kcOpenModal()" data-i18n="footer.cta">Записаться</button>
-        </div>
-        <div class="kc-footer__col kc-footer__col--map">
-          <h3 data-i18n="footer.mapTitle">Как нас найти</h3>
-          <p data-i18n="footer.mapText">Kamilovs Clinic на Яндекс Картах — постройте маршрут за пару секунд.</p>
-          <div class="kc-map">
-            <iframe src="https://yandex.uz/map-widget/v1/org/66518861972/?ll=69.203739%2C41.342219&z=17" title="Kamilovs Clinic на карте" allowfullscreen="true" loading="lazy"></iframe>
+    <footer class="kc-footer">
+      <div class="kc-wrap">
+        <div class="kc-footer__top">
+          <div class="kc-footer__brand">
+            <img src="images/logo.webp" alt="Kamilovs Clinic" class="kc-footer__logo" width="47" height="44" />
+            <p class="kc-footer__about" data-i18n="footer.text">Многопрофильная клиника в центре Ташкента. Работаем 24/7 — рядом, когда это важно.</p>
+            <div class="kc-footer__socials" data-kc-social hidden></div>
+          </div>
+          <div>
+            <h4 data-i18n="footer.nav">Навигация</h4>
+            <div class="kc-footer__links">
+              <a href="index.html" data-i18n="nav.home">Главная</a>
+              <a href="services.html" data-i18n="nav.services">Услуги</a>
+              <a href="doctors.html" data-i18n="nav.doctors">Врачи</a>
+              <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
+            </div>
+          </div>
+          <div>
+            <h4 data-i18n="footer.services">Направления</h4>
+            <div class="kc-footer__links">
+              <a href="service-detail.html?service=%D0%A1%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F" data-i18n="svc.dental.title">Стоматология</a>
+              <a href="service-detail.html?service=%D0%9D%D0%B5%D0%B2%D1%80%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F" data-i18n="svc.neuro.title">Неврология</a>
+              <a href="service-detail.html?service=%D0%9F%D0%B5%D0%B4%D0%B8%D0%B0%D1%82%D1%80%D0%B8%D1%8F" data-i18n="svc.ped.title">Педиатрия</a>
+              <a href="service-detail.html?service=%D0%90%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%D1%8B%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D1%8F" data-i18n="svc.lab.title">Анализы и лаборатория</a>
+            </div>
+          </div>
+          <div>
+            <h4 data-i18n="footer.contactsTitle">Контакты</h4>
+            <div class="kc-footer__links">
+              <a href="tel:+998880998080">+998 88 099 80 80</a>
+              <span data-i18n="footer.address">ул. Хувайдо, 7, Ташкент</span>
+              <span data-i18n="footer.hours">Круглосуточно</span>
+              <a href="privacy.html" data-i18n="footer.privacy">Обработка персональных данных</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="kc-wrap">
         <div class="kc-footer__bottom">
-          <span>© <span id="kc-year"></span> Kamilovs Clinic.</span>
-          <span data-i18n="footer.bottom.right">Сайт создан с заботой о пациентах.</span>
+          <span>© <span id="kc-year"></span> Kamilovs Clinic</span>
+          <span data-i18n="footer.bottom.right">Сайт создан с заботой о пациентах</span>
         </div>
       </div>
     </footer>
 
     <!-- MODAL -->
+    <div class="kc-fab">
+      <a class="kc-fab__call" href="tel:+998880998080" aria-label="Позвонить в клинику">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3h2.5c.5 0 .9.3 1 .8l.9 3.2c.1.4 0 .8-.4 1l-1.8 1.3a12.6 12.6 0 0 0 5.9 5.9l1.3-1.8c.2-.3.6-.5 1-.4l3.2.9c.5.1.8.5.8 1V17a3 3 0 0 1-3 3A16.5 16.5 0 0 1 3.6 6a3 3 0 0 1 3-3Z"/></svg>
+      </a>
+      <button class="kc-fab__book" type="button" data-kc-book data-kc-goal="booking_open" data-i18n="header.book">Записаться</button>
+      <button class="kc-fab__label" type="button" data-kc-book data-kc-goal="booking_open" data-i18n="header.book">Записаться</button>
+    </div>
+
     <div class="kc-modal" id="kcModal" aria-hidden="true">
       <div class="kc-modal__overlay" data-kc-close></div>
-      <div class="kc-modal__content" role="dialog" aria-modal="true" aria-label="Запись на приём">
-        <button class="kc-modal__close" type="button" data-kc-close aria-label="Закрыть окно">×</button>
-        <div class="kc-modal__head">
-          <img src="images/Лого Camilovs‘ Полноцветный RGB.png" alt="Kamilovs Clinic" class="kc-modal__logo" />
-          <h3 class="kc-modal__title" data-i18n="modal.title">Записаться в Kamilovs Clinic</h3>
-          <p class="kc-modal__sub" data-i18n="modal.sub">Оставьте контакты — администратор ответит в течение 5 минут.</p>
-        </div>
-        <form action="https://kamilovsclinic-backend.onrender.com/lead/" method="post" class="kc-modal__form" id="kcModalForm">
+      <div class="kc-modal__panel" role="dialog" aria-modal="true" aria-labelledby="kcModalTitle">
+        <button class="kc-modal__close" type="button" data-kc-close aria-label="Закрыть окно">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+        <h3 id="kcModalTitle" data-i18n="modal.title">Записаться в Kamilovs Clinic</h3>
+        <p class="kc-modal__sub" data-i18n="modal.sub">Оставьте контакты — администратор ответит в течение 5 минут.</p>
+
+        <form action="https://kamilovsclinic-backend.onrender.com/lead/" method="post" id="kcModalForm">
           <input type="hidden" name="form_context" value="services_modal" />
           <input type="hidden" name="page_url" value="" />
+          <div class="kc-hp" aria-hidden="true">
+            <label>Не заполняйте это поле
+              <input type="text" name="website" tabindex="-1" autocomplete="off" />
+            </label>
+          </div>
+          <input type="hidden" name="form_ts" value="" />
+
           <div class="kc-field">
-            <label class="kc-label" data-i18n="modal.field.name.label">Имя</label>
-            <input type="text" name="name" class="kc-input" placeholder="Ваше имя" data-i18n-placeholder="modal.field.name.placeholder" />
+            <label class="kc-label" for="kcm-name" data-i18n="modal.field.name.label">Имя</label>
+            <input class="kc-input" type="text" id="kcm-name" name="name" autocomplete="name" placeholder="Ваше имя" data-i18n-placeholder="modal.field.name.placeholder" />
           </div>
           <div class="kc-field">
-            <label class="kc-label" data-i18n="modal.field.phone.label">Телефон*</label>
-            <input type="tel" name="phone" class="kc-input" required placeholder="+998 XX XXX XX XX" data-i18n-placeholder="modal.field.phone.placeholder" />
-            <p class="kc-form-hint" data-i18n="modal.field.phone.hint">Мы позвоним только по вашей заявке — без спама.</p>
+            <label class="kc-label" for="kcm-phone" data-i18n="modal.field.phone.label">Телефон*</label>
+            <input class="kc-input" type="tel" id="kcm-phone" name="phone" required autocomplete="tel" inputmode="tel" aria-describedby="kcm-phone-hint" placeholder="+998 XX XXX XX XX" data-i18n-placeholder="modal.field.phone.placeholder" />
+            <p class="kc-form-hint" id="kcm-phone-hint" data-i18n="modal.field.phone.hint">Мы позвоним только по вашей заявке — без спама.</p>
           </div>
           <div class="kc-field">
-            <label class="kc-label" data-i18n="modal.field.service.label">Интересующая услуга</label>
-            <input type="text" name="service" class="kc-input" placeholder="Например: кардиология" data-i18n-placeholder="modal.field.service.placeholder" />
+            <label class="kc-label" for="kcm-service" data-i18n="modal.field.service.label">Интересующая услуга</label>
+            <input class="kc-input" type="text" id="kcm-service" name="service" placeholder="Например: стоматология" data-i18n-placeholder="modal.field.service.placeholder" />
           </div>
           <div class="kc-field">
-            <label class="kc-label" data-i18n="modal.field.message.label">Комментарий</label>
-            <textarea name="message" class="kc-input" placeholder="Опишите ваш вопрос, жалобу или симптом" data-i18n-placeholder="modal.field.message.placeholder"></textarea>
+            <label class="kc-label" for="kcm-message" data-i18n="modal.field.message.label">Комментарий</label>
+            <textarea class="kc-input" id="kcm-message" name="message" placeholder="Опишите ваш вопрос или жалобу" data-i18n-placeholder="modal.field.message.placeholder"></textarea>
           </div>
-          <button type="submit" class="kc-btn kc-btn--primary" data-i18n="modal.submit">Отправить заявку</button>
-          <p class="kc-modal__privacy" data-i18n="modal.privacy">Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки персональных данных.</p>
+
+          <button class="kc-btn kc-btn--primary kc-btn--lg kc-btn--block" type="submit" data-i18n="modal.submit">Отправить заявку</button>
+          <p class="kc-book__legal">
+            <span data-i18n="modal.privacyPrefix">Нажимая «Отправить заявку», вы соглашаетесь с</span>
+            <a href="privacy.html" data-i18n="modal.privacyLink">политикой обработки персональных данных</a><span data-i18n="modal.privacySuffix">.</span>
+          </p>
         </form>
       </div>
     </div>
 
     <script src="js/lang-switcher.js"></script>
     <script src="js/header.js"></script>
-    <script src="js/forms.js"></script>
+    <script src="js/kc-lead-form.js"></script>
+    <script src="js/kc-contact-widget.js"></script>
     <script src="js/services-catalog.js"></script>
-    <script src="js/site.js"></script>
+    <script src="js/kc-ui.js"></script>
     <script src="js/premium.js"></script>
+    <script>
+      var y = document.getElementById("kc-year");
+      if (y) y.textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>

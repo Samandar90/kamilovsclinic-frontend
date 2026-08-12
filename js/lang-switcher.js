@@ -29,8 +29,8 @@ const translations = {
       "Удобный приём специалистов и диагностика для взрослых и детей.",
 
     // services section
-    "services.kicker": "ЧТО МЫ ДЕЛАЕМ",
-    "services.title": "Услуги клиники",
+    "services.kicker": "Направления",
+    "services.title": "Помощь по ключевым направлениям",
     "services.lead":
       "Комплексная диагностика, лечение и профилактика на базе современного оборудования и команды экспертов.",
     "services.text":
@@ -45,10 +45,9 @@ const translations = {
     "services.slide3.text": "Команда экспертов по ключевым направлениям",
 
     // benefits section
-    "benefits.kicker": "Почему выбирают нас",
-    "benefits.title": "Преимущества Kamilovs Clinic",
-    "benefits.lead":
-      "Мы соединяем современную медицину, комфорт и человеческое отношение — чтобы каждое обращение было максимально спокойным и понятным.",
+    "benefits.kicker": "О клинике",
+    "benefits.title": "Почему пациенты возвращаются",
+    "benefits.lead": "Мы соединяем современную диагностику, внимательное отношение и прозрачные рекомендации на каждом этапе лечения.",
 
     "benefits.card1.title": "Опытные специалисты",
     "benefits.card1.text":
@@ -81,7 +80,7 @@ const translations = {
     "benefits.card6.tag": "Честная стоимость",
 
     // FAQ section
-    "faq.kicker": "FAQ",
+    "faq.kicker": "Вопросы",
     "faq.title": "Частые вопросы пациентов",
     "faq.lead":
       "Мы заранее отвечаем на популярные вопросы — чтобы визит в клинику был спокойным и предсказуемым.",
@@ -91,7 +90,7 @@ const translations = {
       "Если вы не нашли ответ на свой вопрос — просто позвоните нам, администратор поможет подобрать врача и время.",
     "faq.stats1.label": "работаем без выходных",
     "faq.stats2.label": "обычное ожидание приёма",
-    "faq.call": "📞 Позвонить в клинику",
+    "faq.call": "Позвонить в клинику",
     "faq.aside.num": "5–10 мин",
 
     "faq.q1.question": "Нужно ли заранее записываться на приём?",
@@ -116,7 +115,7 @@ const translations = {
       "Да, в клинике есть педиатры и узкие детские специалисты. Мы создаём максимально спокойную атмосферу для ребёнка и родителей.",
 
     // DOCTORS SECTION (RU)
-    "doctors.kicker": "КОМАНДА ЭКСПЕРТОВ",
+    "doctors.kicker": "Команда",
     "doctors.title": "Наши специалисты",
     "doctors.sub":
       "Диагностика, лечение и внимание к деталям — команда врачей, на которых можно положиться.",
@@ -149,34 +148,29 @@ const translations = {
       "Врачи с большим практическим опытом, внимательным подходом и постоянным повышением квалификации.",
 
     // FLOW SECTION (RU)
-    "flow.kicker": "ЭТАПЫ ОБСЛУЖИВАНИЯ",
-    "flow.title": "Как проходит приём в Kamilovs Clinic",
+    "flow.kicker": "Как проходит приём",
+    "flow.title": "Четыре понятных шага",
     "flow.lead":
       "Мы заботимся о том, чтобы каждый этап визита был понятным и комфортным — от записи до получения результатов и рекомендаций.",
     "flow.note":
       "Можно записаться через сайт, по телефону или в мессенджере — вы получите напоминание о приёме и подробную консультацию врача.",
 
     "flow.step1.title": "Заявка или звонок",
-    "flow.step1.text":
-      "Вы оставляете заявку на сайте или звоните в клинику. Наш администратор подбирает удобное время и врача.",
+    "flow.step1.text": "Оставляете заявку на сайте или звоните — администратор подбирает время и врача.",
 
-    "flow.step2.title": "Подтверждение и напоминание",
-    "flow.step2.text":
-      "Мы подтверждаем запись, отправляем SMS или сообщение в мессенджер с датой, временем и адресом клиники.",
+    "flow.step2.title": "Подтверждение",
+    "flow.step2.text": "Подтверждаем запись и напоминаем о визите ближе к дате приёма.",
 
     "flow.step3.title": "Приём у врача",
-    "flow.step3.text":
-      "Врач проводит осмотр, задаёт уточняющие вопросы, при необходимости назначает диагностику и анализы.",
+    "flow.step3.text": "Осмотр и беседа, при необходимости — диагностика и анализы на месте.",
 
-    "flow.step4.title": "План лечения и сопровождение",
-    "flow.step4.text":
-      "Вы получаете понятный план лечения, рекомендации и при необходимости — повторный приём или онлайн-консультацию.",
+    "flow.step4.title": "План лечения",
+    "flow.step4.text": "Понятные рекомендации, план дальнейших шагов и сопровождение.",
 
     // FOOTER SECTION (RU)
-    "footer.text":
-      "Современная многопрофильная клиника в центре Ташкента. Работаем 24/7 — рядом, когда это важно.",
+    "footer.text": "Многопрофильная клиника в центре Ташкента. Работаем 24/7 — рядом, когда это важно.",
     "footer.addr": "📍 ул. Хувайдо, 7, Ташкент",
-    "footer.hours": "🕒 Работаем круглосуточно",
+    "footer.hours": "Круглосуточно",
     "footer.cta": "Записаться",
     "footer.mapTitle": "Как нас найти",
     "footer.mapText":
@@ -197,14 +191,17 @@ const translations = {
     "modal.field.phone.hint": "Мы позвоним только по вашей заявке — без спама.",
 
     "modal.field.service.label": "Интересующая услуга",
-    "modal.field.service.placeholder": "Например: кардиология",
+    "modal.field.service.placeholder": "Например: стоматология",
 
     "modal.field.message.label": "Комментарий",
     "modal.field.message.placeholder": "Опишите ваш вопрос, жалобу или симптом",
 
     "modal.submit": "Отправить заявку",
-    "modal.privacy":
-      "Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки персональных данных.",
+    "modal.privacyPrefix":
+      "Нажимая «Отправить заявку», вы соглашаетесь с",
+    "modal.privacyLink":
+      "политикой обработки персональных данных",
+    "modal.privacySuffix": ".",
 
     //SERVICES PAGE TRANSLATIONS (RU)
 
@@ -343,8 +340,20 @@ const translations = {
     "contacts.main.card3.title": "🕒 Режим работы",
     "contacts.main.card3.text":
       "Приём пациентов: 24/7\nАнализы и диагностика — по записи.",
-    "contacts.main.card4.title": "✉️ Электронная почта",
-    "contacts.main.card4.text": "По общим вопросам: info@kamilovs.uz",
+    "contacts.messengers": "Мессенджеры",
+
+    // reviews
+    "reviews.kicker": "ОТЗЫВЫ ПАЦИЕНТОВ",
+    "reviews.title": "Что о нас говорят",
+    "reviews.lead":
+      "Отзывы загружаются напрямую с Яндекс Карт — мы их не редактируем и не отбираем.",
+
+    // legal
+    "legal.title": "Реквизиты и лицензия",
+    "legal.entity": "Юридическое лицо",
+    "legal.inn": "ИНН",
+    "legal.license": "Лицензия",
+    "legal.privacy": "Политика обработки персональных данных",
     "contacts.main.highlight":
       "Если состояние острое или вам плохо — лучше сразу позвонить в клинику, чем заполнять форму. Так мы быстрее среагируем.",
 
@@ -389,15 +398,14 @@ const translations = {
     // footer
     "footer.text":
       "Современная многопрофильная клиника в центре Ташкента. Работаем 24/7 — рядом, когда это важно.",
-    "footer.address": "📍 ул. Хувайдо, 7, Ташкент",
+    "footer.address": "ул. Хувайдо, 7, Ташкент",
     "footer.phone": "+998 88 099 80 80",
-    "footer.email": "info@kamilovs.uz",
     "footer.hours": "🕒 Работаем круглосуточно",
     "footer.mapTitle": "Как нас найти",
     "footer.mapText":
       "Kamilovs’ clinic на Яндекс Картах — построить удобный маршрут за пару секунд.",
     "footer.bottom.left": "© {year} Kamilovs Clinic.",
-    "footer.bottom.right": "Сайт создан с заботой о пациентах.",
+    "footer.bottom.right": "Сайт создан с заботой о пациентах",
 
     // modal (повтор тех же ключей, что на других страницах)
     "modal.title": "Записаться в Kamilovs Clinic",
@@ -409,12 +417,15 @@ const translations = {
     "modal.field.phone.placeholder": "+998 XX XXX XX XX",
     "modal.field.phone.hint": "Мы позвоним только по вашей заявке — без спама.",
     "modal.field.service.label": "Интересующая услуга",
-    "modal.field.service.placeholder": "Например: кардиология",
+    "modal.field.service.placeholder": "Например: стоматология",
     "modal.field.message.label": "Комментарий",
     "modal.field.message.placeholder": "Опишите ваш вопрос, жалобу или симптом",
     "modal.submit": "Отправить заявку",
-    "modal.privacy":
-      "Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки персональных данных.",
+    "modal.privacyPrefix":
+      "Нажимая «Отправить заявку», вы соглашаетесь с",
+    "modal.privacyLink":
+      "политикой обработки персональных данных",
+    "modal.privacySuffix": ".",
 
     // hero stats
     "hero.stat1.label": "круглосуточно",
@@ -422,7 +433,7 @@ const translations = {
     "hero.stat3.label": "пациентов в год",
 
     // services grid (homepage)
-    "svc.more": "Подробнее →",
+    "svc.more": "Подробнее",
     "svc.item1.title": "Стоматология",
     "svc.item1.desc": "Лечение, протезирование и эстетика — бережно и без боли.",
     "svc.item2.title": "Неврология",
@@ -437,16 +448,72 @@ const translations = {
     "svc.item6.desc": "Лечебные процедуры под наблюдением специалиста.",
 
     // CTA band
-    "cta.title": "Запишитесь в Kamilovs Clinic сегодня",
-    "cta.text":
-      "Оставьте контакты — администратор ответит в течение 5 минут и подберёт удобное время.",
+    "cta.title": "Ваш следующий шаг — забота о здоровье",
+    "cta.text": "Оставьте номер, и администратор поможет подобрать врача и удобное время. Мы работаем круглосуточно.",
     "cta.btn": "Записаться на приём",
 
     // gallery
-    "gallery.kicker": "КЛИНИКА ИЗНУТРИ",
-    "gallery.title": "Атмосфера и комфорт",
+    "gallery.kicker": "Клиника изнутри",
+    "gallery.title": "Чистые кабинеты и спокойная обстановка",
     "gallery.lead":
       "Чистые кабинеты, современное оборудование и спокойная обстановка для каждого пациента.",
+
+    // ---- Редизайн 2026: тексты главной страницы ----
+    "a11y.skip": "К основному содержимому",
+    "hero.eyebrow": "Kamilovs Clinic · Ташкент · 24/7",
+    "hero.title1": "Медицина,",
+    "hero.title2": "которая не закрывается",
+    "hero.sub": "Многопрофильная клиника в центре Ташкента. Приём специалистов, диагностика и лабораторные анализы — круглосуточно, без выходных.",
+    "hero.cta1": "Записаться на приём",
+    "hero.cta2": "Направления",
+    "hero.scroll": "Листайте",
+    "metric.1": "Приём и консультации без выходных",
+    "metric.2": "Направлений взрослой и детской медицины",
+    "metric.3": "Пациентов в год доверяют клинике",
+    "services.all": "Все услуги",
+    "svc.dental.title": "Стоматология",
+    "svc.dental.text": "Лечение, протезирование, гигиена и детский приём — с понятным планом и без спешки.",
+    "svc.neuro.title": "Неврология",
+    "svc.neuro.text": "Головные боли, боли в спине, нарушения сна — диагностика и лечение.",
+    "svc.lab.title": "Анализы и лаборатория",
+    "svc.lab.text": "Кровь, гормоны, инфекции, анализы для госпитализации и check-up.",
+    "svc.ped.title": "Педиатрия",
+    "svc.ped.text": "Осмотры, наблюдение за развитием и консультации по вакцинации.",
+    "svc.diag.title": "Диагностика",
+    "svc.diag.text": "Исследования на современном оборудовании с понятной расшифровкой.",
+    "svc.proc.title": "Процедуры и хиджама",
+    "svc.proc.text": "Лечебные процедуры под наблюдением специалиста.",
+    "why.1.title": "Круглосуточная помощь",
+    "why.1.text": "Клиника работает 24 часа в сутки без выходных и праздников — приём и консультации доступны тогда, когда это действительно нужно.",
+    "why.2.title": "Современная диагностика",
+    "why.2.text": "Исследования проводятся на современном оборудовании, а результаты врач объясняет понятным языком — без медицинского жаргона.",
+    "why.3.title": "Опытные специалисты",
+    "why.3.text": "Врачи с многолетней практикой и узкой специализацией. Каждому пациенту — своё время и внимание, без потока и спешки.",
+    "why.4.title": "Комфорт на каждом этапе",
+    "why.4.text": "Чистые кабинеты, спокойная обстановка и заботливый персонал — от момента записи до завершения лечения.",
+    "why.5.title": "Понятная стоимость",
+    "why.5.text": "План лечения обсуждается заранее. Вы понимаете, что входит в приём и за что платите, — без навязанных услуг.",
+    "gallery.cap1": "Стоматологический кабинет",
+    "gallery.cap2": "Процедурная",
+    "gallery.cap3": "Зона ожидания",
+    "gallery.cap4": "Оборудование",
+    "cta.kicker": "Запись на приём",
+    "cta.point1": "Ответим в течение 5 минут",
+    "cta.point2": "Подберём врача под ваш вопрос",
+    "cta.point3": "Звоним только по заявке — без спама",
+    "form.title": "Оставить заявку",
+    "form.sub": "Заполните форму — администратор перезвонит и подтвердит запись.",
+    "contacts.kicker": "Контакты",
+    "contacts.title": "Как нас найти",
+    "contacts.address": "Адрес",
+    "contacts.phone": "Телефон",
+    "contacts.hours": "Режим",
+    "contacts.hoursValue": "Круглосуточно, без выходных",
+    "contacts.route": "Построить маршрут",
+    "footer.nav": "Навигация",
+    "footer.services": "Направления",
+    "footer.contactsTitle": "Контакты",
+    "footer.privacy": "Обработка персональных данных",
   },
 
   uz: {
@@ -477,8 +544,8 @@ const translations = {
     "hero.card3.text": "Kattalar va bolalar uchun qulay qabul va diagnostika.",
 
     // services section
-    "services.kicker": "BIZ NIMA QILAMIZ",
-    "services.title": "Klinika xizmatlari",
+    "services.kicker": "Yo‘nalishlar",
+    "services.title": "Asosiy yo‘nalishlar bo‘yicha yordam",
     "services.lead":
       "Zamonaviy uskunalar va tajribali mutaxassislar jamoasi asosida kompleks diagnostika, davolash va profilaktika.",
     "services.text":
@@ -494,10 +561,9 @@ const translations = {
       "Asosiy yo‘nalishlar bo‘yicha tajribali shifokorlar jamoasi",
 
     // benefits section
-    "benefits.kicker": "Nega bizni tanlashadi",
-    "benefits.title": "Kamilovs Clinic afzalliklari",
-    "benefits.lead":
-      "Zamonaviy tibbiyot, qulaylik va insoniy munosabatni birlashtiramiz — har bir murojaat iloji boricha xotirjam va tushunarli bo‘lishi uchun.",
+    "benefits.kicker": "Klinika haqida",
+    "benefits.title": "Nega bemorlar qaytib keladi",
+    "benefits.lead": "Biz zamonaviy diagnostika, e’tiborli munosabat va davolashning har bosqichida tushunarli tavsiyalarni birlashtiramiz.",
 
     "benefits.card1.title": "Tajribali mutaxassislar",
     "benefits.card1.text":
@@ -530,7 +596,7 @@ const translations = {
     "benefits.card6.tag": "Halol narx",
 
     // FAQ section
-    "faq.kicker": "FAQ",
+    "faq.kicker": "Savollar",
     "faq.title": "Bemorlar tez-tez beradigan savollar",
     "faq.lead":
       "Klinikaga tashrif iloji boricha xotirjam va oldindan tushunarli bo‘lishi uchun mashhur savollarga oldindan javob beramiz.",
@@ -540,7 +606,7 @@ const translations = {
       "Agar savolingizga javob topa olmagan bo‘lsangiz, bizga qo‘ng‘iroq qiling — administrator sizga shifokor va qulay vaqtni tanlashda yordam beradi.",
     "faq.stats1.label": "dam olish kunlarisiz ishlaymiz",
     "faq.stats2.label": "odatdagi qabul kutish vaqti",
-    "faq.call": "📞 Klinikaga qo‘ng‘iroq qilish",
+    "faq.call": "Klinikaga qo‘ng‘iroq qilish",
     "faq.aside.num": "5–10 min",
 
     "faq.q1.question": "Qabulga oldindan yozilish shartmi?",
@@ -565,7 +631,7 @@ const translations = {
       "Ha, klinikamizda pediatrlar va tor yo‘nalishli bolalar mutaxassislari mavjud. Biz bola va ota-onalar uchun maksimal xotirjam muhit yaratishga harakat qilamiz.",
 
     // DOCTORS SECTION (UZ)
-    "doctors.kicker": "Mutaxassislar jamoasi",
+    "doctors.kicker": "Jamoa",
     "doctors.title": "Bizning mutaxassislar",
     "doctors.sub":
       "Diagnostika, davolash va mayda tafsilotlarga e’tibor — ishonishingiz mumkin bo‘lgan shifokorlar jamoasi.",
@@ -598,34 +664,29 @@ const translations = {
       "Katta amaliy tajribaga ega, e’tiborli yondashuvli va doimiy ravishda malakasini oshiradigan shifokorlar.",
 
     // FLOW SECTION (UZ)
-    "flow.kicker": "QABUL BOSQICHLARI",
-    "flow.title": "Kamilovs Clinic’da qabul qanday o‘tadi",
+    "flow.kicker": "Qabul qanday o‘tadi",
+    "flow.title": "To‘rtta tushunarli qadam",
     "flow.lead":
       "Tashrifning har bir bosqichi tushunarli va qulay bo‘lishi uchun qayddan tortib natijalar va tavsiyalargacha bo‘lgan jarayonga e’tibor beramiz.",
     "flow.note":
       "Sayt orqali, telefon orqali yoki messenjerda yozilishingiz mumkin — sizga qabul eslatmasi va shifokor bilan batafsil maslahat beramiz.",
 
     "flow.step1.title": "Ariza yoki qo‘ng‘iroq",
-    "flow.step1.text":
-      "Siz sayt orqali ariza qoldirasiz yoki klinikaga qo‘ng‘iroq qilasiz. Administrator siz uchun qulay vaqt va shifokorni tanlab beradi.",
+    "flow.step1.text": "Saytda ariza qoldirasiz yoki qo‘ng‘iroq qilasiz — administrator vaqt va shifokorni tanlaydi.",
 
-    "flow.step2.title": "Tasdiqlash va eslatma",
-    "flow.step2.text":
-      "Qabulingizni tasdiqlaymiz, SMS yoki messenjerda klinika manzili, sana va vaqt bilan xabar yuboramiz.",
+    "flow.step2.title": "Tasdiqlash",
+    "flow.step2.text": "Yozuvni tasdiqlaymiz va qabul sanasiga yaqin eslatamiz.",
 
-    "flow.step3.title": "Shifokor qabulida",
-    "flow.step3.text":
-      "Shifokor ko‘rikdan o‘tkazadi, aniqlashtiruvchi savollar beradi va zarurat bo‘lsa, diagnostika hamda tahlillarni tayinlaydi.",
+    "flow.step3.title": "Shifokor qabuli",
+    "flow.step3.text": "Ko‘rik va suhbat, zarur bo‘lsa — joyida diagnostika va tahlillar.",
 
-    "flow.step4.title": "Davolash rejasi va kuzatuv",
-    "flow.step4.text":
-      "Siz tushunarli davolash rejasi, tavsiyalar va zarurat bo‘lsa, qayta qabul yoki onlayn-maslahat olasiz.",
+    "flow.step4.title": "Davolash rejasi",
+    "flow.step4.text": "Tushunarli tavsiyalar, keyingi qadamlar rejasi va kuzatuv.",
 
     // FOOTER SECTION (UZ)
-    "footer.text":
-      "Toshkent markazida joylashgan zamonaviy ko‘p tarmoqli klinika. 24/7 ishlaymiz — eng muhim paytda yoningizdamiz.",
+    "footer.text": "Toshkent markazidagi ko‘p tarmoqli klinika. 24/7 ishlaymiz — muhim bo‘lganda yoningizda.",
     "footer.addr": "📍 Xuvaydo ko‘chasi, 7, Toshkent",
-    "footer.hours": "🕒 Kecha-kunduz ishlaymiz",
+    "footer.hours": "Kechayu kunduz",
     "footer.cta": "Qabulga yozilish",
     "footer.mapTitle": "Qanday topish mumkin",
     "footer.mapText":
@@ -647,15 +708,18 @@ const translations = {
       "Faqat sizning so‘rovingiz bo‘yicha qo‘ng‘iroq qilamiz — spam yo‘q.",
 
     "modal.field.service.label": "Qiziqtirayotgan xizmat",
-    "modal.field.service.placeholder": "Masalan: kardiologiya",
+    "modal.field.service.placeholder": "Masalan: stomatologiya",
 
     "modal.field.message.label": "Izoh",
     "modal.field.message.placeholder":
       "Savolingizni, shikoyatingizni yoki simptomlarni yozib bering",
 
     "modal.submit": "So‘rov yuborish",
-    "modal.privacy":
-      "“So‘rov yuborish” tugmasini bosish orqali shaxsiy ma’lumotlarni qayta ishlash siyosatiga rozilik bildirasiz.",
+    "modal.privacyPrefix":
+      "«Ariza yuborish» tugmasini bosish orqali siz",
+    "modal.privacyLink":
+      "shaxsiy ma’lumotlarni qayta ishlash siyosatiga",
+    "modal.privacySuffix": " rozilik bildirasiz.",
 
     //SERVICES PAGE TRANSLATIONS (UZ)
     // NAV — "О клинике" и мобильный звонок
@@ -796,8 +860,20 @@ const translations = {
     "contacts.main.card3.title": "🕒 Ish vaqti",
     "contacts.main.card3.text":
       "Bemorlarni qabul qilish: 24/7\nTahlillar va diagnostika — oldindan yozilish asosida.",
-    "contacts.main.card4.title": "✉️ Elektron pochta",
-    "contacts.main.card4.text": "Umumiy savollar uchun: info@kamilovs.uz",
+    "contacts.messengers": "Messenjerlar",
+
+    // reviews
+    "reviews.kicker": "BEMORLAR SHARHLARI",
+    "reviews.title": "Biz haqimizda nima deyishadi",
+    "reviews.lead":
+      "Sharhlar to‘g‘ridan-to‘g‘ri Yandex Xaritalardan yuklanadi — biz ularni tahrirlamaymiz va tanlamaymiz.",
+
+    // legal
+    "legal.title": "Rekvizitlar va litsenziya",
+    "legal.entity": "Yuridik shaxs",
+    "legal.inn": "STIR",
+    "legal.license": "Litsenziya",
+    "legal.privacy": "Shaxsiy ma’lumotlarni qayta ishlash siyosati",
     "contacts.main.highlight":
       "Agar holatingiz og‘ir bo‘lsa yoki o‘zingizni yomon his qilsangiz — formani to‘ldirishdan ko‘ra darhol klinikaga qo‘ng‘iroq qilganingiz ma’qul. Shunda biz tezroq yordam bera olamiz.",
 
@@ -844,15 +920,14 @@ const translations = {
     // footer
     "footer.text":
       "Zamonaviy ko‘p tarmoqli klinika Toshkent markazida. 24/7 ishlaymiz — sizga kerak bo‘lgan vaqtda yoningizdamiz.",
-    "footer.address": "📍 Xuvaydo ko‘chasi, 7, Toshkent",
+    "footer.address": "Xuvaydo ko‘chasi, 7, Toshkent",
     "footer.phone": "+998 88 099 80 80",
-    "footer.email": "info@kamilovs.uz",
     "footer.hours": "🕒 24/7 ishlaymiz",
     "footer.mapTitle": "Qanday topish mumkin",
     "footer.mapText":
       "Kamilovs Clinic manzilini Yandex Xaritalarda bir necha soniyada toping.",
     "footer.bottom.left": "© {year} Kamilovs Clinic.",
-    "footer.bottom.right": "Sayt bemorlar haqida g‘amxo‘rlik bilan yaratilgan.",
+    "footer.bottom.right": "Sayt bemorlar haqida g‘amxo‘rlik bilan yaratilgan",
 
     // modal
     "modal.title": "Kamilovs Clinic ga yozilish",
@@ -865,13 +940,16 @@ const translations = {
     "modal.field.phone.hint":
       "Faqat sizning arizangiz bo‘yicha qo‘ng‘iroq qilamiz — spam bo‘lmaydi.",
     "modal.field.service.label": "Qaysi xizmat qiziqtiradi",
-    "modal.field.service.placeholder": "Masalan: kardiologiya",
+    "modal.field.service.placeholder": "Masalan: stomatologiya",
     "modal.field.message.label": "Izoh",
     "modal.field.message.placeholder":
       "Savolingiz yoki shikoyatlaringizni yozing",
     "modal.submit": "Ariza yuborish",
-    "modal.privacy":
-      "«Ariza yuborish» tugmasini bosish orqali shaxsiy ma’lumotlaringizni qayta ishlashga rozilik bildirasiz.",
+    "modal.privacyPrefix":
+      "«Ariza yuborish» tugmasini bosish orqali siz",
+    "modal.privacyLink":
+      "shaxsiy ma’lumotlarni qayta ishlash siyosatiga",
+    "modal.privacySuffix": " rozilik bildirasiz.",
 
     // hero stats
     "hero.stat1.label": "kechayu kunduz",
@@ -879,7 +957,7 @@ const translations = {
     "hero.stat3.label": "yiliga bemor",
 
     // services grid (homepage)
-    "svc.more": "Batafsil →",
+    "svc.more": "Batafsil",
     "svc.item1.title": "Stomatologiya",
     "svc.item1.desc": "Davolash, protezlash va estetika — ehtiyotkorlik bilan, og‘riqsiz.",
     "svc.item2.title": "Nevrologiya",
@@ -894,16 +972,72 @@ const translations = {
     "svc.item6.desc": "Mutaxassis nazorati ostidagi davolovchi muolajalar.",
 
     // CTA band
-    "cta.title": "Bugun Kamilovs Clinic ga yoziling",
-    "cta.text":
-      "Kontaktlaringizni qoldiring — administrator 5 daqiqada javob beradi va qulay vaqtni tanlaydi.",
+    "cta.title": "Keyingi qadamingiz — salomatlik haqida g‘amxo‘rlik",
+    "cta.text": "Raqamingizni qoldiring, administrator shifokor va qulay vaqtni tanlashda yordam beradi. Biz kechayu kunduz ishlaymiz.",
     "cta.btn": "Qabulga yozilish",
 
     // gallery
-    "gallery.kicker": "KLINIKA ICHKARIDAN",
-    "gallery.title": "Muhit va qulaylik",
+    "gallery.kicker": "Klinika ichkaridan",
+    "gallery.title": "Toza xonalar va xotirjam muhit",
     "gallery.lead":
       "Toza xonalar, zamonaviy uskunalar va har bir bemor uchun xotirjam muhit.",
+
+    // ---- Редизайн 2026: тексты главной страницы ----
+    "a11y.skip": "Asosiy mazmunga o‘tish",
+    "hero.eyebrow": "Kamilovs Clinic · Toshkent · 24/7",
+    "hero.title1": "Tibbiyot,",
+    "hero.title2": "yopilmaydigan",
+    "hero.sub": "Toshkent markazidagi ko‘p tarmoqli klinika. Mutaxassislar qabuli, diagnostika va laborator tahlillar — kechayu kunduz, dam olish kunlarisiz.",
+    "hero.cta1": "Qabulga yozilish",
+    "hero.cta2": "Yo‘nalishlar",
+    "hero.scroll": "Pastga",
+    "metric.1": "Dam olish kunlarisiz qabul va konsultatsiya",
+    "metric.2": "Kattalar va bolalar tibbiyoti yo‘nalishlari",
+    "metric.3": "Yiliga shuncha bemor klinikaga ishonadi",
+    "services.all": "Barcha xizmatlar",
+    "svc.dental.title": "Stomatologiya",
+    "svc.dental.text": "Davolash, protezlash, gigiyena va bolalar qabuli — tushunarli reja bilan, shoshilmasdan.",
+    "svc.neuro.title": "Nevrologiya",
+    "svc.neuro.text": "Bosh og‘rig‘i, bel og‘rig‘i, uyqu buzilishi — diagnostika va davolash.",
+    "svc.lab.title": "Tahlillar va laboratoriya",
+    "svc.lab.text": "Qon, gormonlar, infeksiyalar, shifoxonaga yotqizish va check-up tahlillari.",
+    "svc.ped.title": "Pediatriya",
+    "svc.ped.text": "Ko‘riklar, rivojlanishni kuzatish va emlash bo‘yicha maslahatlar.",
+    "svc.diag.title": "Diagnostika",
+    "svc.diag.text": "Zamonaviy uskunalarda tekshiruvlar va tushunarli natijalar.",
+    "svc.proc.title": "Muolajalar va hijoma",
+    "svc.proc.text": "Mutaxassis nazorati ostidagi davolovchi muolajalar.",
+    "why.1.title": "Kechayu kunduz yordam",
+    "why.1.text": "Klinika dam olish va bayram kunlarisiz kunning 24 soati ishlaydi — qabul va konsultatsiya haqiqatan kerak bo‘lganda mavjud.",
+    "why.2.title": "Zamonaviy diagnostika",
+    "why.2.text": "Tekshiruvlar zamonaviy uskunalarda o‘tkaziladi, natijalarni shifokor tushunarli tilda izohlaydi — tibbiy jargonsiz.",
+    "why.3.title": "Tajribali mutaxassislar",
+    "why.3.text": "Ko‘p yillik amaliyotga ega, tor yo‘nalish shifokorlari. Har bir bemorga o‘z vaqti va e’tibori — shoshilinchsiz.",
+    "why.4.title": "Har bosqichda qulaylik",
+    "why.4.text": "Toza xonalar, xotirjam muhit va g‘amxo‘r xodimlar — yozilish paytidan davolash yakunigacha.",
+    "why.5.title": "Tushunarli narx",
+    "why.5.text": "Davolash rejasi oldindan muhokama qilinadi. Qabulga nima kirishini va nima uchun to‘layotganingizni bilasiz — majburiy xizmatlarsiz.",
+    "gallery.cap1": "Stomatologiya xonasi",
+    "gallery.cap2": "Muolaja xonasi",
+    "gallery.cap3": "Kutish zonasi",
+    "gallery.cap4": "Uskunalar",
+    "cta.kicker": "Qabulga yozilish",
+    "cta.point1": "5 daqiqada javob beramiz",
+    "cta.point2": "Savolingizga mos shifokorni tanlaymiz",
+    "cta.point3": "Faqat ariza bo‘yicha qo‘ng‘iroq qilamiz — spamsiz",
+    "form.title": "Ariza qoldirish",
+    "form.sub": "Formani to‘ldiring — administrator qo‘ng‘iroq qilib, yozuvni tasdiqlaydi.",
+    "contacts.kicker": "Kontaktlar",
+    "contacts.title": "Bizni qanday topish mumkin",
+    "contacts.address": "Manzil",
+    "contacts.phone": "Telefon",
+    "contacts.hours": "Ish tartibi",
+    "contacts.hoursValue": "Kechayu kunduz, dam olish kunlarisiz",
+    "contacts.route": "Marshrut qurish",
+    "footer.nav": "Navigatsiya",
+    "footer.services": "Yo‘nalishlar",
+    "footer.contactsTitle": "Kontaktlar",
+    "footer.privacy": "Shaxsiy ma’lumotlarni qayta ishlash",
   },
 };
 

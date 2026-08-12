@@ -4,14 +4,27 @@
 >
   <url>
     <loc>https://www.kamilovsclinic.uz/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.kamilovsclinic.uz/services.html</loc>
+    <lastmod>2026-08-12</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.kamilovsclinic.uz/doctors.html</loc>
+    <lastmod>2026-08-12</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.kamilovsclinic.uz/contacts.html</loc>
+    <lastmod>2026-08-12</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kamilovsclinic.uz/privacy.html</loc>
+    <lastmod>2026-08-12</lastmod>
+    <priority>0.2</priority>
   </url>
 </urlset>

@@ -1,0 +1,291 @@
+/* =========================================================
+   Kamilovs Clinic — Design tokens, reset, base typography
+   2026 redesign. Единственный источник значений: цвета,
+   типографика, отступы, радиусы, тени и переходы задаются
+   только здесь. В компонентах — никаких случайных чисел.
+   ========================================================= */
+
+/* ---------- Шрифт ----------
+   Inter self-hosted: сторонний запрос к Google Fonts блокировал бы рендер
+   и тянул за собой лишний DNS + TLS. Подмножества разделены по
+   unicode-range, поэтому русская страница качает только latin + cyrillic. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("../fonts/inter-cyrillic-ext.woff2") format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("../fonts/inter-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("../fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* ---------- Цвет ----------
+     Тёплая нейтральная база вместо чистого белого: бумага, а не экран.
+     Акцент — приглушённый медицинский teal, без неона и свечения. */
+  --paper: #fbfaf7; /* основной фон */
+  --paper-2: #f4f2ed; /* второстепенный фон, чередование секций */
+  --paper-3: #ece8e0; /* глубокий тёплый тон */
+  --surface: #ffffff; /* приподнятая поверхность */
+  --ink: #14181c; /* заголовки, максимальный контраст */
+  --ink-2: #333b42; /* основной текст */
+  --ink-3: #5c666f; /* второстепенный текст */
+  --ink-4: #8a939b; /* метаданные, подписи */
+  --line: #e5e0d7; /* тонкая тёплая граница */
+  --line-2: #d3ccc0; /* акцентированная граница */
+
+  --accent: #14776a; /* приглушённый teal */
+  --accent-deep: #0e574e;
+  --accent-soft: #e3efec;
+  --accent-ink: #0a3d37;
+
+  --dark: #10161a; /* тёмные секции (футер, CTA) */
+  --dark-2: #1a2228;
+  --on-dark: #f2f0eb;
+  --on-dark-2: #a9b2b6;
+  --on-dark-line: rgba(242, 240, 235, 0.14);
+
+  --danger: #a8372a;
+
+  /* ---------- Типографика ----------
+     Флюидная шкала: между брейкпоинтами размер меняется плавно,
+     поэтому нет скачков вёрстки на промежуточных ширинах. */
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --fs-eyebrow: 0.6875rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem);
+  --fs-h4: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem);
+  --fs-h2: clamp(1.875rem, 1.35rem + 2.3vw, 3.25rem);
+  --fs-h1: clamp(2.375rem, 1.5rem + 4vw, 5rem);
+  --fs-display: clamp(2.75rem, 1.4rem + 5.6vw, 6.25rem);
+  --fs-metric: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
+
+  --lh-tight: 1.03;
+  --lh-snug: 1.16;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.66;
+
+  --tracking-eyebrow: 0.16em;
+  --tracking-tight: -0.025em;
+  --tracking-display: -0.038em;
+
+  /* ---------- Пространство ---------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --s-11: 160px;
+  --section-y: clamp(64px, 8vw, 152px);
+
+  /* ---------- Форма ---------- */
+  --r-xs: 3px;
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 24px;
+  --r-xl: 36px;
+  --r-pill: 999px;
+
+  /* Тени намеренно слабые: премиальность здесь держится на типографике
+     и пространстве, а не на «парящих карточках». */
+  --shadow-sm: 0 1px 2px rgba(20, 24, 28, 0.04),
+    0 4px 12px rgba(20, 24, 28, 0.04);
+  --shadow-md: 0 2px 6px rgba(20, 24, 28, 0.05),
+    0 16px 40px rgba(20, 24, 28, 0.07);
+  --shadow-lg: 0 4px 12px rgba(20, 24, 28, 0.06),
+    0 32px 72px rgba(20, 24, 28, 0.11);
+
+  /* ---------- Движение ---------- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur: 320ms;
+  --dur-slow: 620ms;
+
+  /* ---------- Раскладка ---------- */
+  --wrap: 1240px;
+  --wrap-narrow: 760px;
+  --gutter: clamp(20px, 5vw, 56px);
+  --header-h: 74px;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* Якорные ссылки не должны уезжать под фиксированную шапку. */
+  scroll-padding-top: calc(var(--header-h) + 24px);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--font);
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern", "liga", "calt";
+  /* overflow-x скрывать нельзя глобально: это ломает position:sticky.
+     Переполнение лечится в компонентах. */
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-snug);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+}
+h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+}
+h3 {
+  font-size: var(--fs-h3);
+}
+h4 {
+  font-size: var(--fs-h4);
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+dl,
+dd {
+  margin: 0;
+}
+
+/* Атрибут hidden должен побеждать раскладку.
+   Правило вида `.kc-contacts__row { display: grid }` специфичнее
+   браузерного `[hidden] { display: none }`, из-за чего скрытые блоки
+   (мессенджеры, реквизиты) продолжали показываться пустыми. */
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- Фокус ----------
+   Видимый только при клавиатурной навигации, но обязательно видимый. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--r-xs);
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---------- Ссылка «к содержимому» ---------- */
+.kc-skip {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translate(-50%, -200%);
+  z-index: 1000;
+  padding: 12px 20px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm);
+  transition: transform var(--dur) var(--ease);
+}
+.kc-skip:focus {
+  transform: translate(-50%, 0);
+}
+
+/* ---------- Уважение к настройкам движения ----------
+   Полностью отключать переходы нельзя: элементы, которые появляются
+   через reveal, должны остаться видимыми. Поэтому анимации схлопываются
+   почти в мгновенные, а не удаляются. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

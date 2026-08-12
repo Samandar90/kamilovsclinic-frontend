@@ -102,26 +102,28 @@
 .kc-header:not(.is-stuck) .kc-nav__link.is-active {
   color: #fff;
 }
-/* Пилюля-подложка едет за активным/наведённым пунктом. */
+/* Индикатор — тонкая линия под активным пунктом, а не плашка:
+   на фотографии героя серый прямоугольник читался как артефакт. */
 .kc-nav__pill {
   position: absolute;
-  top: 0;
   left: 0;
-  height: 100%;
-  border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, 0.16);
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--mint);
   transform: translateX(var(--pill-x, 0)) scaleX(var(--pill-w, 0));
   transform-origin: left center;
   width: 1px;
   opacity: 0;
-  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
   pointer-events: none;
 }
 .kc-nav.is-ready .kc-nav__pill {
   opacity: 1;
 }
 .kc-header.is-stuck .kc-nav__pill {
-  background: rgba(20, 24, 28, 0.06);
+  background: var(--accent);
 }
 
 .kc-header__actions {
@@ -777,15 +779,24 @@
 /* =========================================================
    ВРАЧИ — горизонтальная карусель
    ========================================================= */
+/* Лента выходит за контейнер до краёв экрана: карточки уезжают за границу
+   кадра, как в настоящей карусели, а не обрываются по невидимой линии
+   контейнера — именно это выглядело как баг. */
 .kc-docs {
   margin-top: clamp(36px, 4vw, 60px);
+  /* Ровно ширина экрана. Лишние пиксели под полосу прокрутки срезает
+     `overflow-x: clip` у body, поэтому горизонтальной прокрутки не возникает. */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
 }
 .kc-docs__track {
   display: flex;
   gap: clamp(14px, 1.6vw, 24px);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-padding-left: var(--gutter);
+  /* Первая карточка выравнивается по тексту секции, дальше лента уходит вправо. */
+  padding-inline: max(var(--gutter), calc(50vw - var(--wrap) / 2 + var(--gutter)));
+  scroll-padding-left: max(var(--gutter), calc(50vw - var(--wrap) / 2 + var(--gutter)));
   padding-bottom: var(--s-4);
   /* Полосу прокрутки прячем, но прокрутка колесом/свайпом остаётся. */
   scrollbar-width: none;
@@ -1105,6 +1116,14 @@
   border-radius: var(--r-lg);
   background: var(--paper);
 }
+/* Карточка светлая, но лежит внутри тёмной секции — правило
+   `.kc-section--dark h3` красило её заголовки в цвет тёмного фона,
+   и текст сливался с подложкой. Возвращаем обычный цвет чернил. */
+.kc-book__card h3,
+.kc-book__card h4,
+.kc-result h3 {
+  color: var(--ink);
+}
 .kc-book__card h3 {
   font-size: var(--fs-h3);
   font-weight: 550;
@@ -1314,6 +1333,44 @@
   gap: 8px;
   margin-top: var(--s-4);
 }
+
+/* Ссылки на мессенджеры: тёмный вариант для футера, светлый — для
+   страницы контактов. Рендерит js/kc-contact-widget.js. */
+.kc-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--on-dark-line);
+  color: inherit;
+  font-size: var(--fs-sm);
+  transition: background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.kc-social-link svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+.kc-social-link:hover,
+.kc-social-link:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--on-dark);
+}
+/* Селектор с тегом (0,1,1) перебивает `.kc-contact-card a` из старого
+   kc-redesign.css на внутренних страницах. */
+a.kc-social-link--light {
+  border-color: var(--line);
+  color: var(--accent);
+  font-weight: 550;
+}
+a.kc-social-link--light:hover,
+a.kc-social-link--light:focus-visible {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
 .kc-footer__bottom {
   display: flex;
   flex-wrap: wrap;
@@ -1344,88 +1401,196 @@
    ========================================================= */
 .kc-fab {
   position: fixed;
-  right: 22px;
-  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+  right: clamp(16px, 2vw, 28px);
+  bottom: calc(clamp(16px, 2vw, 28px) + env(safe-area-inset-bottom, 0px));
   z-index: 880;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 22px;
-  border: 0;
-  border-radius: var(--r-pill);
-  background: var(--ink);
-  color: var(--paper);
-  font-size: var(--fs-sm);
-  font-weight: 550;
-  cursor: pointer;
-  box-shadow: var(--shadow-md);
-  opacity: 0;
-  transform: translateY(14px);
-  visibility: hidden;
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease),
-    visibility var(--dur);
-}
-.kc-fab.is-visible {
-  opacity: 1;
-  transform: none;
-  visibility: visible;
-}
-.kc-fab svg {
-  width: 16px;
-  height: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
 }
 
-/* На мобильном — липкая полоса: звонок + запись. */
-@media (max-width: 700px) {
-  .kc-fab {
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 0;
-    padding: 0;
-    background: rgba(251, 250, 247, 0.94);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    border-top: 1px solid var(--line);
-    box-shadow: none;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 10px;
-    padding: 10px var(--gutter)
-      calc(10px + env(safe-area-inset-bottom, 0px));
+/* ---- Раскрывающееся меню ---- */
+.kc-fab__menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease), visibility 0s linear var(--dur);
+}
+.kc-fab.is-open .kc-fab__menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity var(--dur) var(--ease), visibility 0s linear 0s;
+}
+
+.kc-fab__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  /* Пункты выезжают снизу вверх по очереди. */
+  transform: translateY(12px) scale(0.94);
+  opacity: 0;
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+.kc-fab.is-open .kc-fab__item {
+  transform: none;
+  opacity: 1;
+}
+.kc-fab.is-open .kc-fab__item:nth-last-child(1) {
+  transition-delay: 40ms;
+}
+.kc-fab.is-open .kc-fab__item:nth-last-child(2) {
+  transition-delay: 90ms;
+}
+.kc-fab.is-open .kc-fab__item:nth-last-child(3) {
+  transition-delay: 140ms;
+}
+.kc-fab.is-open .kc-fab__item:nth-last-child(4) {
+  transition-delay: 190ms;
+}
+
+.kc-fab__text {
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--fs-sm);
+  font-weight: 550;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur) var(--ease);
+}
+.kc-fab__item:hover .kc-fab__text {
+  transform: translateX(-2px);
+}
+
+.kc-fab__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #fff;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--dur) var(--ease);
+}
+.kc-fab__icon svg {
+  width: 21px;
+  height: 21px;
+}
+.kc-fab__item:hover .kc-fab__icon {
+  transform: scale(1.07);
+}
+.kc-fab__icon--book {
+  background: var(--accent-grad);
+}
+.kc-fab__icon--call {
+  background: var(--ink);
+}
+.kc-fab__icon--telegram {
+  background: #229ed9;
+}
+.kc-fab__icon--instagram {
+  background: linear-gradient(135deg, #f0a03a, #d6249f 55%, #8134af);
+}
+
+/* ---- Основная кнопка ---- */
+.kc-fab__toggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--accent-grad);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(15, 122, 108, 0.32);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.kc-fab__toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 28px rgba(15, 122, 108, 0.4);
+}
+.kc-fab__toggle svg {
+  width: 25px;
+  height: 25px;
+}
+
+/* Мягкая пульсация привлекает внимание, но не мигает и не прыгает. */
+.kc-fab__pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent-bright);
+  opacity: 0.35;
+  animation: kc-fab-pulse 2.8s var(--ease-in-out) infinite;
+  z-index: -1;
+}
+@keyframes kc-fab-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.32;
   }
-  /* Контент не должен уезжать под липкую полосу. */
-  body.kc-has-fab {
-    padding-bottom: 78px;
+  70%,
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
   }
 }
-.kc-fab__call,
-.kc-fab__book {
-  display: none;
+.kc-fab.is-open .kc-fab__pulse {
+  animation: none;
 }
-@media (max-width: 700px) {
-  .kc-fab__label {
-    display: none;
+
+/* Иконка меняется на крестик поворотом, а не подменой элемента. */
+.kc-fab__glyph {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+.kc-fab__glyph--close {
+  transform: rotate(-90deg);
+  opacity: 0;
+}
+.kc-fab.is-open .kc-fab__glyph--open {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+.kc-fab.is-open .kc-fab__glyph--close {
+  transform: none;
+  opacity: 1;
+}
+
+@media (max-width: 560px) {
+  .kc-fab__toggle {
+    width: 54px;
+    height: 54px;
   }
-  .kc-fab__call,
-  .kc-fab__book {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border-radius: var(--r-pill);
-    font-size: var(--fs-sm);
-    font-weight: 550;
-    padding: 13px 18px;
-    border: 1px solid var(--line-2);
-    color: var(--ink);
-    background: transparent;
-    cursor: pointer;
+  .kc-fab__icon {
+    width: 44px;
+    height: 44px;
   }
-  .kc-fab__book {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kc-fab__pulse {
+    animation: none;
+    opacity: 0;
+  }
+  .kc-fab__item {
+    transition-delay: 0ms !important;
   }
 }
 

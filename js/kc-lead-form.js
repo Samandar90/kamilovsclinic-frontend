@@ -80,14 +80,22 @@
     });
   }
 
+  var CHECK =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"' +
+    ' stroke-linecap="round" stroke-linejoin="round"><path d="m20 6.5-11 11-5-5"/></svg>';
+  var ALERT =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"' +
+    ' stroke-linecap="round"><path d="M12 7.5v6M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>';
+
   function successHtml() {
     return (
-      '<div class="kc-lead-result__icon kc-lead-result__icon--ok" aria-hidden="true">✓</div>' +
+      '<div class="kc-result__icon" aria-hidden="true">' + CHECK + "</div>" +
       "<h3>" + escapeHtml(t("okTitle")) + "</h3>" +
       "<p>" + escapeHtml(t("okText")) + "</p>" +
-      '<button type="button" class="kc-btn kc-btn--ghost" data-kc-retry>' +
+      '<div class="kc-result__actions">' +
+      '<button type="button" class="kc-btn kc-btn--outline" data-kc-retry>' +
       escapeHtml(t("okAgain")) +
-      "</button>"
+      "</button></div>"
     );
   }
 
@@ -97,30 +105,29 @@
     var phone = cfg.phone || "";
     var shown = cfg.phoneDisplay || phone;
     var links =
-      '<a class="kc-lead-result__phone" href="tel:' + escapeHtml(phone) + '">' +
-      escapeHtml(shown) +
-      "</a>";
+      '<a class="kc-btn kc-btn--primary" href="tel:' + escapeHtml(phone) + '"' +
+      ' data-kc-goal="phone_click">' + escapeHtml(shown) + "</a>";
 
     if (KC.telegramUrl) {
       links +=
-        '<a class="kc-btn kc-btn--ghost" target="_blank" rel="noopener"' +
+        '<a class="kc-btn kc-btn--outline" target="_blank" rel="noopener"' +
         ' data-kc-goal="messenger_click" href="' + escapeHtml(KC.telegramUrl) + '">Telegram</a>';
     }
 
     // При срабатывании лимита кнопка «ещё раз» бессмысленна — она упрётся
     // в тот же лимит, поэтому оставляем только телефон и мессенджер.
-    var retry = rate
-      ? ""
-      : '<button type="button" class="kc-btn kc-btn--ghost" data-kc-retry>' +
+    if (!rate) {
+      links +=
+        '<button type="button" class="kc-btn kc-btn--outline" data-kc-retry>' +
         escapeHtml(t("errAgain")) +
         "</button>";
+    }
 
     return (
-      '<div class="kc-lead-result__icon kc-lead-result__icon--err" aria-hidden="true">!</div>' +
+      '<div class="kc-result__icon kc-result__icon--err" aria-hidden="true">' + ALERT + "</div>" +
       "<h3>" + escapeHtml(t(rate ? "rateTitle" : "errTitle")) + "</h3>" +
       "<p>" + escapeHtml(t(rate ? "rateText" : "errText")) + "</p>" +
-      '<div class="kc-lead-result__actions">' + links + "</div>" +
-      retry
+      '<div class="kc-result__actions">' + links + "</div>"
     );
   }
 
@@ -147,7 +154,7 @@
 
     // Панель результата — соседний блок, чтобы форму можно было вернуть.
     var result = document.createElement("div");
-    result.className = "kc-lead-result";
+    result.className = "kc-result";
     result.setAttribute("role", "status");
     result.setAttribute("tabindex", "-1");
     result.hidden = true;
@@ -200,9 +207,19 @@
       }
     }
 
+    // Заголовок и подпись карточки лежат вне <form>, поэтому раньше
+    // оставались видны над экраном «Заявка отправлена». Прячем их вместе
+    // с формой — если разметка их помечает.
+    var head = [].slice.call(
+      (form.closest("[data-kc-form-card]") || document).querySelectorAll(
+        "[data-kc-form-head]"
+      )
+    );
+
     function showResult(html) {
       result.innerHTML = html;
       form.hidden = true;
+      head.forEach(function (el) { el.hidden = true; });
       result.hidden = false;
       result.focus();
     }
@@ -211,6 +228,7 @@
       if (!e.target.closest("[data-kc-retry]")) return;
       result.hidden = true;
       form.hidden = false;
+      head.forEach(function (el) { el.hidden = false; });
       var first = form.querySelector("input, textarea");
       if (first) first.focus();
     });

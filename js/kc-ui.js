@@ -177,38 +177,6 @@
     update();
   }
 
-  /* ================= Плавающая кнопка ================= */
-  function initFab() {
-    var fab = document.querySelector(".kc-fab");
-    if (!fab) return;
-    document.body.classList.add("kc-has-fab");
-
-    var ticking = false;
-    function update() {
-      // Показываем после первого экрана и прячем над футером,
-      // чтобы кнопка не перекрывала контакты.
-      var footer = document.querySelector(".kc-footer");
-      var nearFooter =
-        footer &&
-        footer.getBoundingClientRect().top < window.innerHeight - 40;
-      fab.classList.toggle(
-        "is-visible",
-        window.scrollY > window.innerHeight * 0.6 && !nearFooter
-      );
-      ticking = false;
-    }
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(update);
-      },
-      { passive: true }
-    );
-    update();
-  }
-
   /* ================= Модальное окно записи ================= */
   function initModal() {
     var modal = document.getElementById("kcModal");
@@ -302,7 +270,6 @@
     initSheet();
     initReveal();
     initProgress();
-    initFab();
     initModal();
   });
 })();

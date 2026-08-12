@@ -28,8 +28,8 @@ window.KC_CONFIG = {
    *   telegram:  "kamilovsclinic"  либо  "https://t.me/kamilovsclinic"
    *   instagram: "kamilovsclinic"  либо  "https://instagram.com/kamilovsclinic"
    * ------------------------------------------------------------------- */
-  telegram: "",
-  instagram: "",
+  telegram: "kamilovs_clinic",
+  instagram: "kamilovs_clinic",
 
   /* ---- Отзывы ----------------------------------------------------------
    * Виджет отзывов Яндекс.Карт. orgId тот же, что в карте в футере.

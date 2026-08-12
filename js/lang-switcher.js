@@ -1047,10 +1047,25 @@ const DEFAULT_LANG = "ru";
 function applyTranslations(lang) {
   const dict = translations[lang] || translations[DEFAULT_LANG];
 
+  // Обычный случай: textContent. Он экранирует разметку, поэтому теги
+  // внутри перевода напечатались бы как текст — это и есть безопасное
+  // поведение по умолчанию.
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     if (dict[key]) {
       el.textContent = dict[key];
+    }
+  });
+
+  // Редкий случай: переводу нужна разметка (например <strong> внутри фразы).
+  // Такие строки помечаются ОТДЕЛЬНЫМ атрибутом data-i18n-html — чтобы было
+  // видно, что сюда подставляется HTML, и чтобы это нельзя было включить
+  // случайно. Значения берутся только из этого файла, пользовательский
+  // ввод сюда не попадает.
+  document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-html");
+    if (dict[key]) {
+      el.innerHTML = dict[key];
     }
   });
 

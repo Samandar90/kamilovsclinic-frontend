@@ -257,10 +257,16 @@
     } else {
       var from = Math.max(0, now - 420);
       show(from);
-      // Запускаем, когда страница уже отрисована: вступление не должно мешать загрузке.
-      window.addEventListener("load", function () {
+      // Ждём отрисовки страницы, но недолго: на медленной связи load наступает поздно,
+      // а всё это время небо показывало бы не то время суток.
+      var started = false;
+      var start = function () {
+        if (started) return;
+        started = true;
         glide(from, now, 2400);
-      });
+      };
+      window.addEventListener("load", start);
+      setTimeout(start, 1500);
     }
 
     return {

@@ -55,8 +55,8 @@
     return parts.join(", ");
   }
 
-  /** Подстановка в текст политики. Незаполненное поле оставляет прочерк,
-   *  который виден при вычитке документа. */
+  /** Подстановка в текст политики. Пустое поле скрывает всю строку вместе с
+   *  подписью: прочерк вместо реквизита посетителю показывать нельзя. */
   function fillPlaceholders() {
     var values = {
       entity: legal.entity,
@@ -67,9 +67,11 @@
 
     Object.keys(values).forEach(function (key) {
       var value = (values[key] || "").trim();
-      if (!value) return;
       document.querySelectorAll('[data-legal="' + key + '"]').forEach(function (el) {
-        el.textContent = value;
+        if (value) el.textContent = value;
+        el.hidden = !value;
+        var label = el.previousElementSibling;
+        if (label && label.tagName === "DT") label.hidden = !value;
       });
     });
   }

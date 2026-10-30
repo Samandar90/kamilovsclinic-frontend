@@ -1,0 +1,107 @@
+<!doctype html>
+<!-- Обложка для соцсетей (images/og-cover.jpg). Обновить: открыть через локальный
+     сервер (http://localhost:5178/_src/tools/og-cover.html), снять скриншот 1200×630. -->
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OG cover</title>
+    <link rel="stylesheet" href="../../css/kc-tokens.css" />
+    <link rel="stylesheet" href="../../css/kc-ui.css" />
+    <link rel="stylesheet" href="../../css/kc-sections.css" />
+    <style>
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+      .og {
+        position: relative;
+        isolation: isolate;
+        width: 1200px;
+        height: 630px;
+        color: #fff;
+        overflow: hidden;
+      }
+      .og__logo {
+        position: absolute;
+        left: 56px;
+        top: 44px;
+        width: 236px;
+      }
+      .og__title {
+        position: absolute;
+        left: 56px;
+        top: 138px;
+        width: 600px;
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: 92px;
+        font-weight: 500;
+        line-height: 0.97;
+        letter-spacing: -0.026em;
+      }
+      .og__title em {
+        display: block;
+        color: var(--lamp-hi);
+        font-weight: 400;
+      }
+      .og__meta {
+        position: absolute;
+        left: 56px;
+        bottom: 46px;
+        font-family: var(--font-display);
+        font-size: 38px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+      }
+      .og__city {
+        position: absolute;
+        left: 56px;
+        bottom: 100px;
+        font-size: 22px;
+        color: var(--on-dark-2);
+      }
+      .og .kc-hero__stage {
+        position: absolute;
+        right: 24px;
+        bottom: 0;
+        width: 520px;
+        aspect-ratio: 1.08;
+      }
+      .og .kc-arch {
+        animation: none;
+      }
+      .og .kc-orb i {
+        width: 66px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="og">
+      <div class="kc-sky">
+        <div class="kc-sky__night"><div class="kc-sky__stars"></div></div>
+        <div class="kc-sky__tile"></div>
+      </div>
+      <img class="og__logo" src="../../images/logo-inverse.svg" alt="" />
+      <p class="og__title kc-hero__title" style="margin: 0">Медицина,<em>которая не закрывается</em></p>
+      <p class="og__city">Круглосуточно · Ташкент, ул. Хувайдо, 7</p>
+      <p class="og__meta">+998 88 099 80 80</p>
+      <div class="kc-hero__stage">
+        <div class="kc-orb"><i class="kc-orb__moon" style="left: 12%; top: 34%; opacity: 1"></i></div>
+        <div class="kc-arch kc-arch--left kc-tint--cyan">
+          <span class="kc-arch__glass"></span><span class="kc-arch__line"></span>
+          <img src="../../images/doctors/cut-2.webp" alt="" />
+        </div>
+        <div class="kc-arch kc-arch--center kc-tint--lamp">
+          <span class="kc-arch__glass"></span><span class="kc-arch__line"></span>
+          <img src="../../images/doctors/cut-8.webp" alt="" />
+        </div>
+        <div class="kc-arch kc-arch--right kc-tint--green">
+          <span class="kc-arch__glass"></span><span class="kc-arch__line"></span>
+          <img src="../../images/doctors/cut-6.webp" alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

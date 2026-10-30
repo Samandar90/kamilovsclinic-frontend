@@ -32,7 +32,7 @@ window.KC_CONFIG = {
   instagram: "kamilovs_clinic",
 
   /* ---- Отзывы ----------------------------------------------------------
-   * Виджет отзывов Яндекс.Карт. orgId тот же, что в карте в футере.
+   * Виджет отзывов Яндекс.Карт. orgId тот же, что в блоке с картой.
    * ВНИМАНИЕ: виджет показывает ваш реальный рейтинг. На момент настройки
    * у карточки было 5 отзывов и 7 оценок — если рейтинг вас не устраивает,
    * поставьте show: false, и блок исчезнет со страницы.
@@ -74,7 +74,7 @@ window.KC = (function (cfg) {
     return base + v.replace(/^@/, "");
   }
 
-  // Язык хранит js/lang-switcher.js в localStorage под ключом "kc-lang".
+  // Язык хранит js/kc-i18n.js в localStorage под ключом "kc-lang".
   function lang() {
     try {
       return localStorage.getItem("kc-lang") === "uz" ? "uz" : "ru";
@@ -83,13 +83,9 @@ window.KC = (function (cfg) {
     }
   }
 
-  // Кнопки языка обрабатывает lang-switcher, отдельного события он не шлёт —
-  // поэтому подписываемся на те же клики, чтобы перерисовать свои блоки.
+  // js/kc-i18n.js сообщает о смене языка событием, блоки перерисовываются по нему.
   function onLangChange(callback) {
-    document.addEventListener("click", function (e) {
-      var btn = e.target.closest ? e.target.closest(".kc-lang-btn") : null;
-      if (btn) setTimeout(callback, 0);
-    });
+    document.addEventListener("kc:lang", callback);
   }
 
   return {

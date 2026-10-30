@@ -1,11 +1,10 @@
 /**
  * kc-ui.js — поведение оболочки сайта.
  *
- * Шапка, скользящий индикатор навигации, мобильная панель, появление
- * блоков при скролле, полоса прогресса, плавающая кнопка и модальное
- * окно записи. Всё, что есть на каждой странице.
+ * Шапка, индикатор навигации, мобильная панель, появление блоков при скролле,
+ * окно записи, кнопки быстрого выбора услуги. Всё, что есть на каждой странице.
  *
- * Логика конкретных секций главной — в js/kc-home.js.
+ * Логика секций главной — в js/kc-home.js.
  */
 (function () {
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -15,27 +14,24 @@
     var header = document.querySelector(".kc-header");
     if (!header) return;
 
-    // Порог переключения — высота героя минус шапка. На страницах без
-    // героя шапка становится матовой сразу после первого скролла.
-    var hero = document.querySelector(".kc-hero");
-    var threshold = hero ? Math.max(hero.offsetHeight - 140, 60) : 8;
-
+    // Шапка прозрачная только над тёмным первым экраном.
+    var first = document.querySelector(".kc-hero, .kc-phero, .kc-lost");
+    function threshold() {
+      return first ? Math.max(first.offsetHeight - 120, 40) : 8;
+    }
+    var limit = threshold();
     var ticking = false;
     function update() {
-      header.classList.toggle("is-stuck", window.scrollY > threshold);
+      header.classList.toggle("is-stuck", window.scrollY > limit);
       ticking = false;
     }
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(update);
-      },
-      { passive: true }
-    );
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
     window.addEventListener("resize", function () {
-      threshold = hero ? Math.max(hero.offsetHeight - 140, 60) : 8;
+      limit = threshold();
       update();
     });
     update();
@@ -50,35 +46,46 @@
     if (!pill || !links.length) return;
 
     function moveTo(el) {
+      nav.classList.toggle("is-ready", !!el);
       if (!el) return;
-      // scaleX по ширине в 1px: анимируется на GPU, без пересчёта раскладки.
       pill.style.setProperty("--pill-x", el.offsetLeft + "px");
-      pill.style.setProperty("--pill-w", el.offsetWidth);
-      nav.classList.add("is-ready");
+      pill.style.setProperty("--pill-w", el.offsetWidth + "px");
     }
 
-    var active = nav.querySelector(".kc-nav__link.is-active") || links[0];
+    var active = nav.querySelector(".kc-nav__link.is-active");
     moveTo(active);
 
     links.forEach(function (link) {
-      link.addEventListener("mouseenter", function () {
-        moveTo(link);
+      link.addEventListener("mouseenter", function () { moveTo(link); });
+      link.addEventListener("focus", function () { moveTo(link); });
+    });
+    nav.addEventListener("mouseleave", function () { moveTo(active); });
+    window.addEventListener("resize", function () { moveTo(active); });
+    document.addEventListener("kc:lang", function () { moveTo(active); });
+
+    // На главной пункты ведут к разделам: подсвечиваем тот, который сейчас на экране.
+    var anchors = links.filter(function (l) {
+      return l.getAttribute("href").charAt(0) === "#" && document.querySelector(l.getAttribute("href"));
+    });
+    if (anchors.length && "IntersectionObserver" in window) {
+      var home = active;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var link = anchors.filter(function (l) {
+            return l.getAttribute("href") === "#" + e.target.id;
+          })[0];
+          if (e.isIntersecting) active = link;
+          else if (active === link) active = home;
+        });
+        moveTo(active);
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      anchors.forEach(function (l) {
+        io.observe(document.querySelector(l.getAttribute("href")));
       });
-      link.addEventListener("focus", function () {
-        moveTo(link);
-      });
-    });
-    nav.addEventListener("mouseleave", function () {
-      moveTo(active);
-    });
-    window.addEventListener("resize", function () {
-      moveTo(active);
-    });
+    }
     // Шрифт меняет ширину пунктов после загрузки — пересчитываем.
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(function () {
-        moveTo(active);
-      });
+      document.fonts.ready.then(function () { moveTo(active); });
     }
   }
 
@@ -91,9 +98,11 @@
     function setOpen(open) {
       sheet.classList.toggle("is-open", open);
       burger.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("kc-sheet-open", open);
       document.body.style.overflow = open ? "hidden" : "";
-      // Панель закрыта — её содержимое не должно ловить фокус табом.
+      // Закрытая панель не должна ловить фокус табом.
       sheet.setAttribute("aria-hidden", open ? "false" : "true");
+      sheet.inert = !open;
     }
 
     burger.addEventListener("click", function () {
@@ -108,6 +117,9 @@
         burger.focus();
       }
     });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 1080 && sheet.classList.contains("is-open")) setOpen(false);
+    });
     setOpen(false);
   }
 
@@ -117,24 +129,19 @@
     if (!items.length) return;
 
     if (reduced || !("IntersectionObserver" in window)) {
-      items.forEach(function (el) {
-        el.classList.add("is-in");
-      });
+      items.forEach(function (el) { el.classList.add("is-in"); });
       return;
     }
 
-    var io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          e.target.classList.add("is-in");
-          io.unobserve(e.target);
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("is-in");
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
 
-    items.forEach(function (el, i) {
+    items.forEach(function (el) {
       // Небольшой каскад внутри одной группы элементов.
       var group = el.closest("[data-reveal-group]");
       if (group) {
@@ -143,41 +150,9 @@
       }
       io.observe(el);
     });
-
-    // Врачи и услуги дорисовываются скриптами — подхватываем новые узлы.
-    document.addEventListener("kc:content", function () {
-      document
-        .querySelectorAll("[data-reveal]:not(.is-in)")
-        .forEach(function (el) {
-          io.observe(el);
-        });
-    });
   }
 
-  /* ================= Полоса прогресса ================= */
-  function initProgress() {
-    var bar = document.querySelector(".kc-progress");
-    if (!bar || reduced) return;
-    var ticking = false;
-    function update() {
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      var p = max > 0 ? window.scrollY / max : 0;
-      bar.style.setProperty("--kc-progress", Math.min(1, Math.max(0, p)));
-      ticking = false;
-    }
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(update);
-      },
-      { passive: true }
-    );
-    update();
-  }
-
-  /* ================= Модальное окно записи ================= */
+  /* ================= Окно записи ================= */
   function initModal() {
     var modal = document.getElementById("kcModal");
     if (!modal) return;
@@ -187,14 +162,12 @@
     var FOCUSABLE =
       'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-    // Панель принимает фокус сама: так скринридер зачитывает заголовок окна,
-    // и не нужно угадывать «первое подходящее поле».
+    // Панель принимает фокус сама: так скринридер зачитывает заголовок окна.
     panel.setAttribute("tabindex", "-1");
 
     function focusables() {
       return [].slice.call(panel.querySelectorAll(FOCUSABLE)).filter(function (el) {
-        // Honeypot намеренно уведён за экран, но остаётся в DOM —
-        // в обходе по Tab ему делать нечего.
+        // Honeypot намеренно уведён за экран, в обходе по Tab ему делать нечего.
         if (el.closest(".kc-hp")) return false;
         return el.getClientRects().length > 0;
       });
@@ -206,10 +179,13 @@
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
 
-      // Клик по конкретной услуге подставляет её в форму.
+      // Клик по конкретной услуге или врачу подставляет их в форму.
       if (service) {
         var field = modal.querySelector('input[name="service"]');
-        if (field && !field.value) field.value = service;
+        if (field) {
+          field.value = service;
+          field.dispatchEvent(new Event("input", { bubbles: true }));
+        }
       }
 
       // Окно проявляется через transition по visibility — в том же кадре
@@ -263,13 +239,50 @@
     modal.setAttribute("aria-hidden", "true");
   }
 
-  /* ================= Старт ================= */
+  /* ================= Быстрый выбор услуги в форме ================= */
+  function initChips() {
+    document.querySelectorAll(".kc-form").forEach(function (form) {
+      var input = form.querySelector('input[name="service"]');
+      var chips = [].slice.call(form.querySelectorAll("[data-kc-chip]"));
+      if (!input || !chips.length) return;
+
+      function sync() {
+        var value = input.value.trim();
+        chips.forEach(function (chip) {
+          var on = chip.textContent.trim() === value;
+          chip.classList.toggle("is-on", on);
+          chip.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+      }
+
+      chips.forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          var text = chip.textContent.trim();
+          input.value = input.value.trim() === text ? "" : text;
+          sync();
+        });
+      });
+      input.addEventListener("input", sync);
+      form.addEventListener("reset", function () { setTimeout(sync, 0); });
+      document.addEventListener("kc:lang", sync);
+      sync();
+    });
+  }
+
+  /* ================= Год в футере ================= */
+  function initYear() {
+    document.querySelectorAll("[data-kc-year]").forEach(function (el) {
+      el.textContent = new Date().getFullYear();
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initHeader();
     initNavPill();
     initSheet();
     initReveal();
-    initProgress();
     initModal();
+    initChips();
+    initYear();
   });
 })();

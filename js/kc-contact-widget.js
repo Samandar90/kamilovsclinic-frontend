@@ -1,9 +1,9 @@
 /**
- * kc-contact-widget.js — плавающая кнопка связи и ссылки на мессенджеры.
+ * kc-contact-widget.js — способы связи, доступные с любого места страницы.
  *
- * Кнопка собирается из js/kc-config.js: незаполненный хэндл = канал просто
- * не появляется. Порядок пунктов снизу вверх — от самого частого действия
- * к дополнительным, потому что ближний к кнопке пункт нажать проще всего.
+ * На компьютере это плавающая кнопка с меню. На телефоне вместо неё постоянная
+ * панель снизу: записаться и позвонить можно одним касанием, без лишнего шага.
+ * Обе собираются из js/kc-config.js: незаполненный хэндл = канал не появляется.
  *
  * Ссылки в футере и на странице контактов рендерятся в [data-kc-social].
  */
@@ -16,6 +16,7 @@
       open: "Связаться с нами",
       close: "Закрыть",
       book: "Записаться на приём",
+      bookShort: "Записаться",
       call: "Позвонить",
       write: "Написать в",
     },
@@ -23,6 +24,7 @@
       open: "Biz bilan bog‘lanish",
       close: "Yopish",
       book: "Qabulga yozilish",
+      bookShort: "Yozilish",
       call: "Qo‘ng‘iroq qilish",
       write: "Yozish:",
     },
@@ -57,16 +59,12 @@
   /** Мессенджеры отдельно: они же используются в футере и на контактах. */
   function messengers() {
     var out = [];
-    if (KC.telegramUrl) {
-      out.push({ key: "telegram", url: KC.telegramUrl, name: "Telegram" });
-    }
-    if (KC.instagramUrl) {
-      out.push({ key: "instagram", url: KC.instagramUrl, name: "Instagram" });
-    }
+    if (KC.telegramUrl) out.push({ key: "telegram", url: KC.telegramUrl, name: "Telegram" });
+    if (KC.instagramUrl) out.push({ key: "instagram", url: KC.instagramUrl, name: "Instagram" });
     return out;
   }
 
-  /* ================= Плавающая кнопка ================= */
+  /* ================= Плавающая кнопка (компьютер) ================= */
 
   function buildFab() {
     var old = document.querySelector(".kc-fab");
@@ -74,25 +72,22 @@
 
     var items = [];
 
-    // Снизу вверх: запись ближе всего к пальцу, дальше — звонок и мессенджеры.
-    messengers()
-      .slice()
-      .reverse()
-      .forEach(function (m) {
-        items.push(
-          '<a class="kc-fab__item" href="' + esc(m.url) + '" target="_blank" rel="noopener"' +
-            ' data-kc-goal="messenger_click">' +
-            '<span class="kc-fab__text">' + esc(m.name) + "</span>" +
-            '<span class="kc-fab__icon kc-fab__icon--' + m.key + '">' + ICON[m.key] + "</span>" +
-            "</a>"
-        );
-      });
+    // Снизу вверх: запись ближе всего к кнопке, дальше — звонок и мессенджеры.
+    messengers().slice().reverse().forEach(function (m) {
+      items.push(
+        '<a class="kc-fab__item" href="' + esc(m.url) + '" target="_blank" rel="noopener"' +
+          ' data-kc-goal="messenger_click">' +
+          '<span class="kc-fab__text">' + esc(m.name) + "</span>" +
+          '<span class="kc-fab__icon">' + ICON[m.key] + "</span>" +
+          "</a>"
+      );
+    });
 
     if (cfg.phone) {
       items.push(
         '<a class="kc-fab__item" href="tel:' + esc(cfg.phone) + '" data-kc-goal="phone_click">' +
-          '<span class="kc-fab__text">' + esc(L("call")) + "</span>" +
-          '<span class="kc-fab__icon kc-fab__icon--call">' + ICON.phone + "</span>" +
+          '<span class="kc-fab__text">' + esc(cfg.phoneDisplay || L("call")) + "</span>" +
+          '<span class="kc-fab__icon">' + ICON.phone + "</span>" +
           "</a>"
       );
     }
@@ -110,7 +105,6 @@
       '<div class="kc-fab__menu" id="kcFabMenu">' + items.join("") + "</div>" +
       '<button class="kc-fab__toggle" type="button" aria-expanded="false"' +
       ' aria-controls="kcFabMenu" aria-label="' + esc(L("open")) + '">' +
-      '<span class="kc-fab__pulse" aria-hidden="true"></span>' +
       '<span class="kc-fab__glyph kc-fab__glyph--open">' + ICON.chat + "</span>" +
       '<span class="kc-fab__glyph kc-fab__glyph--close">' + ICON.close + "</span>" +
       "</button>";
@@ -127,8 +121,7 @@
       setOpen(!root.classList.contains("is-open"));
     });
 
-    // Клик по пункту меню закрывает его — иначе после записи меню
-    // остаётся раскрытым поверх модального окна.
+    // Клик по пункту закрывает меню — иначе оно останется поверх окна записи.
     root.querySelector(".kc-fab__menu").addEventListener("click", function () {
       setOpen(false);
     });
@@ -144,8 +137,33 @@
     });
 
     document.body.appendChild(root);
-    document.body.classList.add("kc-has-fab");
-    return root;
+  }
+
+  /* ================= Панель действий (телефон) ================= */
+
+  function buildBar() {
+    var old = document.querySelector(".kc-mbar");
+    if (old) old.remove();
+
+    var html = "";
+    if (KC.telegramUrl) {
+      html +=
+        '<a class="kc-mbar__square" href="' + esc(KC.telegramUrl) + '" target="_blank" rel="noopener"' +
+        ' data-kc-goal="messenger_click" aria-label="Telegram">' + ICON.telegram + "</a>";
+    }
+    if (cfg.phone) {
+      html +=
+        '<a class="kc-btn kc-btn--navy" href="tel:' + esc(cfg.phone) + '" data-kc-goal="phone_click">' +
+        ICON.phone + "<span>" + esc(L("call")) + "</span></a>";
+    }
+    html +=
+      '<button class="kc-btn kc-btn--lamp" type="button" data-kc-book data-kc-goal="booking_open">' +
+      esc(L("bookShort")) + "</button>";
+
+    var bar = document.createElement("div");
+    bar.className = "kc-mbar";
+    bar.innerHTML = html;
+    document.body.appendChild(bar);
   }
 
   /* ================= Ссылки в футере и на контактах ================= */
@@ -179,6 +197,7 @@
 
   function build() {
     buildFab();
+    buildBar();
     renderSlots();
   }
 

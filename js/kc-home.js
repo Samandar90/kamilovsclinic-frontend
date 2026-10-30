@@ -1,37 +1,68 @@
 /**
  * kc-home.js — секции главной страницы.
  *
- * Герой, карусель врачей, таймлайн приёма, аккордеон FAQ.
- * Данные врачей берутся из js/doctors-data.js — единого источника,
- * который используется и на странице «Врачи».
+ * Глубина в герое, счётчики цифр, карусель врачей, таймлайн приёма, аккордеон FAQ.
+ * Карточки врачей уже лежат в разметке (их собирает _src/build.mjs).
  */
 (function () {
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ================= Герой ================= */
-  function initHero() {
-    var hero = document.querySelector(".kc-hero");
-    if (!hero) return;
+  /* ================= Глубина в герое ================= */
+  function initDepth() {
+    var hero = document.querySelector("[data-kc-hero]");
+    var stage = hero && hero.querySelector(".kc-hero__stage");
+    if (!stage || reduced || !window.matchMedia("(hover: hover) and (min-width: 1000px)").matches) return;
 
-    var img = hero.querySelector(".kc-hero__media img");
-
-    // Каскад запускаем после загрузки фонового кадра, иначе текст
-    // проявляется на пустом тёмном прямоугольнике.
-    function start() {
-      hero.classList.add("is-ready");
-    }
-    if (!img || img.complete) {
-      requestAnimationFrame(start);
-    } else {
-      img.addEventListener("load", start);
-      img.addEventListener("error", start);
-      // Страховка: если картинка не отвечает, контент всё равно покажем.
-      setTimeout(start, 1400);
-    }
-
-    hero.querySelectorAll("[data-hero-step]").forEach(function (el, i) {
-      el.style.setProperty("--i", i);
+    var ticking = false;
+    var x = 0;
+    var y = 0;
+    hero.addEventListener("mousemove", function (e) {
+      x = e.clientX / window.innerWidth - 0.5;
+      y = e.clientY / window.innerHeight - 0.5;
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        stage.style.setProperty("--px", x.toFixed(3));
+        stage.style.setProperty("--py", y.toFixed(3));
+        ticking = false;
+      });
+    }, { passive: true });
+    hero.addEventListener("mouseleave", function () {
+      stage.style.setProperty("--px", 0);
+      stage.style.setProperty("--py", 0);
     });
+  }
+
+  /* ================= Счётчики ================= */
+  function initCounters() {
+    var items = document.querySelectorAll("[data-kc-count]");
+    if (!items.length || reduced || !("IntersectionObserver" in window)) return;
+
+    function format(n) {
+      return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+
+    function run(el) {
+      var target = Number(el.getAttribute("data-kc-count"));
+      var start = null;
+      function step(ts) {
+        if (start === null) start = ts;
+        var t = Math.min(1, (ts - start) / 1500);
+        var e = 1 - Math.pow(1 - t, 4);
+        el.textContent = format(Math.round(target * e));
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        run(e.target);
+      });
+    }, { threshold: 0.6 });
+    items.forEach(function (el) { io.observe(el); });
   }
 
   /* ================= Карусель врачей ================= */
@@ -43,36 +74,6 @@
     var prev = root.querySelector('[data-doc-nav="prev"]');
     var next = root.querySelector('[data-doc-nav="next"]');
     if (!track) return;
-
-    if (typeof doctors === "undefined" || !doctors.length) {
-      root.remove();
-      return;
-    }
-
-    var list = doctors.filter(function (d) {
-      return d.featured;
-    });
-    if (!list.length) list = doctors.slice();
-
-    track.innerHTML = list
-      .map(function (d) {
-        var name = String(d.fullName || "").trim();
-        var spec = String(d.specialty || "").trim();
-        return (
-          '<article class="kc-doc" data-reveal>' +
-          '<div class="kc-doc__photo">' +
-          '<img src="' + d.image + '" alt="' + escapeAttr(name) + " — " + escapeAttr(spec) +
-          '" loading="lazy" decoding="async" width="300" height="400" />' +
-          (spec ? '<span class="kc-doc__tag">' + escapeHtml(spec) + "</span>" : "") +
-          "</div>" +
-          '<h3 class="kc-doc__name">' + escapeHtml(name) + "</h3>" +
-          '<p class="kc-doc__spec">' + escapeHtml(spec) + "</p>" +
-          "</article>"
-        );
-      })
-      .join("");
-
-    document.dispatchEvent(new CustomEvent("kc:content"));
 
     function step() {
       var card = track.querySelector(".kc-doc");
@@ -89,17 +90,13 @@
     }
 
     function scrollBy(dir) {
-      track.scrollBy({
-        left: dir * step(),
-        behavior: reduced ? "auto" : "smooth",
-      });
+      track.scrollBy({ left: dir * step(), behavior: reduced ? "auto" : "smooth" });
     }
 
     if (prev) prev.addEventListener("click", function () { scrollBy(-1); });
     if (next) next.addEventListener("click", function () { scrollBy(1); });
 
-    // Карусель доступна с клавиатуры: сама лента фокусируема,
-    // стрелки листают карточки.
+    // С клавиатуры: сама лента фокусируема, стрелки листают карточки.
     track.addEventListener("keydown", function (e) {
       if (e.key === "ArrowRight") {
         e.preventDefault();
@@ -134,15 +131,14 @@
     function update() {
       var rect = journey.getBoundingClientRect();
       var vh = window.innerHeight;
-      // Прогресс: 0 — секция только вошла снизу, 1 — прошла центр экрана.
+      // Прогресс: 0 — блок только вошёл снизу, 1 — дошёл до верхней трети экрана.
       var start = vh * 0.85;
-      var end = vh * 0.25;
-      var p = (start - rect.top) / (start - end + rect.height * 0.4);
+      var end = vh * 0.3;
+      var p = (start - rect.top) / (start - end + rect.height * 0.5);
       p = Math.min(1, Math.max(0, p));
-      journey.style.setProperty("--journey", p);
-
+      journey.style.setProperty("--journey", p.toFixed(3));
       steps.forEach(function (s, i) {
-        s.classList.toggle("is-active", p >= (i + 0.35) / steps.length);
+        s.classList.toggle("is-active", p >= i / steps.length + 0.02);
       });
       ticking = false;
     }
@@ -181,18 +177,9 @@
     });
   }
 
-  /* ================= Вспомогательное ================= */
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
-  function escapeAttr(s) {
-    return escapeHtml(s).replace(/\n/g, " ");
-  }
-
   document.addEventListener("DOMContentLoaded", function () {
-    initHero();
+    initDepth();
+    initCounters();
     initDoctors();
     initJourney();
     initFaq();

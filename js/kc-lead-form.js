@@ -9,7 +9,8 @@
  * загрузился, браузер отправит форму по-старому — хуже, но заявка не потеряется.
  *
  * Работает со всеми формами, у которых action указывает на /lead/:
- * 5 модальных окон + встроенные формы на contacts.html и service-detail.html.
+ * окно записи на каждой странице + встроенные формы на главной, в контактах
+ * и на странице услуги.
  */
 (function () {
   var cfg = window.KC_CONFIG || {};
@@ -93,7 +94,7 @@
       "<h3>" + escapeHtml(t("okTitle")) + "</h3>" +
       "<p>" + escapeHtml(t("okText")) + "</p>" +
       '<div class="kc-result__actions">' +
-      '<button type="button" class="kc-btn kc-btn--outline" data-kc-retry>' +
+      '<button type="button" class="kc-btn kc-btn--outline kc-btn--sm" data-kc-retry>' +
       escapeHtml(t("okAgain")) +
       "</button></div>"
     );
@@ -105,7 +106,7 @@
     var phone = cfg.phone || "";
     var shown = cfg.phoneDisplay || phone;
     var links =
-      '<a class="kc-btn kc-btn--primary" href="tel:' + escapeHtml(phone) + '"' +
+      '<a class="kc-btn kc-btn--lamp" href="tel:' + escapeHtml(phone) + '"' +
       ' data-kc-goal="phone_click">' + escapeHtml(shown) + "</a>";
 
     if (KC.telegramUrl) {
@@ -210,16 +211,16 @@
     // Заголовок и подпись карточки лежат вне <form>, поэтому раньше
     // оставались видны над экраном «Заявка отправлена». Прячем их вместе
     // с формой — если разметка их помечает.
+    var card = form.closest("[data-kc-form-card]");
     var head = [].slice.call(
-      (form.closest("[data-kc-form-card]") || document).querySelectorAll(
-        "[data-kc-form-head]"
-      )
+      (card || document).querySelectorAll("[data-kc-form-head]")
     );
 
     function showResult(html) {
       result.innerHTML = html;
       form.hidden = true;
       head.forEach(function (el) { el.hidden = true; });
+      if (card) card.classList.add("is-result");
       result.hidden = false;
       result.focus();
     }
@@ -229,6 +230,7 @@
       result.hidden = true;
       form.hidden = false;
       head.forEach(function (el) { el.hidden = false; });
+      if (card) card.classList.remove("is-result");
       var first = form.querySelector("input, textarea");
       if (first) first.focus();
     });
@@ -299,9 +301,7 @@
 
   /* ---- Старт ------------------------------------------------------------ */
 
-  // Цель «открыл окно записи» вешается атрибутом data-kc-goal прямо в разметке:
-  // site.js создаёт kcOpenModal внутри DOMContentLoaded, и оборачивать его
-  // отсюда — гонка по порядку слушателей.
+  // Цель «открыл окно записи» вешается атрибутом data-kc-goal прямо в разметке.
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('form[action*="/lead/"]').forEach(initForm);
   });

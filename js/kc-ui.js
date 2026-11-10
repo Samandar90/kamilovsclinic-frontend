@@ -188,10 +188,13 @@
         }
       }
 
-      // Окно проявляется через transition по visibility — в том же кадре
-      // оно ещё не фокусируемо, поэтому ждём следующий кадр.
-      requestAnimationFrame(function () {
+      // Окно проявляется через transition по visibility: в первых кадрах перехода
+      // оно ещё считается скрытым и фокус не принимает. Пробуем, пока не получится.
+      var tries = 0;
+      requestAnimationFrame(function focusPanel() {
+        if (!modal.classList.contains("is-open")) return;
         panel.focus();
+        if (document.activeElement !== panel && tries++ < 20) requestAnimationFrame(focusPanel);
       });
     };
 
@@ -219,7 +222,11 @@
       if (!list.length) return;
       var first = list[0];
       var last = list[list.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
+      if (!panel.contains(document.activeElement)) {
+        // Фокус остался на странице под окном: возвращаем его в окно
+        e.preventDefault();
+        (e.shiftKey ? last : first).focus();
+      } else if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();
         last.focus();
       } else if (!e.shiftKey && document.activeElement === last) {

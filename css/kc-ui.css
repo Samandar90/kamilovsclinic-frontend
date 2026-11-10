@@ -906,11 +906,17 @@ textarea.kc-input {
   flex-direction: column;
   align-items: flex-end;
   gap: 12px;
+  /* Сам блок занимает место и под закрытое меню: клики сквозь него должны проходить на страницу */
+  pointer-events: none;
 }
 @media (min-width: 761px) {
   .kc-fab {
     display: flex;
   }
+}
+.kc-fab__toggle,
+.kc-fab.is-open .kc-fab__item {
+  pointer-events: auto;
 }
 .kc-fab__toggle {
   position: relative;

@@ -67,6 +67,83 @@
   fill: var(--ico-fill, #8fe3ec);
 }
 
+/* ---------- Объёмный знак клиники (js/3d/mark.js) ---------- */
+.kc-mark3d {
+  position: relative;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+div.kc-mark3d.is-3d {
+  cursor: grab;
+}
+div.kc-mark3d.is-grabbing {
+  cursor: grabbing;
+}
+.kc-mark3d canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease);
+}
+.kc-mark3d.is-3d canvas {
+  opacity: 1;
+}
+/* Мягкое свечение за знаком отделяет его от тёмного фона */
+div.kc-mark3d::before {
+  content: "";
+  position: absolute;
+  inset: 6% 4% 2%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(73, 214, 232, 0.2), transparent);
+  pointer-events: none;
+}
+.kc-mark3d > img {
+  position: absolute;
+  inset: 14%;
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+}
+/* Обычная картинка уступает место объёмной плавно, а не скачком */
+.kc-mark3d > img,
+.kc-mark3d > svg {
+  transition: opacity var(--dur) var(--ease), visibility 0s linear var(--dur);
+}
+.kc-mark3d.is-3d > img,
+.kc-mark3d.is-3d > svg {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ---------- Объёмный наклон карточек (js/kc-ui.js) ---------- */
+@media (hover: hover) and (pointer: fine) {
+  [data-tilt] {
+    transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 700ms var(--ease), box-shadow var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  [data-tilt].is-tilting {
+    transition-duration: 160ms, var(--dur), var(--dur);
+  }
+  /* Блик следует за курсором. У плитки с фотографией этот слой занят затемнением под текст. */
+  [data-tilt]:not(.kc-feature)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.34), transparent 46%);
+    opacity: 0;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    transition: opacity 400ms var(--ease);
+  }
+  [data-tilt]:not(.kc-feature).is-tilting::after {
+    opacity: 1;
+  }
+}
+
 /* ---------- Заголовочные блоки ---------- */
 .kc-eyebrow {
   margin-bottom: 18px;

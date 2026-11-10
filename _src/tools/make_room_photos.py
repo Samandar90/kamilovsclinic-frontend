@@ -19,12 +19,24 @@ def grade(im):
     return out.filter(ImageFilter.UnsharpMask(radius=1.6, percent=55, threshold=3))
 
 JOBS = [
-    # файл, исходник, кадр (л, в, п, н)
-    ("room-dental-tall.webp", "room-dental.jpg", (0, 230, 760, 1230)),
-    ("room-dental-detail.webp", "room-dental.jpg", (392, 590, 862, 1208)),
-    ("room-procedure.webp", "room-procedure.jpg", (120, 190, 760, 1032)),
+    # файл, исходник, кадр (л, в, п, н), нужна ли карта глубины для объёмного показа
+    ("room-dental-tall.webp", "room-dental.jpg", (0, 230, 760, 1230), True),
+    ("room-dental-detail.webp", "room-dental.jpg", (392, 590, 862, 1208), False),
+    ("room-procedure.webp", "room-procedure.jpg", (120, 190, 760, 1032), False),
 ]
-for name, src, box in JOBS:
-    im = Image.open(ASSETS / src).convert("RGB").crop(box)
-    grade(im).save(OUT / name, "WEBP", quality=76, method=6)
-    print(name, im.size, (OUT / name).stat().st_size)
+
+def main():
+    for name, src, box, with_depth in JOBS:
+        im = Image.open(ASSETS / src).convert("RGB").crop(box)
+        grade(im).save(OUT / name, "WEBP", quality=76, method=6)
+        print(name, im.size, (OUT / name).stat().st_size)
+        if with_depth:
+            # Карта глубины того же кадра (см. make_depth_maps.py). Ей хватает половины размера.
+            depth = Image.open(ASSETS / "depth" / (Path(src).stem + ".png")).convert("L").crop(box)
+            depth = depth.resize((im.width // 2, im.height // 2), Image.LANCZOS)
+            path = OUT / name.replace(".webp", "-depth.webp")
+            depth.save(path, "WEBP", quality=82, method=6)
+            print(path.name, depth.size, path.stat().st_size)
+
+if __name__ == "__main__":
+    main()

@@ -41,7 +41,7 @@ export const esc = (s) =>
 const VERSION = (() => {
   const root = fileURLToPath(new URL("..", import.meta.url));
   const hash = createHash("sha1");
-  for (const dir of ["css", "js", "_src"]) {
+  for (const dir of ["css", "js", "js/3d", "js/vendor", "_src"]) {
     for (const name of readdirSync(join(root, dir)).sort()) {
       if (/\.(css|js|mjs)$/.test(name) && name !== "kc-i18n.js") hash.update(readFileSync(join(root, dir, name)));
     }
@@ -209,6 +209,10 @@ export function pageHero({ crumbs = [], kicker, title, lead, titleId, leadId, ki
             ${titleId ? `<h1 id="${titleId}" class="kc-phero__title">${title}</h1>` : tx("h1", title, `class="kc-phero__title${long ? " kc-phero__title--long" : ""}"`)}
             ${leadId ? `<p id="${leadId}" class="kc-phero__lead">${lead}</p>` : lead ? tx("p", lead, 'class="kc-phero__lead"') : ""}
           </div>
+          <!-- Объёмный знак клиники (js/3d/mark.js). Картинка показывается, только если 3D недоступно. -->
+          <div class="kc-phero__mark kc-mark3d" data-kc-mark="logo" aria-hidden="true">
+            <img src="images/mark.svg" alt="" width="660" height="541" loading="lazy" decoding="async" />
+          </div>
         </div>
       </section>`;
 }
@@ -350,7 +354,7 @@ export function footer() {
 
 /* ---------- Подвал документа ---------- */
 export function scripts(extra = []) {
-  const list = ["kc-i18n", ...extra, "kc-ui", "kc-lead-form", "kc-contact-widget"];
+  const list = ["kc-i18n", ...extra, "kc-ui", "kc-lead-form", "kc-contact-widget", "kc-3d"];
   return list.map((name) => `<script src="js/${name}.js?v=${VERSION}"></script>`).join("\n    ");
 }
 
@@ -360,7 +364,7 @@ export function doctorCard(d, { lazy = true, bio = false, tag = "article", revea
   const alt = `${d.name} — ${t(specKey)}`;
   const bookAttrs = `data-kc-book data-service="${esc(t(specKey) + " — " + d.name)}" data-kc-goal="booking_open"`;
   return `<${tag} class="kc-doc kc-tint--${d.tint}"${reveal ? " data-reveal" : ""} data-spec="${d.spec}">
-              <div class="kc-doc__photo">
+              <div class="kc-doc__photo" data-tilt="7">
                 <span class="kc-doc__arch" aria-hidden="true"></span>
                 <img src="images/doctors/cut-${d.id}.webp" alt="${esc(alt)}" width="800" height="680" ${lazy ? 'loading="lazy"' : ""} decoding="async" />
                 <button class="kc-doc__book" type="button" ${bookAttrs}>

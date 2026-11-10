@@ -1,7 +1,8 @@
 /**
  * kc-home.js — секции главной страницы.
  *
- * Глубина в герое, счётчики цифр, карусель врачей, таймлайн приёма, аккордеон FAQ.
+ * Глубина в герое, счётчики цифр, карусель врачей, видео о клинике,
+ * таймлайн приёма, аккордеон FAQ.
  * Карточки врачей уже лежат в разметке (их собирает _src/build.mjs).
  */
 (function () {
@@ -152,6 +153,95 @@
     update();
   }
 
+  /* ================= Видео «Клиника изнутри» ================= */
+  function initTour() {
+    var root = document.querySelector("[data-kc-tour]");
+    var video = root && root.querySelector("video");
+    if (!video) return;
+
+    var toggle = root.querySelector(".kc-tour__toggle");
+    var chapters = [].slice.call(root.querySelectorAll(".kc-tour__chapter"));
+    var length = Number(root.getAttribute("data-length")) || 1;
+    var starts = chapters.map(function (c) { return Number(c.getAttribute("data-at")); });
+    var saver = navigator.connection && navigator.connection.saveData;
+    // Само видео включается, только когда это уместно: не при экономии трафика и не при «меньше движения»
+    var stopped = reduced || !!saver;
+    var raf = 0;
+
+    video.removeAttribute("controls"); // на странице свои кнопки
+    toggle.hidden = false;
+
+    // Обложка подгружается, когда до блока осталось немного: первому экрану она не нужна
+    var poster = video.getAttribute("data-poster");
+    if (poster && "IntersectionObserver" in window) {
+      var lazy = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        lazy.disconnect();
+        video.poster = poster;
+      }, { rootMargin: "150% 0px" });
+      lazy.observe(video);
+    } else if (poster) {
+      video.poster = poster;
+    }
+
+    function paint() {
+      var t = video.currentTime || 0;
+      chapters.forEach(function (c, i) {
+        var end = i + 1 < starts.length ? starts[i + 1] : length;
+        var p = Math.min(1, Math.max(0, (t - starts[i]) / (end - starts[i])));
+        c.style.setProperty("--p", p.toFixed(3));
+        c.classList.toggle("is-active", t >= starts[i] && t < end);
+      });
+    }
+    function loop() {
+      paint();
+      raf = requestAnimationFrame(loop);
+    }
+    function sync() {
+      var paused = video.paused;
+      root.classList.toggle("is-paused", paused);
+      var key = paused ? "tour.play" : "tour.pause";
+      toggle.setAttribute("data-i18n-aria", key);
+      if (window.KC && window.KC.t) toggle.setAttribute("aria-label", window.KC.t(key));
+      cancelAnimationFrame(raf);
+      if (paused) paint();
+      else loop();
+    }
+    function play() {
+      var p = video.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+
+    video.addEventListener("play", sync);
+    video.addEventListener("pause", sync);
+    toggle.addEventListener("click", function () {
+      stopped = !video.paused;
+      if (stopped) video.pause();
+      else play();
+    });
+    // Подписи — это оглавление: нажатие переносит к своему кабинету
+    chapters.forEach(function (c, i) {
+      c.addEventListener("click", function () {
+        video.currentTime = starts[i] + 0.05;
+        stopped = false;
+        play();
+        paint();
+      });
+    });
+
+    // Видео играет, только пока его видно: так не тратятся трафик и батарея
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          if (!stopped) play();
+        } else {
+          video.pause();
+        }
+      }, { threshold: 0.35 }).observe(video);
+    }
+    sync();
+  }
+
   /* ================= FAQ ================= */
   function initFaq() {
     var acc = document.querySelector(".kc-acc");
@@ -182,6 +272,7 @@
     initCounters();
     initDoctors();
     initJourney();
+    initTour();
     initFaq();
   });
 })();

@@ -130,7 +130,7 @@ const metrics = () => `<section class="kc-metrics-wrap" ${aria("a11y.metrics")}>
       </section>`;
 
 /* ---------- Направления ---------- */
-const tile = (ruName, key, icon, tint) => `<a class="kc-tile kc-tint--${tint}" href="${serviceUrl(ruName)}" data-reveal>
+const tile = (ruName, key, icon, tint) => `<a class="kc-tile kc-tint--${tint}" href="${serviceUrl(ruName)}" data-reveal data-tilt>
               <span class="kc-tile__flood" aria-hidden="true"></span>
               <span class="kc-tile__icon">${brand[icon]}</span>
               ${tx("h3", `svc.${key}.title`)}
@@ -146,10 +146,10 @@ const services = () => `<section class="kc-section" id="services">
           </div>
 
           <div class="kc-bento" data-reveal-group>
-            <a class="kc-feature" href="${serviceUrl("Стоматология")}" data-reveal>
-              <img src="images/room-dental-tall.webp" alt="Стоматологический кабинет Kamilovs Clinic" width="760" height="1000" loading="lazy" decoding="async" />
+            <a class="kc-feature" href="${serviceUrl("Стоматология")}" data-reveal data-tilt="3">
+              <img src="images/room-dental-tall.webp" alt="Стоматологический кабинет Kamilovs Clinic" width="760" height="1000" loading="lazy" decoding="async" data-kc-depth="images/room-dental-tall-depth.webp" />
               <span class="kc-feature__body">
-                <span class="kc-feature__icon">${brand.tooth}</span>
+                <span class="kc-feature__icon kc-mark3d" data-kc-mark="tooth">${brand.tooth}</span>
                 ${tx("span", "svc.dental.title", 'class="kc-feature__title"')}
                 ${tx("span", "svc.dental.text", 'class="kc-feature__text"')}
               </span>
@@ -160,7 +160,7 @@ const services = () => `<section class="kc-section" id="services">
             ${tile("Педиатрия", "ped", "bear", "lamp")}
             ${tile("Диагностика", "diag", "stethoscope", "cyan")}
             ${tile("Процедуры", "proc", "drop", "green")}
-            <a class="kc-tile kc-tile--all" href="services.html" data-reveal>
+            <a class="kc-tile kc-tile--all" href="services.html" data-reveal data-tilt>
               ${tx("h3", "services.all")}
               ${tx("p", "services.allText")}
               <i class="kc-tile__go" aria-hidden="true">${ui.arrow}</i>
@@ -188,6 +188,10 @@ const why = () => `<section class="kc-section kc-why" id="about">
               ${tx("p", "benefits.lead")}
             </div>
             <button class="kc-btn kc-btn--lamp" type="button" data-kc-book data-kc-goal="booking_open">${tx("span", "cta.btn")}<i class="kc-btn__ico" aria-hidden="true">${ui.arrow}</i></button>
+            <!-- Объёмный знак клиники (js/3d/mark.js). Без 3D здесь остаётся обычная картинка. -->
+            <div class="kc-mark3d" data-kc-mark="logo" aria-hidden="true">
+              <img src="images/mark.svg" alt="" width="660" height="541" loading="lazy" decoding="async" />
+            </div>
           </div>
           <div class="kc-why__list">
             ${WHY.map(([icon, tint], i) => `<article class="kc-whycard kc-tint--${tint}" style="--i:${i}">
@@ -226,26 +230,34 @@ const team = () => `<section class="kc-section" id="doctors" data-kc-doctors>
         </div>
       </section>`;
 
-/* ---------- Клиника изнутри: только настоящие снимки ---------- */
+/* ---------- Клиника изнутри: видео из настоящих снимков ---------- */
+// Видео собирает _src/tools/make_tour_video.py. Секунды начала планов повторяют STARTS оттуда:
+// по ним подписи переключаются вместе с кадром.
+const TOUR = [
+  { key: "gallery.cap1", at: 0 },
+  { key: "gallery.cap2", at: 4.4 },
+  { key: "gallery.cap3", at: 8.6 },
+];
+const TOUR_LENGTH = 13;
+
 const gallery = () => `<section class="kc-section kc-section--sand" id="gallery">
-        <div class="kc-wrap">
-          <div class="kc-head" data-reveal>
+        <div class="kc-wrap kc-tour" data-kc-tour data-length="${TOUR_LENGTH}">
+          <div class="kc-tour__copy" data-reveal>
             ${tx("p", "gallery.kicker", 'class="kc-eyebrow"')}
             ${tx("h2", "gallery.title")}
+            <ol class="kc-tour__chapters">
+              ${TOUR.map((c) => `<li><button class="kc-tour__chapter" type="button" data-at="${c.at}"><span class="kc-tour__bar" aria-hidden="true"><i></i></span>${tx("span", c.key)}</button></li>`).join("\n              ")}
+            </ol>
+            ${tx("p", "tour.note", 'class="kc-tour__note"')}
           </div>
-          <div class="kc-gal" data-reveal-group>
-            <figure class="kc-gal__item kc-gal__item--a" data-reveal>
-              <div class="kc-gal__frame"><img src="images/room-dental-tall.webp" alt="Стоматологический кабинет Kamilovs Clinic" width="760" height="1000" loading="lazy" decoding="async" /></div>
-              ${tx("figcaption", "gallery.cap1")}
-            </figure>
-            <figure class="kc-gal__item kc-gal__item--b" data-reveal>
-              <div class="kc-gal__frame"><img src="images/room-dental-detail.webp" alt="Рабочее место стоматолога с инструментами" width="760" height="1000" loading="lazy" decoding="async" /></div>
-              ${tx("figcaption", "gallery.cap2")}
-            </figure>
-            <figure class="kc-gal__item kc-gal__item--c" data-reveal>
-              <div class="kc-gal__frame"><img src="images/room-procedure.webp" alt="Процедурный кабинет Kamilovs Clinic" width="760" height="1000" loading="lazy" decoding="async" /></div>
-              ${tx("figcaption", "gallery.cap3")}
-            </figure>
+          <div class="kc-tour__screen" data-reveal>
+            <span class="kc-tour__line" aria-hidden="true"></span>
+            <!-- Без JavaScript у видео остаются обычные кнопки браузера -->
+            <video class="kc-tour__video" muted loop playsinline controls preload="none" data-poster="images/tour-poster.webp" width="720" height="900" ${aria("tour.label")}>
+              <source src="media/clinic-tour.webm" type="video/webm" />
+              <source src="media/clinic-tour.mp4" type="video/mp4" />
+            </video>
+            <button class="kc-tour__toggle" type="button" hidden ${aria("tour.pause")}>${ui.pause}${ui.play}</button>
           </div>
         </div>
       </section>`;

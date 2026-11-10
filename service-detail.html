@@ -36,9 +36,9 @@
     <link rel="preload" as="font" type="font/woff2" href="fonts/ysabeau-office.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="fonts/onest.woff2" crossorigin />
     
-    <link rel="stylesheet" href="css/kc-tokens.css?v=faa83140" />
-    <link rel="stylesheet" href="css/kc-ui.css?v=faa83140" />
-    <link rel="stylesheet" href="css/kc-sections.css?v=faa83140" />
+    <link rel="stylesheet" href="css/kc-tokens.css?v=5e5da62f" />
+    <link rel="stylesheet" href="css/kc-ui.css?v=5e5da62f" />
+    <link rel="stylesheet" href="css/kc-sections.css?v=5e5da62f" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
@@ -47,10 +47,10 @@
 
     <!-- Стартовое состояние анимаций включается только при работающем JS. -->
     <script>document.documentElement.classList.add("kc-js");</script>
-    <script src="js/kc-config.js?v=faa83140"></script>
-    <script src="js/kc-analytics.js?v=faa83140"></script>
+    <script src="js/kc-config.js?v=5e5da62f"></script>
+    <script src="js/kc-analytics.js?v=5e5da62f"></script>
     <!-- Небо задаётся до первой отрисовки, иначе при загрузке мелькнёт чужое время суток. -->
-    <script src="js/kc-sky.js?v=faa83140"></script>
+    <script src="js/kc-sky.js?v=5e5da62f"></script>
     
   </head>
 
@@ -115,6 +115,10 @@
             <h1 id="kc-sd-title" class="kc-phero__title">Услуги клиники</h1>
             <p id="kc-sd-sub" class="kc-phero__lead">Запишитесь на приём — администратор подберёт удобное время и врача. Работаем круглосуточно.</p>
           </div>
+          <!-- Объёмный знак клиники (js/3d/mark.js). Картинка показывается, только если 3D недоступно. -->
+          <div class="kc-phero__mark kc-mark3d" data-kc-mark="logo" aria-hidden="true">
+            <img src="images/mark.svg" alt="" width="660" height="541" loading="lazy" decoding="async" />
+          </div>
         </div>
       </section>
 
@@ -154,7 +158,7 @@
               <h2 data-i18n="page.detail.doctors">Кто принимает</h2>
               <div class="kc-detail__docs" id="kc-sd-docs">
                 <article data-doctor="8" hidden class="kc-doc kc-tint--lamp" data-spec="neuro">
-              <div class="kc-doc__photo">
+              <div class="kc-doc__photo" data-tilt="7">
                 <span class="kc-doc__arch" aria-hidden="true"></span>
                 <img src="images/doctors/cut-8.webp" alt="Мукаддас Равшановна — Невролог" width="800" height="680" loading="lazy" decoding="async" />
                 <button class="kc-doc__book" type="button" data-kc-book data-service="Невролог — Мукаддас Равшановна" data-kc-goal="booking_open">
@@ -166,7 +170,7 @@
               
             </article>
                 <article data-doctor="2" hidden class="kc-doc kc-tint--cyan" data-spec="therapist">
-              <div class="kc-doc__photo">
+              <div class="kc-doc__photo" data-tilt="7">
                 <span class="kc-doc__arch" aria-hidden="true"></span>
                 <img src="images/doctors/cut-2.webp" alt="Абдуллох Абдураззакович — Стоматолог-терапевт" width="800" height="680" loading="lazy" decoding="async" />
                 <button class="kc-doc__book" type="button" data-kc-book data-service="Стоматолог-терапевт — Абдуллох Абдураззакович" data-kc-goal="booking_open">
@@ -178,7 +182,7 @@
               
             </article>
                 <article data-doctor="3" hidden class="kc-doc kc-tint--mist" data-spec="hijama">
-              <div class="kc-doc__photo">
+              <div class="kc-doc__photo" data-tilt="7">
                 <span class="kc-doc__arch" aria-hidden="true"></span>
                 <img src="images/doctors/cut-3.webp" alt="Гульхида Абдуназировна — Специалист по хиджаме" width="800" height="680" loading="lazy" decoding="async" />
                 <button class="kc-doc__book" type="button" data-kc-book data-service="Специалист по хиджаме — Гульхида Абдуназировна" data-kc-goal="booking_open">
@@ -190,7 +194,7 @@
               
             </article>
                 <article data-doctor="9" hidden class="kc-doc kc-tint--navy" data-spec="therapist">
-              <div class="kc-doc__photo">
+              <div class="kc-doc__photo" data-tilt="7">
                 <span class="kc-doc__arch" aria-hidden="true"></span>
                 <img src="images/doctors/cut-9.webp" alt="Мухаммадрахим Алишер огли — Стоматолог-терапевт" width="800" height="680" loading="lazy" decoding="async" />
                 <button class="kc-doc__book" type="button" data-kc-book data-service="Стоматолог-терапевт — Мухаммадрахим Алишер огли" data-kc-goal="booking_open">
@@ -202,7 +206,7 @@
               
             </article>
                 <article data-doctor="6" hidden class="kc-doc kc-tint--green" data-spec="labDoctor">
-              <div class="kc-doc__photo">
+              <div class="kc-doc__photo" data-tilt="7">
                 <span class="kc-doc__arch" aria-hidden="true"></span>
                 <img src="images/doctors/cut-6.webp" alt="Нодирахон Нуритдиновна — Врач лаборатории" width="800" height="680" loading="lazy" decoding="async" />
                 <button class="kc-doc__book" type="button" data-kc-book data-service="Врач лаборатории — Нодирахон Нуритдиновна" data-kc-goal="booking_open">
@@ -214,7 +218,7 @@
               
             </article>
                 <article data-doctor="5" hidden class="kc-doc kc-tint--lamp" data-spec="orthopedist">
-              <div class="kc-doc__photo">
+              <div class="kc-doc__photo" data-tilt="7">
                 <span class="kc-doc__arch" aria-hidden="true"></span>
                 <img src="images/doctors/cut-5.webp" alt="Шамсиддин Бахтиер огли — Стоматолог-ортопед" width="800" height="680" loading="lazy" decoding="async" />
                 <button class="kc-doc__book" type="button" data-kc-book data-service="Стоматолог-ортопед — Шамсиддин Бахтиер огли" data-kc-goal="booking_open">
@@ -226,7 +230,7 @@
               
             </article>
                 <article data-doctor="1" hidden class="kc-doc kc-tint--navy" data-spec="neuroChild">
-              <div class="kc-doc__photo">
+              <div class="kc-doc__photo" data-tilt="7">
                 <span class="kc-doc__arch" aria-hidden="true"></span>
                 <img src="images/doctors/cut-1.webp" alt="Тилляева Нозимахон Рахматхоновна — Детский невролог" width="800" height="680" loading="lazy" decoding="async" />
                 <button class="kc-doc__book" type="button" data-kc-book data-service="Детский невролог — Тилляева Нозимахон Рахматхоновна" data-kc-goal="booking_open">
@@ -238,7 +242,7 @@
               
             </article>
                 <article data-doctor="7" hidden class="kc-doc kc-tint--mist" data-spec="integrative">
-              <div class="kc-doc__photo">
+              <div class="kc-doc__photo" data-tilt="7">
                 <span class="kc-doc__arch" aria-hidden="true"></span>
                 <img src="images/doctors/cut-7.webp" alt="Латофат Гайратжановна — Интегративный стоматолог" width="800" height="680" loading="lazy" decoding="async" />
                 <button class="kc-doc__book" type="button" data-kc-book data-service="Интегративный стоматолог — Латофат Гайратжановна" data-kc-goal="booking_open">
@@ -250,7 +254,7 @@
               
             </article>
                 <article data-doctor="4" hidden class="kc-doc kc-tint--cyan" data-spec="laborant">
-              <div class="kc-doc__photo">
+              <div class="kc-doc__photo" data-tilt="7">
                 <span class="kc-doc__arch" aria-hidden="true"></span>
                 <img src="images/doctors/cut-4.webp" alt="Зиеда Давранбаевна — Лаборант" width="800" height="680" loading="lazy" decoding="async" />
                 <button class="kc-doc__book" type="button" data-kc-book data-service="Лаборант — Зиеда Давранбаевна" data-kc-goal="booking_open">
@@ -440,10 +444,11 @@
       </div>
     </div>
 
-    <script src="js/kc-i18n.js?v=faa83140"></script>
-    <script src="js/kc-catalog.js?v=faa83140"></script>
-    <script src="js/kc-ui.js?v=faa83140"></script>
-    <script src="js/kc-lead-form.js?v=faa83140"></script>
-    <script src="js/kc-contact-widget.js?v=faa83140"></script>
+    <script src="js/kc-i18n.js?v=5e5da62f"></script>
+    <script src="js/kc-catalog.js?v=5e5da62f"></script>
+    <script src="js/kc-ui.js?v=5e5da62f"></script>
+    <script src="js/kc-lead-form.js?v=5e5da62f"></script>
+    <script src="js/kc-contact-widget.js?v=5e5da62f"></script>
+    <script src="js/kc-3d.js?v=5e5da62f"></script>
   </body>
 </html>

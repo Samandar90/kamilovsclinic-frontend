@@ -8,7 +8,12 @@
  *
  * Палитра подобрана так, чтобы белый текст читался при любом времени суток:
  * верх и середина неба всегда дают контраст от 4.5:1, светлым бывает только
- * горизонт, а он скрыт за арками и полосой «земли».
+ * горизонт, а он скрыт за арками и панелью со шкалой.
+ *
+ * Скрипт отвечает за время и за запасной вид неба, собранный из CSS-слоёв.
+ * На устройствах посильнее первый экран рисует 3D-сцена (js/3d/hero.js): она
+ * берёт отсюда то же самое состояние неба через KC.sky, поэтому оба вида
+ * всегда показывают одно и то же время.
  *
  * Скорость. Весь сайт получает цвета неба переменными раз в 20 секунд. Первый
  * экран при движении времени перерисовывать нельзя: большой градиент на телефоне
@@ -40,28 +45,44 @@
     var n = parseInt(hex.slice(1), 16);
     return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
   }
+  var RGB = KEYS.map(function (k) {
+    return [parse(k[1]), parse(k[2]), parse(k[3])];
+  });
 
-  function mix(a, b, t) {
-    var pa = parse(a);
-    var pb = parse(b);
-    return (
-      "rgb(" +
-      Math.round(pa[0] + (pb[0] - pa[0]) * t) + "," +
-      Math.round(pa[1] + (pb[1] - pa[1]) * t) + "," +
-      Math.round(pa[2] + (pb[2] - pa[2]) * t) + ")"
-    );
+  function lerp3(a, b, t) {
+    return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  }
+  function rgb(c) {
+    return "rgb(" + Math.round(c[0]) + "," + Math.round(c[1]) + "," + Math.round(c[2]) + ")";
   }
 
-  /** Отрезок таблицы, в который попадает время: номер и доля пройденного. */
-  function segment(minutes) {
+  /**
+   * Состояние неба в данную минуту суток: одно описание и для CSS-слоёв,
+   * и для 3D-сцены. Цвета — числа 0..255.
+   */
+  function state(minutes) {
     var h = minutes / 60;
     var i = 0;
     while (i < KEYS.length - 2 && KEYS[i + 1][0] <= h) i++;
-    return { i: i, t: (h - KEYS[i][0]) / (KEYS[i + 1][0] - KEYS[i][0]) };
-  }
+    var t = (h - KEYS[i][0]) / (KEYS[i + 1][0] - KEYS[i][0]);
+    var stars = KEYS[i][4] + (KEYS[i + 1][4] - KEYS[i][4]) * t;
 
-  function starsAt(seg) {
-    return KEYS[seg.i][4] + (KEYS[seg.i + 1][4] - KEYS[seg.i][4]) * seg.t;
+    // Солнце идёт с 6 до 20, луна — с 20 до 6, по одной дуге над арками.
+    var day = h >= 6 && h < 20;
+    var path = day ? (h - 6) / 14 : ((h + 24 - 20) % 24) / 10;
+
+    return {
+      segment: i, // отрезок таблицы и доля пройденного в нём
+      blend: t,
+      top: lerp3(RGB[i][0], RGB[i + 1][0], t),
+      mid: lerp3(RGB[i][1], RGB[i + 1][1], t),
+      low: lerp3(RGB[i][2], RGB[i + 1][2], t),
+      stars: stars,
+      glow: 0.5 + stars * 0.5, // окна клиники светятся ярче, когда вокруг темно
+      day: day,
+      path: path, // 0..1 вдоль дуги
+      rise: Math.min(1, Math.min(path, 1 - path) * 10), // плавное появление у краёв дуги
+    };
   }
 
   /** Время Ташкента в минутах. В Узбекистане нет перехода на летнее время. */
@@ -87,26 +108,45 @@
     return "sky.late";
   }
 
+  /* ---------- Общий доступ ко времени ---------- */
+  var listeners = [];
+  var api = {
+    state: state,
+    now: nowMinutes,
+    minutes: nowMinutes(), // время, которое сейчас показано на странице
+    cssOff: false, // true, когда первый экран рисует 3D-сцена и CSS-слои не нужны
+    restoreCss: function () {
+      api.cssOff = false;
+    },
+    on: function (fn) {
+      listeners.push(fn);
+    },
+  };
+  window.KC = window.KC || {};
+  window.KC.sky = api;
+
+  function emit(minutes) {
+    api.minutes = minutes;
+    for (var i = 0; i < listeners.length; i++) listeners[i](minutes);
+  }
+
   /* ---------- Переменные для всего сайта ---------- */
   var themeMeta = null;
   function paintPage(minutes) {
-    var seg = segment(minutes);
-    var a = KEYS[seg.i];
-    var b = KEYS[seg.i + 1];
-    var stars = starsAt(seg);
+    var st = state(minutes);
     var s = root.style;
-    s.setProperty("--sky-a", mix(a[1], b[1], seg.t));
-    s.setProperty("--sky-b", mix(a[2], b[2], seg.t));
-    s.setProperty("--sky-c", mix(a[3], b[3], seg.t));
-    s.setProperty("--stars", stars.toFixed(3));
-    s.setProperty("--glow", (0.5 + stars * 0.5).toFixed(3));
+    s.setProperty("--sky-a", rgb(st.top));
+    s.setProperty("--sky-b", rgb(st.mid));
+    s.setProperty("--sky-c", rgb(st.low));
+    s.setProperty("--stars", st.stars.toFixed(3));
+    s.setProperty("--glow", st.glow.toFixed(3));
     themeMeta = themeMeta || document.querySelector('meta[name="theme-color"]');
-    if (themeMeta) themeMeta.setAttribute("content", mix(a[1], b[1], seg.t));
+    if (themeMeta) themeMeta.setAttribute("content", rgb(st.top));
   }
 
   paintPage(nowMinutes());
 
-  /* ---------- Живое небо первого экрана ---------- */
+  /* ---------- Запасное небо первого экрана: CSS-слои ---------- */
   function gradient(key) {
     return "linear-gradient(180deg," + key[1] + " 0%," + key[2] + " 62%," + key[3] + " 100%)";
   }
@@ -123,33 +163,24 @@
     var current = -1;
 
     return function paint(minutes) {
-      var seg = segment(minutes);
-      if (seg.i !== current) {
-        current = seg.i;
-        from.style.background = gradient(KEYS[seg.i]);
-        to.style.background = gradient(KEYS[seg.i + 1]);
+      var st = state(minutes);
+      if (st.segment !== current) {
+        current = st.segment;
+        from.style.background = gradient(KEYS[current]);
+        to.style.background = gradient(KEYS[current + 1]);
       }
-      to.style.opacity = seg.t.toFixed(3);
+      to.style.opacity = st.blend.toFixed(3);
+      night.style.opacity = st.stars.toFixed(3);
 
-      var stars = starsAt(seg);
-      night.style.opacity = stars.toFixed(3);
-
-      // Окна клиники светятся ярче, когда вокруг темно.
-      var glow = 0.5 + stars * 0.5;
       halos.forEach(function (el) {
-        el.style.opacity = (glow * 0.5).toFixed(3);
+        el.style.opacity = (st.glow * 0.5).toFixed(3);
       });
-      if (ground) ground.style.opacity = glow.toFixed(3);
+      if (ground) ground.style.opacity = st.glow.toFixed(3);
 
-      // Солнце идёт с 6 до 20, луна — с 20 до 6, по одной дуге над арками.
-      var h = minutes / 60;
-      var day = h >= 6 && h < 20;
-      var p = day ? (h - 6) / 14 : ((h + 24 - 20) % 24) / 10;
-      var edge = Math.min(1, Math.min(p, 1 - p) * 10);
       path.style.transform =
-        "translate(" + (p * 100).toFixed(2) + "%," + ((1 - Math.sin(p * Math.PI)) * 100).toFixed(2) + "%)";
-      sun.style.opacity = day ? edge.toFixed(3) : "0";
-      moon.style.opacity = day ? "0" : edge.toFixed(3);
+        "translate(" + (st.path * 100).toFixed(2) + "%," + ((1 - Math.sin(st.path * Math.PI)) * 100).toFixed(2) + "%)";
+      sun.style.opacity = st.day ? st.rise.toFixed(3) : "0";
+      moon.style.opacity = st.day ? "0" : st.rise.toFixed(3);
     };
   }
 
@@ -182,7 +213,8 @@
 
     function show(minutes) {
       shown = minutes;
-      paint(minutes);
+      if (!api.cssOff) paint(minutes);
+      emit(minutes);
       range.value = Math.round(minutes);
       range.style.setProperty("--p", (minutes / 1439).toFixed(4));
       var text = label(minutes);
@@ -269,6 +301,12 @@
       setTimeout(start, 1500);
     }
 
+    // 3D-сцена может выключиться (например, при потере видеокарты): возвращаем CSS-небо.
+    api.restoreCss = function () {
+      api.cssOff = false;
+      paint(shown);
+    };
+
     return {
       tick: function () {
         if (!held && !back) show(nowMinutes());
@@ -290,6 +328,7 @@
       paintPage(nowMinutes());
       updateClocks();
       if (dial) dial.tick();
+      else emit(nowMinutes());
     }, 20000);
   });
 })();

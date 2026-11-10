@@ -2,7 +2,8 @@
  * kc-ui.js — поведение оболочки сайта.
  *
  * Шапка, индикатор навигации, мобильная панель, появление блоков при скролле,
- * окно записи, кнопки быстрого выбора услуги. Всё, что есть на каждой странице.
+ * наклон карточек, окно записи, кнопки быстрого выбора услуги. Всё, что есть
+ * на каждой странице.
  *
  * Логика секций главной — в js/kc-home.js.
  */
@@ -136,8 +137,14 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
-        e.target.classList.add("is-in");
-        io.unobserve(e.target);
+        var el = e.target;
+        el.classList.add("is-in");
+        io.unobserve(el);
+        // Когда блок появился, его стили появления больше не нужны. Иначе они
+        // спорили бы с другими эффектами: например, с наклоном карточек.
+        setTimeout(function () {
+          el.removeAttribute("data-reveal");
+        }, 1500 + (parseInt(el.style.getPropertyValue("--reveal-delay"), 10) || 0));
       });
     }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
 
@@ -149,6 +156,51 @@
         el.style.setProperty("--reveal-delay", siblings.indexOf(el) * 70 + "ms");
       }
       io.observe(el);
+    });
+  }
+
+  /* ================= Объёмный наклон карточек ================= */
+  function initTilt() {
+    if (reduced || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    var current = null;
+    var event = null;
+    var ticking = false;
+
+    function release(el) {
+      el.classList.remove("is-tilting");
+      el.style.removeProperty("--rx");
+      el.style.removeProperty("--ry");
+    }
+
+    function apply() {
+      ticking = false;
+      var el = event.target.closest ? event.target.closest("[data-tilt]") : null;
+      if (current && current !== el) release(current);
+      current = el;
+      if (!el) return;
+      var r = el.getBoundingClientRect();
+      var x = (event.clientX - r.left) / r.width - 0.5;
+      var y = (event.clientY - r.top) / r.height - 0.5;
+      var max = Number(el.getAttribute("data-tilt")) || 5;
+      // Карточка наклоняется к курсору, по ней скользит блик
+      el.style.setProperty("--ry", (x * max * 2).toFixed(2) + "deg");
+      el.style.setProperty("--rx", (-y * max * 2).toFixed(2) + "deg");
+      el.style.setProperty("--gx", ((x + 0.5) * 100).toFixed(1) + "%");
+      el.style.setProperty("--gy", ((y + 0.5) * 100).toFixed(1) + "%");
+      el.classList.add("is-tilting");
+    }
+
+    document.addEventListener("pointermove", function (e) {
+      if (e.pointerType !== "mouse") return;
+      event = e;
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(apply);
+    }, { passive: true });
+    document.documentElement.addEventListener("pointerleave", function () {
+      if (current) release(current);
+      current = null;
     });
   }
 
@@ -288,6 +340,7 @@
     initNavPill();
     initSheet();
     initReveal();
+    initTilt();
     initModal();
     initChips();
     initYear();

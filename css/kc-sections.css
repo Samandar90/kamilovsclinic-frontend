@@ -243,6 +243,43 @@
   color: var(--on-dark-2);
 }
 
+/* 3D-сцена первого экрана (js/3d/hero.js): холст лежит под содержимым */
+.kc-hero__gl {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+.kc-hero__gl.is-on {
+  visibility: visible;
+}
+/* Когда сцену рисует холст, плоская версия гаснет. Подписи врачей остаются на местах. */
+.kc-hero.is-3d .kc-sky,
+.kc-hero.is-3d .kc-orb,
+.kc-hero.is-3d .kc-ground__light {
+  visibility: hidden;
+}
+.kc-hero.is-3d .kc-arch {
+  animation: none;
+  transform: none;
+  transition: none;
+}
+.kc-hero.is-3d .kc-arch > :not(figcaption) {
+  opacity: 0 !important;
+  animation: none;
+  transition: opacity 500ms var(--ease);
+}
+@media (hover: hover) and (min-width: 1000px) {
+  /* Панель со шкалой становится матовым стеклом: под ней виден свет от арок */
+  .kc-hero.is-3d .kc-ground {
+    background: rgba(9, 31, 56, 0.58);
+    -webkit-backdrop-filter: blur(22px) saturate(1.25);
+    backdrop-filter: blur(22px) saturate(1.25);
+  }
+}
 /* Земля и шкала суток */
 .kc-ground {
   position: relative;
@@ -583,7 +620,7 @@
 @media (hover: hover) {
   .kc-tile:hover {
     color: #fff;
-    transform: translateY(-4px);
+    transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px);
     box-shadow: var(--shadow-md);
   }
   .kc-tile:hover .kc-tile__flood {
@@ -657,8 +694,21 @@
   z-index: -1;
   background: linear-gradient(180deg, rgba(240, 243, 242, 0.96) 0%, rgba(240, 243, 242, 0.82) 26%, rgba(240, 243, 242, 0) 52%);
 }
-.kc-feature:hover img {
+.kc-feature:hover img,
+.kc-feature:hover .kc-depth {
   transform: scale(1.04);
+}
+/* Объёмная фотография (js/3d/depth.js): холст занимает место картинки */
+.kc-feature .kc-depth {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  transition: transform 1.2s var(--ease);
+}
+img.is-depth {
+  visibility: hidden;
 }
 .kc-feature__body {
   display: grid;
@@ -666,10 +716,16 @@
   justify-items: start;
 }
 .kc-feature__icon {
-  width: 72px;
-  height: 72px;
-  margin-bottom: 6px;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 2px;
   --ico-fill: #8fe3ec;
+}
+/* Объёмному зубу нужно место для поворота: холст больше рамки значка */
+.kc-feature__icon canvas {
+  inset: -22%;
+  width: 144%;
+  height: 144%;
 }
 .kc-feature__title {
   font-family: var(--font-display);
@@ -730,6 +786,27 @@
 }
 .kc-why__aside .kc-btn {
   margin-top: 30px;
+}
+.kc-why__aside .kc-mark3d {
+  width: min(100%, 420px);
+  aspect-ratio: 1.22;
+  margin-top: 12px;
+}
+@media (min-width: 1000px) {
+  .kc-why__aside .kc-mark3d {
+    margin-left: -28px;
+  }
+}
+/* На невысоких экранах знак меньше, иначе закреплённая колонка не помещается */
+@media (min-width: 1000px) and (max-height: 860px) {
+  .kc-why__aside .kc-mark3d {
+    width: min(100%, 300px);
+  }
+}
+@media (min-width: 1000px) and (max-height: 720px) {
+  .kc-why__aside .kc-mark3d {
+    display: none;
+  }
 }
 .kc-whycard {
   display: grid;
@@ -910,60 +987,114 @@
   color: var(--ink-2);
 }
 
-/* ---------- Клиника изнутри ---------- */
-.kc-gal {
+/* ---------- Клиника изнутри: видео ---------- */
+.kc-tour {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px 14px;
-  margin-top: clamp(36px, 5vw, 64px);
+  gap: 36px;
+  align-items: center;
 }
-.kc-gal__item--a {
-  grid-column: 1 / -1;
+.kc-tour__chapters {
+  display: grid;
+  margin-top: clamp(24px, 3vw, 44px);
 }
-.kc-gal__frame {
+/* Подписи кабинетов — оглавление видео: полоска показывает, сколько осталось до следующего */
+.kc-tour__chapter {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 20px 0 18px;
+  color: var(--ink-3);
+  font-family: var(--font-display);
+  font-size: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-align: left;
+  transition: color var(--dur) var(--ease);
+}
+.kc-tour__chapter:hover,
+.kc-tour__chapter.is-active {
+  color: var(--navy);
+}
+.kc-tour__bar {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
   overflow: hidden;
-  border-radius: 0 0 var(--r-md) var(--r-md);
-  -webkit-mask: var(--arch) center / 100% 100% no-repeat;
-  mask: var(--arch) center / 100% 100% no-repeat;
-  background: var(--navy-soft);
+  border-radius: 2px;
+  background: var(--line-2);
 }
-.kc-gal__frame img {
+.kc-tour__bar i {
+  position: absolute;
+  inset: 0;
+  background: var(--cyan-deep);
+  transform: scaleX(var(--p, 0));
+  transform-origin: left;
+}
+.kc-tour__note {
+  margin-top: 14px;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+.kc-tour__screen {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 500px);
+  aspect-ratio: 4 / 5;
+}
+.kc-tour__line {
+  position: absolute;
+  inset: -12px -12px 0;
+  background: var(--cyan);
+  opacity: 0.55;
+  -webkit-mask: var(--arch-line) center / 100% 100% no-repeat;
+  mask: var(--arch-line) center / 100% 100% no-repeat;
+}
+.kc-tour__video {
+  position: relative;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 1.4s var(--ease);
+  border-radius: 0 0 var(--r-md) var(--r-md);
+  background: var(--navy-soft);
+  -webkit-mask: var(--arch) center / 100% 100% no-repeat;
+  mask: var(--arch) center / 100% 100% no-repeat;
 }
-.kc-gal__item:hover img {
-  transform: scale(1.04);
-}
-.kc-gal__item figcaption {
-  margin-top: 14px;
-  text-align: center;
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
-  font-weight: 500;
+.kc-tour__toggle {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
   color: var(--navy);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--dur-fast) var(--ease), background var(--dur-fast);
 }
-.kc-gal__frame {
-  aspect-ratio: 4 / 5;
+.kc-tour__toggle:hover {
+  background: #fff;
+  transform: scale(1.06);
 }
-@media (min-width: 760px) {
-  .kc-gal {
-    grid-template-columns: 1.2fr 0.9fr 1fr;
-    align-items: end;
-    gap: clamp(20px, 3vw, 44px);
-  }
-  .kc-gal__item--a {
-    grid-column: auto;
-  }
-  .kc-gal__item--a .kc-gal__frame {
-    aspect-ratio: 3 / 4;
-  }
-  .kc-gal__item--b .kc-gal__frame {
-    aspect-ratio: 3 / 4;
-  }
-  .kc-gal__item--c .kc-gal__frame {
-    aspect-ratio: 3 / 4;
+.kc-tour__toggle svg {
+  grid-area: 1 / 1;
+  width: 22px;
+  height: 22px;
+}
+.kc-tour__toggle svg:last-child,
+.kc-tour.is-paused .kc-tour__toggle svg:first-child {
+  opacity: 0;
+}
+.kc-tour.is-paused .kc-tour__toggle svg:last-child {
+  opacity: 1;
+}
+@media (min-width: 960px) {
+  .kc-tour {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 500px);
+    gap: 80px;
   }
 }
 
@@ -1330,6 +1461,28 @@
 .kc-phero__title--long {
   max-width: 22ch;
   font-size: clamp(2.5rem, 1.75rem + 3.4vw, 4.75rem);
+}
+.kc-phero__mark {
+  display: none;
+}
+@media (min-width: 1000px) {
+  .kc-phero__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
+    align-items: center;
+  }
+  .kc-phero__mark {
+    display: block;
+    aspect-ratio: 1.2;
+    margin-block: -40px;
+  }
+  /* Плоский знак виден, только когда объёмный не появится: иначе он мелькал бы перед 3D */
+  .kc-phero__mark > img {
+    opacity: 0;
+    transition: opacity var(--dur-slow, 0.6s) var(--ease);
+  }
+  .kc-no3d .kc-phero__mark > img {
+    opacity: 1;
+  }
 }
 .kc-phero__lead {
   max-width: 58ch;

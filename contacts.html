@@ -36,9 +36,9 @@
     <link rel="preload" as="font" type="font/woff2" href="fonts/ysabeau-office.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="fonts/onest.woff2" crossorigin />
     
-    <link rel="stylesheet" href="css/kc-tokens.css?v=faa83140" />
-    <link rel="stylesheet" href="css/kc-ui.css?v=faa83140" />
-    <link rel="stylesheet" href="css/kc-sections.css?v=faa83140" />
+    <link rel="stylesheet" href="css/kc-tokens.css?v=5e5da62f" />
+    <link rel="stylesheet" href="css/kc-ui.css?v=5e5da62f" />
+    <link rel="stylesheet" href="css/kc-sections.css?v=5e5da62f" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
@@ -47,10 +47,10 @@
 
     <!-- Стартовое состояние анимаций включается только при работающем JS. -->
     <script>document.documentElement.classList.add("kc-js");</script>
-    <script src="js/kc-config.js?v=faa83140"></script>
-    <script src="js/kc-analytics.js?v=faa83140"></script>
+    <script src="js/kc-config.js?v=5e5da62f"></script>
+    <script src="js/kc-analytics.js?v=5e5da62f"></script>
     <!-- Небо задаётся до первой отрисовки, иначе при загрузке мелькнёт чужое время суток. -->
-    <script src="js/kc-sky.js?v=faa83140"></script>
+    <script src="js/kc-sky.js?v=5e5da62f"></script>
     
   </head>
 
@@ -114,6 +114,10 @@
             <p class="kc-eyebrow kc-eyebrow--light" data-i18n="contacts.kicker">Контакты</p>
             <h1 class="kc-phero__title" data-i18n="page.contacts.title">Свяжитесь с Kamilovs Clinic</h1>
             <p class="kc-phero__lead" data-i18n="page.contacts.lead">Мы на связи 24/7. Позвоните, напишите или оставьте заявку — администратор поможет с записью и ответит на вопросы.</p>
+          </div>
+          <!-- Объёмный знак клиники (js/3d/mark.js). Картинка показывается, только если 3D недоступно. -->
+          <div class="kc-phero__mark kc-mark3d" data-kc-mark="logo" aria-hidden="true">
+            <img src="images/mark.svg" alt="" width="660" height="541" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -323,10 +327,11 @@
       </div>
     </div>
 
-    <script src="js/kc-i18n.js?v=faa83140"></script>
-    <script src="js/kc-legal.js?v=faa83140"></script>
-    <script src="js/kc-ui.js?v=faa83140"></script>
-    <script src="js/kc-lead-form.js?v=faa83140"></script>
-    <script src="js/kc-contact-widget.js?v=faa83140"></script>
+    <script src="js/kc-i18n.js?v=5e5da62f"></script>
+    <script src="js/kc-legal.js?v=5e5da62f"></script>
+    <script src="js/kc-ui.js?v=5e5da62f"></script>
+    <script src="js/kc-lead-form.js?v=5e5da62f"></script>
+    <script src="js/kc-contact-widget.js?v=5e5da62f"></script>
+    <script src="js/kc-3d.js?v=5e5da62f"></script>
   </body>
 </html>

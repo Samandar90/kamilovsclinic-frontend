@@ -82,6 +82,10 @@ const ru = {
   "gallery.cap1": "Стоматологический кабинет",
   "gallery.cap2": "Рабочее место врача",
   "gallery.cap3": "Процедурная",
+  "tour.label": "Видео: кабинеты клиники",
+  "tour.note": "Видео собрано из настоящих фотографий клиники.",
+  "tour.play": "Включить видео",
+  "tour.pause": "Остановить видео",
 
   "doctors.kicker": "Команда",
   "doctors.title": "Наши специалисты",
@@ -306,6 +310,10 @@ const uz = {
   "gallery.cap1": "Stomatologiya xonasi",
   "gallery.cap2": "Shifokorning ish joyi",
   "gallery.cap3": "Muolaja xonasi",
+  "tour.label": "Video: klinika xonalari",
+  "tour.note": "Video klinikaning haqiqiy suratlaridan tayyorlangan.",
+  "tour.play": "Videoni yoqish",
+  "tour.pause": "Videoni to‘xtatish",
 
   "doctors.kicker": "Jamoa",
   "doctors.title": "Bizning mutaxassislar",

@@ -43,7 +43,7 @@ for (const page of pages) {
 /* ---------- Словарь ---------- */
 
 // Тексты, которые подставляются только из скриптов, а в разметке не встречаются.
-const RUNTIME_KEYS = ["sky.night", "sky.dawn", "sky.morning", "sky.day", "sky.evening", "sky.late", "page.detail.fallbackTitle", "page.detail.fallbackSub", "page.detail.sub", "page.detail.kicker"];
+const RUNTIME_KEYS = ["sky.night", "sky.dawn", "sky.morning", "sky.day", "sky.evening", "sky.late", "page.detail.fallbackTitle", "page.detail.fallbackSub", "page.detail.sub", "page.detail.kicker", "tour.play"];
 
 const full = {
   ru: { ...dictionaries.ru, ...catalogDictionary("ru") },
